@@ -1,17 +1,14 @@
 package me.Kelson;
 
-import me.Kelson.util.*;
+import me.Kelson.util.Events;
+import me.Kelson.util.Interface;
+import me.Kelson.util.Messages;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.entity.FoodLevelChangeEvent;
-import org.bukkit.event.player.AsyncPlayerChatEvent;
-import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -48,66 +45,6 @@ public class Commands extends JavaPlugin implements Listener, Interface{
 	private String TotalHealth(){
 		return TotalHealth;
 	}
-	@SuppressWarnings("unused")
-	/*
-	@EventHandler
-    public void onJoin(PlayerJoinEvent event) {
-		Player player = event.getPlayer();
-		Location loc = player.getLocation();
-		if(player.getName().equals("kelson8")){
-			player.chat("Hello everyone!");
-    	player.sendMessage("Read the rules at " + ServerRules +" or you can read the rules in /rules");
-	    }
-	}
-	
-	@EventHandler
-	public void onLogin(PlayerLoginEvent event){
-		Player player = event.getPlayer();
-		if(player.getName().equals("kelson8")){
-			player.chat("Hello everyone!");
-		}
-	}*/
-
-	    @EventHandler
-	      public void onPlayerInteractBlock(PlayerInteractEvent event){
-		Player player = event.getPlayer();
-		// Possible test this for something later.. Bukkit.getOfflinePlayers();
-
-
-		if(player.getInventory().getItemInMainHand().getType() == Material.BARRIER && player.hasPermission("kelson.destroy")) {
-			//player.getWorld().strikeLightning(player.getTargetBlock(null, 50).getLocation());
-			player.getWorld().createExplosion(player.getTargetBlock(null, 50).getLocation(), 100);
-		}
-		if(player.getInventory().getItemInMainHand().getType() == Material.BEDROCK && player.hasPermission("kelson.destroy")){
-
-			player.getWorld().strikeLightning(player.getTargetBlock(null, 50).getLocation());
-		}
-
-	    }
-
-		@EventHandler
-    	  public void onFoodChange(FoodLevelChangeEvent event)
-    	  {
-
-    		//If the player has permission or if the player is op it disables their hunger
-    	    if ((event.getEntity().hasPermission("no.hunger")) || (event.getEntity().isOp())) {
-    	      //event.setCancelled(true);
-
-    	    } else {
-    	      //event.setCancelled(false);
-    	    }
-
-    }
-
-    	@EventHandler
-    	public void onPlayerChat(AsyncPlayerChatEvent event) {
-    		Player player = event.getPlayer();
-
-    	      if(event.getMessage().contains(".help") && player.hasPermission("kelson.secret.commands.help")){
-    	    	  player.sendMessage("Secret command usage: .help");
-    	    	  event.setCancelled(true);
-    	      }
-    	}
 
 	@Override
 	public void onDisable() {
@@ -145,7 +82,7 @@ public class Commands extends JavaPlugin implements Listener, Interface{
 	    this.getCommand("setkmotd").setExecutor(new SetKMotdCommand(this));
 	    this.getCommand("playerinfo").setExecutor(new PlayerInfoCommand(this));
 	    this.getCommand("god").setExecutor(new GodCommand(this));
-	    this.getCommand("nv").setExecutor(new NightVisionCommand(this));
+	    this.getCommand("nightvision").setExecutor(new NightVisionCommand(this));
 	    this.getCommand("cleareff").setExecutor(new NightVisionCommand(this));
 	    this.getCommand("lightning").setExecutor(new LightningCommand(this));
 		getConfig().options().copyDefaults(true);
@@ -166,27 +103,36 @@ public class Commands extends JavaPlugin implements Listener, Interface{
 			 + ChatColor.YELLOW + "/whitelist-list";
 						   
 	  if(!(sender instanceof Player)){
-		if(cmd.getName().equalsIgnoreCase("kelson")){
+		if(cmd.getName().equalsIgnoreCase("kelson")) {
 			sender.sendMessage(ServerInfo + "\n");
-		  }
+
+		}
 		if(cmd.getName().equalsIgnoreCase("kelson")){
 			  
 			   if(args.length == 0){
-				   sender.sendMessage(main + "Command Usage: \n"
+				   sender.sendMessage(main + "\nCommand Usage: \n"
 						   + ChatColor.YELLOW + "/kelson version\n"
-						   + ChatColor.YELLOW + "/kelson-reload (You have to have permission)");
+						   + ChatColor.YELLOW + "/kelson reload (You have to have permission)");
 				          return true;
 			        }
 
-			   if(args[0].equalsIgnoreCase("version")){
+			   if(args.length == 1 && args[0].equalsIgnoreCase("version")){
 				   sender.sendMessage(version);
+				   return true;
 			     }
 			   String Version = Bukkit.getServer().getVersion();
 			   if(cmd.getName().equals("version")){
 				   sender.sendMessage(Version);
+				   return true;
 			   }
+			   /* TODO Make this command work like this
+			   if(args.length == 1 && args[0].equalsIgnoreCase("reload") && sender.hasPermission("kelson.reload")){
+			   	plugin.reloadConfig();
+			   	Bukkit.broadcastMessage(ChatColor.WHITE + sender.getName() + ChatColor.YELLOW + " has reloaded kelsons plugin's config!");
+			   }*/
 			   if(args.length >1){
 				   sender.sendMessage("Too many arguments! Command help: \n" + KelsonCommandUsage);
+				   return false;
 			     }
 		       }
 		}

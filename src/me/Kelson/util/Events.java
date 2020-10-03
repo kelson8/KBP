@@ -11,7 +11,9 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockDispenseEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.enchantment.EnchantItemEvent;
+import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerLevelChangeEvent;
 
 import java.util.ArrayList;
@@ -29,7 +31,66 @@ Commands plugin;
 	}
 
 
- 
+	@SuppressWarnings("unused")
+	/*
+	@EventHandler
+    public void onJoin(PlayerJoinEvent event) {
+		Player player = event.getPlayer();
+		Location loc = player.getLocation();
+		if(player.getName().equals("kelson8")){
+			player.chat("Hello everyone!");
+    	player.sendMessage("Read the rules at " + ServerRules +" or you can read the rules in /rules");
+	    }
+	}
+
+	@EventHandler
+	public void onLogin(PlayerLoginEvent event){
+		Player player = event.getPlayer();
+		if(player.getName().equals("kelson8")){
+			player.chat("Hello everyone!");
+		}
+	}*/
+
+	@EventHandler
+	public void onPlayerInteractBlock(PlayerInteractEvent event){
+		Player player = event.getPlayer();
+		// Possible test this for something later.. Bukkit.getOfflinePlayers();
+
+
+		if(player.getInventory().getItemInMainHand().getType() == Material.BARRIER && player.hasPermission("kelson.destroy")) {
+			//player.getWorld().strikeLightning(player.getTargetBlock(null, 50).getLocation());
+			player.getWorld().createExplosion(player.getTargetBlock(null, 50).getLocation(), 100);
+		}
+		if(player.getInventory().getItemInMainHand().getType() == Material.BEDROCK && player.hasPermission("kelson.destroy")){
+
+			player.getWorld().strikeLightning(player.getTargetBlock(null, 50).getLocation());
+		}
+
+	}
+
+	@EventHandler
+	public void onFoodChange(FoodLevelChangeEvent event)
+	{
+
+		//If the player has permission or if the player is op it disables their hunger
+		if ((event.getEntity().hasPermission("no.hunger")) || (event.getEntity().isOp())) {
+			//event.setCancelled(true);
+
+		} else {
+			//event.setCancelled(false);
+		}
+
+	}
+
+	@EventHandler
+	public void onPlayerChat1(AsyncPlayerChatEvent event) {
+		Player player = event.getPlayer();
+
+		if(event.getMessage().contains(".help") && player.hasPermission("kelson.secret.commands.help")){
+			player.sendMessage("Secret command usage: .help");
+			event.setCancelled(true);
+		}
+	}
 
 	@EventHandler
 	public void EnchantItemEvent(EnchantItemEvent event){

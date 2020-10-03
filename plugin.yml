@@ -85,8 +85,9 @@ commands:
   god:
     description: Gives the player god mode.
 
-  nv:
+  nightvision:
     description: Enables/disables nightvision
+    aliases: [nv]
 
   cleareff:
     description: Testing

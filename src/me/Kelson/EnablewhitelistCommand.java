@@ -14,13 +14,11 @@ public class EnablewhitelistCommand implements CommandExecutor
 			this.plugin = passedPlugin;
 		}
 
-		public boolean onCommand(CommandSender sender, Command cmd, 
-				String CommandLabel, String[] args) {
+		public boolean onCommand(CommandSender sender, Command cmd, String CommandLabel, String[] args) {
 			   
-		        if(sender.hasPermission("kelson.enablewhitelist"))
-		        {
+		        if(cmd.getName().equalsIgnoreCase("enablewhitelist") && sender.hasPermission("kelson.enablewhitelist")) {
         	    plugin.getServer().setWhitelist(true);
-                Bukkit.broadcastMessage("The whitelist has been enabled!");
+                Bukkit.broadcastMessage(Commands.main + sender.getName() + " Has enabled the whitelist!");
 		        }
                
 			return false;

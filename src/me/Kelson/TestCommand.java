@@ -17,8 +17,7 @@ public class TestCommand implements CommandExecutor
 	public boolean onCommand(CommandSender sender, Command cmd,
 			String commandLabel, String[] args) {
 		
-          if(sender instanceof Player)
-		{
+          if(sender instanceof Player) {
 			sender.sendMessage("Hi");
 		} else {
 			sender.sendMessage("Hi console");
