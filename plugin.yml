@@ -1,0 +1,128 @@
+name: KBP
+#Old name Kelsons-Plugin
+main: me.Kelson.Commands
+version: 1.0.3_45
+description: This is the custom plugin for the kelsoncraft server!
+author: kelson8
+softdepend: [TagAPI, SQLibrary]
+load: Startup
+
+commands:
+  kelson-help:
+    description: This is the help for my plugin 
+    permission: kelson.help
+    permission-message: You do not have permission to use this command!
+
+  fly:
+    description: This is the fly command usage /fly [player].
+    permission: kelson.fly
+    permission-message: You do not have permission to use this command!
+
+  showxp:
+    description: Shows the amount of xp the player has.
+
+  location:
+    description: Shows the location of the world your in.
+
+  ipbans:
+    description: Shows the ips that are banned in the server.
+    permission: kelson.ipbans
+    permission-message: You do not have permission to use this command!
+
+  enablewhitelist:
+    description: Enables the whitelist
+    permission: kelson.enablewhitelist
+    permission-message: You do not have permission to use this command! 
+
+  disablewhitelist:
+    description: Disables the whitelist
+    permission: kelson.disablewhitelist
+    permission-message: You do not have permission to use this command!
+
+  kheal:
+    description: Heals the player heals another player if a name is specified.
+    permission: kelson.heal
+    permission-message: You do not have permission to use this command!
+
+  kmotd:
+    description: Shows the motd to the players from my plugin
+    permission: kelson.kmotd
+    permission-message: You do not have permission to use this command!
+
+  setkmotd:
+    description: Sets the message for /kmotd
+    permisson: kelson.setkmotd
+    permission-message: You do not have permission to use this command!
+
+  kelson-reload: 
+    description: This reloads the config.yml
+    permission: kelson.reload
+    permission-message: You do not have permission to use this command!
+   
+  test:
+   description: Test
+   permission: kelson.test
+   permission-message: You do not have permission to use that command!
+  
+  serverinfo:
+   description: Shows the server info to the player
+   permission: kelson.serverinfo
+   permission-message: You do not have permission to use this command!
+
+  kelson:
+   description: Help is seen with the use of this command
+
+  playerinfo:
+   description: Shows a players info
+
+  nohunger:
+    description: This command turns your hunger off
+    
+  lightning:
+    description: Strikes lightning at the player.
+    aliases: [smite] # [smite, lightning, ....]
+
+  god:
+    description: Gives the player god mode.
+
+  nv:
+    description: Enables/disables nightvision
+
+  cleareff:
+    description: Testing
+
+
+permissions:
+   kelson.*:
+     description: Gives all permissions using Kelsons Plugin.
+     default: op
+     children:
+       kelson.fly: true
+       kelson.fly.others: true
+       kelson.enablewhitelist: true
+       kelson.ipbans: true
+       kelson.reload: true
+       kelson.isop: true
+       kelson.nofire: true
+       kelson.heal: true
+       kelson.nametag: true
+       kelson.kmotd: true
+       kelson.help: true
+       kelson.configtest: true
+       kelson.test: true
+       kelson.serverinfo: true
+       kelson.location.others: true
+       kelson.nohunger: true
+       kelson.smite: true
+       kelson.smite.others: true
+       kelson.destory: true
+       kelson.playerinfo.others: true
+       kelson.god: true
+       
+   kelson.default.*:
+     description: Gives the default permissions using Kelsons Plugin.
+     default: true
+     children:
+       kelson.location: true
+       kelson.playerinfo: true
+     
