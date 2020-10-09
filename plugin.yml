@@ -92,6 +92,9 @@ commands:
   cleareff:
     description: Testing
 
+  test1:
+    description: Testing
+
 
 permissions:
    kelson.*:
@@ -119,6 +122,9 @@ permissions:
        kelson.destory: true
        kelson.playerinfo.others: true
        kelson.god: true
+       kelson.nightvision: true
+       kelson.nightvision.others: true
+       kelson.testcommands: true
        
    kelson.default.*:
      description: Gives the default permissions using Kelsons Plugin.

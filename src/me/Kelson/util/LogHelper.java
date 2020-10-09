@@ -1,15 +1,15 @@
 package me.Kelson.util;
 
-import java.util.logging.Logger;
-
 import me.Kelson.Commands;
-
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
+import java.util.logging.Logger;
+
 public class LogHelper {
 	static Commands plugin;
-	
+
+
 	public LogHelper(Commands passedPlugin)
 	{
 		plugin = passedPlugin;

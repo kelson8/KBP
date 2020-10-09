@@ -1,5 +1,6 @@
 package me.Kelson;
 
+import me.Kelson.util.Messages;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -28,7 +29,8 @@ public class FlyCommand implements CommandExecutor {
 							player.setAllowFlight(false);
 						}
 					} else {
-						sender.sendMessage(Commands.main + ChatColor.RED + "You don't have permission to use this command!");
+						sender.sendMessage(Messages.NoPermissionError());
+						//sender.sendMessage(Commands.main + ChatColor.RED + "You don't have permission to use this command!");
 					}
 				}
 				if (args.length == 1) {
@@ -100,4 +102,5 @@ public class FlyCommand implements CommandExecutor {
 		}
 		return false;
 	}
+
 }

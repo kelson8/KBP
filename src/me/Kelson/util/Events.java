@@ -54,9 +54,12 @@ Commands plugin;
 	@EventHandler
 	public void onPlayerInteractBlock(PlayerInteractEvent event){
 		Player player = event.getPlayer();
-		// Possible test this for something later.. Bukkit.getOfflinePlayers();
+		// Possibly test this for something later.. Bukkit.getOfflinePlayers();
 
+		//TODO possibly hook into vault and use that to give/remove a players permission on command, ex: /destory <on/off>
+		// Also add it for the hunger one, /nohunger <on/off>, on will give the permission and off will remove it
 
+		// Chaos mode begins..
 		if(player.getInventory().getItemInMainHand().getType() == Material.BARRIER && player.hasPermission("kelson.destroy")) {
 			//player.getWorld().strikeLightning(player.getTargetBlock(null, 50).getLocation());
 			player.getWorld().createExplosion(player.getTargetBlock(null, 50).getLocation(), 100);
@@ -131,6 +134,43 @@ Commands plugin;
 			event.setCancelled(true);
 		}
 	}
+
+	/*
+	public void playerLocalChat(Player player, String message, ChatColor msgColor, boolean global){
+		try {
+			List<Player> nearby = new ArrayList<Player>(6);
+			Location playerloc = player.getLocation();
+			for(Player onlineplayer : plugin.getServer().getOnlinePlayers()){
+				Location onlinePlayerLoc = onlineplayer.getLocation();
+
+				if (global || onlinePlayerLoc.getWorld().equals(playerloc.getWorld())
+				&& onlineplayer.getLocation().distance(playerloc) <= 50
+				&& onlineplayer.getWorld().getWorldType() == player.getWorld().getWorldType()) {
+					nearby.add(onlineplayer);
+
+				}
+			}
+
+			boolean gotOne = false;
+			// Innectis only, cannot use ChatMessage msg = new ChatMessage(message, msgColor);
+
+			for(Player target : nearby){
+				// Skip yourself.
+				if(target.getName().equalsIgnoreCase(player.getName())){
+					continue;
+				}
+				String printMsg = message;
+				target.sendMessage(printMsg);
+			}
+
+
+
+		} catch (ConcurrentModificationException cme){
+			player.sendMessage(Commands.main + ChatColor.DARK_RED + "Error!");
+		}
+	}
+*/
+
 	@EventHandler
 	public void onPlayerChat(AsyncPlayerChatEvent event) {
 		Player player = event.getPlayer();

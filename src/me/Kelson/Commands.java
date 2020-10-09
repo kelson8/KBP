@@ -1,7 +1,6 @@
 package me.Kelson;
 
 import me.Kelson.util.Events;
-import me.Kelson.util.Interface;
 import me.Kelson.util.Messages;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -16,7 +15,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Commands extends JavaPlugin implements Listener, Interface{
+public class Commands extends JavaPlugin implements Listener{
 	//The config file stuff can be in other classes by typing plugin.getConfig or just plugin.
 	public final Logger logger = Logger.getLogger("Minecraft.KBP");
 	public static Commands plugin;
@@ -25,10 +24,9 @@ public class Commands extends JavaPlugin implements Listener, Interface{
 	private String ServerMotd = getServer().getMotd();
 	private String ServerInfo = Commands.main + "Hi, the owner of this server is " + ChatColor.AQUA + "kelson8\n"
 			+ ChatColor.GREEN + "The servers motd is " + ServerMotd + "\n"
-
-			 + ChatColor.GREEN + "The servers website is " + ChatColor.AQUA + "http://tinyurl.com/pfkqoce\n"
-			+ ChatColor.GREEN + "The forums is " + ChatColor.AQUA + "http://tinyurl.com/qz6fa8nn\n"
-			+ ChatColor.GREEN + "Read the server rules at " + ChatColor.AQUA + "http://tinyurl.com/omgkzoe\n" ;
+					+ ChatColor.GREEN + "The servers website is " + ChatColor.AQUA + "http://tinyurl.com/pfkqoce\n"
+					+ ChatColor.GREEN + "The forums is " + ChatColor.AQUA + "http://tinyurl.com/qz6fa8nn\n"
+					+ ChatColor.GREEN + "Read the server rules at " + ChatColor.AQUA + "http://tinyurl.com/omgkzoe\n";
 
 
 	public Commands(){
@@ -42,7 +40,7 @@ public class Commands extends JavaPlugin implements Listener, Interface{
 	private int PMaxMin = PMaxHealthInt + PMinHealthInt;
 	private String PMaxAndMinHealth = "Max health: " + PMaxHealth + "\n" + "Min health: " + PMinHealth;
 	private String TotalHealth = PMaxAndMinHealth;
-	private String TotalHealth(){
+	public String TotalHealth(){
 		return TotalHealth;
 	}
 
@@ -50,7 +48,7 @@ public class Commands extends JavaPlugin implements Listener, Interface{
 	public void onDisable() {
 		PluginDescriptionFile pdfFile = this.getDescription();
 		this.logger.info(pdfFile.getName() + " v" + pdfFile.getVersion() + " Has Been Disabled!");
-		//saveConfig();
+		// Been disabled since it doesn't let me save the config.. saveConfig();
 		
 	}
 	
@@ -75,7 +73,7 @@ public class Commands extends JavaPlugin implements Listener, Interface{
 	    this.getCommand("enablewhitelist").setExecutor(new EnablewhitelistCommand(this));
 	    this.getCommand("fly").setExecutor(new FlyCommand(this));
 	    this.getCommand("kheal").setExecutor(new KHealCommand(this));
-	    this.getCommand("test").setExecutor(new TestCommand(this));
+	    this.getCommand("test").setExecutor(new TestCommands(this));
 	    this.getCommand("location").setExecutor(new LocationCommand(this));
 	    this.getCommand("kelson-reload").setExecutor(new me.Kelson.util.KelsonReloadCommand(this));
 	    this.getCommand("kmotd").setExecutor(new KMotdCommand(this));
@@ -85,6 +83,7 @@ public class Commands extends JavaPlugin implements Listener, Interface{
 	    this.getCommand("nightvision").setExecutor(new NightVisionCommand(this));
 	    this.getCommand("cleareff").setExecutor(new NightVisionCommand(this));
 	    this.getCommand("lightning").setExecutor(new LightningCommand(this));
+	    this.getCommand("test1").setExecutor(new TestCommands(this));
 		getConfig().options().copyDefaults(true);
 		saveConfig();
 
@@ -95,12 +94,6 @@ public class Commands extends JavaPlugin implements Listener, Interface{
 
 	@SuppressWarnings("deprecation")
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
-		//The "=" indicates the start of the string, the start of it is after the "{"
-		String KelsonCommandUsage =
-			main + "Command Usage: \n"
-			+ ChatColor.YELLOW + "/kelson version\n"
-			 + ChatColor.YELLOW + "/kelson-reload (You have to have permission)"
-			 + ChatColor.YELLOW + "/whitelist-list";
 						   
 	  if(!(sender instanceof Player)){
 		if(cmd.getName().equalsIgnoreCase("kelson")) {
@@ -131,11 +124,12 @@ public class Commands extends JavaPlugin implements Listener, Interface{
 			   	Bukkit.broadcastMessage(ChatColor.WHITE + sender.getName() + ChatColor.YELLOW + " has reloaded kelsons plugin's config!");
 			   }*/
 			   if(args.length >1){
-				   sender.sendMessage("Too many arguments! Command help: \n" + KelsonCommandUsage);
+				   sender.sendMessage("Too many arguments! Command help: \n" + Messages.KelsonCommandUsage());
 				   return false;
 			     }
 		       }
 		}
+
 		Player player = (Player) sender;
 		
 		   if(cmd.getName().equalsIgnoreCase("serverinfo")){
@@ -160,13 +154,13 @@ public class Commands extends JavaPlugin implements Listener, Interface{
 				   sender.sendMessage(version);
 			     }
 			   if(args[0].equalsIgnoreCase("cmdsNotWorking")){
-				   sender.sendMessage("These are the commands that are not working: " + Messages.CommandsThatAreNotWorking);
+				   sender.sendMessage("These are the commands that are not working: " + Messages.CommandsThatAreNotWorking());
 			     }
 			   if(args[0].equalsIgnoreCase("TestCommands")){
-				   sender.sendMessage("These are the test commands: " + Messages.TestCommands);
+				   sender.sendMessage("These are the test commands: " + Messages.TestCommands());
 			     }//If the player has too much arguments it sends them the help message
 			   if(args.length >1){
-				   sender.sendMessage("Too many arguments! Command help: \n" + KelsonCommandUsage);
+				   sender.sendMessage("Too many arguments! Command help: \n" + Messages.KelsonCommandUsage());
 			     }
 			   String Version = Bukkit.getServer().getVersion();
 			   String kbpCommandUsage = "/kbp version\n/kbp help\n";
@@ -189,7 +183,6 @@ public class Commands extends JavaPlugin implements Listener, Interface{
 	        if(cmd.getName().equalsIgnoreCase("ipbans") && sender.hasPermission("kelson.ipbans")){
 	        	
 	        	sender.sendMessage("ip bans: " + Bukkit.getIPBans());
-	        	return true;
 	        }
 	        if(cmd.getName().equalsIgnoreCase("kelson-help") && sender.hasPermission("kelson.help")){
 	        	sender.sendMessage(ChatColor.YELLOW + "-------------------------\n"

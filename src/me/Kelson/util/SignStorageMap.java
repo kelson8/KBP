@@ -1,14 +1,13 @@
 package me.Kelson.util;
 
+import me.Kelson.Commands;
+import org.bukkit.block.Sign;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
-
-import me.Kelson.Commands;
-
-import org.bukkit.block.Sign;
 
 public class SignStorageMap {
 		Commands plugin;

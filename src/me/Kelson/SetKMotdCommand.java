@@ -17,12 +17,14 @@ public class SetKMotdCommand implements CommandExecutor{
 
 public boolean onCommand(CommandSender sender, Command cmd,
 		String commandLabel, String[] args) {
-if(!(sender instanceof Player)){
-	if (cmd.getName().equalsIgnoreCase("setkmotd")) {
-        if (args.length == 0) {
-                sender.sendMessage(ChatColor.RED + "Please specify a message!");
+
+	        if(!(sender instanceof Player)){
+	                if (cmd.getName().equalsIgnoreCase("setkmotd")) {
+	                   if (args.length == 0) {
+	                   sender.sendMessage(ChatColor.RED + "Please specify a message!");
                 return true;
-        }
+	      }
+
         StringBuilder str = new StringBuilder();
         for (int i = 0; i < args.length; i++) {
                 str.append(args[i] + " ");
@@ -31,27 +33,28 @@ if(!(sender instanceof Player)){
         plugin.getConfig().set("motdConsole", motdConsole);
         plugin.saveConfig();
         sender.sendMessage(ChatColor.GREEN + "motdConsole set to: " + motdConsole);
-  }
-}
+	                }
+	        }
 
-if(sender instanceof Player){
-	
-if (cmd.getName().equalsIgnoreCase("setkmotd")) {
-        if (args.length == 0) {
-                sender.sendMessage(ChatColor.RED + "Please specify a message!");
-                return true;
+	        if(sender instanceof Player){
+	        if (cmd.getName().equalsIgnoreCase("setkmotd")) {
+
+	            if (args.length == 0) {
+	              sender.sendMessage(ChatColor.RED + "Please specify a message!");
+                  return true;
         }
-        StringBuilder str = new StringBuilder();
-        for (int i = 0; i < args.length; i++) {
-                str.append(args[i] + " ");
+
+	            StringBuilder str = new StringBuilder();
+	            for (int i = 0; i < args.length; i++) {
+	                    str.append(args[i] + " ");
         }
-        String motd = str.toString();
-        plugin.getConfig().set("motd", motd);
-        plugin.saveConfig();
-        sender.sendMessage(ChatColor.GREEN + "MOTD set to: " + motd);
-     }
-    }
-    return false;
-  }
+	            String motd = str.toString();
+	            plugin.getConfig().set("motd", motd);
+	            plugin.saveConfig();
+	            sender.sendMessage(ChatColor.GREEN + "MOTD set to: " + motd);
+	       }
+	    }
+	     return false;
+	}
 }
 
