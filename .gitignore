@@ -37,6 +37,11 @@
 # *.iml
 # *.ipr
 
+# Remove .idea folder and .iml files
+.idea/*
+.idea*/
+*.iml
+
 # CMake
 cmake-build-*/
 
