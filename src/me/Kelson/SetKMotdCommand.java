@@ -4,19 +4,19 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import me.Kelson.util.Messages;
 
 public class SetKMotdCommand implements CommandExecutor{
 
-	Commands plugin;
+	Main plugin;
 	
-	public SetKMotdCommand(Commands passedPlugin)
+	public SetKMotdCommand(Main passedPlugin)
 	{
 		this.plugin = passedPlugin;
 	}
 
 
-public boolean onCommand(CommandSender sender, Command cmd,
-		String commandLabel, String[] args) {
+public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
 
 	        if(!(sender instanceof Player)){
 	                if (cmd.getName().equalsIgnoreCase("setkmotd")) {
@@ -29,15 +29,15 @@ public boolean onCommand(CommandSender sender, Command cmd,
         for (int i = 0; i < args.length; i++) {
                 str.append(args[i] + " ");
         }
-        String motdConsole = str.toString();
-        plugin.getConfig().set("motdConsole", motdConsole);
+        String motd = str.toString();
+        plugin.getConfig().set("motd", motd);
         plugin.saveConfig();
-        sender.sendMessage(ChatColor.GREEN + "motdConsole set to: " + motdConsole);
+        sender.sendMessage(ChatColor.GREEN + "MOTD set to: " + motd);
 	                }
 	        }
 
 	        if(sender instanceof Player){
-	        if (cmd.getName().equalsIgnoreCase("setkmotd")) {
+	        if (cmd.getName().equalsIgnoreCase("setkmotd") && sender.hasPermission("kelson.setkmotd")) {
 
 	            if (args.length == 0) {
 	              sender.sendMessage(ChatColor.RED + "Please specify a message!");
@@ -54,7 +54,12 @@ public boolean onCommand(CommandSender sender, Command cmd,
 	            sender.sendMessage(ChatColor.GREEN + "MOTD set to: " + motd);
 	       }
 	    }
+	        if (!sender.hasPermission("kelson.setmotd")){
+	    	sender.sendMessage(Messages.NoPermissionError());
+	    }
 	     return false;
 	}
+
+
 }
 

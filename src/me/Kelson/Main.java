@@ -15,21 +15,21 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Commands extends JavaPlugin implements Listener{
+public class Main extends JavaPlugin implements Listener{
 	//The config file stuff can be in other classes by typing plugin.getConfig or just plugin.
 	public final Logger logger = Logger.getLogger("Minecraft.KBP");
-	public static Commands plugin;
+	public static Main plugin;
 	public static String main = ChatColor.GOLD + "[Kelsons-Plugin] " + ChatColor.GREEN;
 	private String ServerRules = "http://tinyurl.com/kc-server-rules";
 	private String ServerMotd = getServer().getMotd();
-	private String ServerInfo = Commands.main + "Hi, the owner of this server is " + ChatColor.AQUA + "kelson8\n"
+	private String ServerInfo = Main.main + "Hi, the owner of this server is " + ChatColor.AQUA + "kelson8\n"
 			+ ChatColor.GREEN + "The servers motd is " + ServerMotd + "\n"
 					+ ChatColor.GREEN + "The servers website is " + ChatColor.AQUA + "http://tinyurl.com/pfkqoce\n"
 					+ ChatColor.GREEN + "The forums is " + ChatColor.AQUA + "http://tinyurl.com/qz6fa8nn\n"
 					+ ChatColor.GREEN + "Read the server rules at " + ChatColor.AQUA + "http://tinyurl.com/omgkzoe\n";
 
 
-	public Commands(){
+	public Main(){
 		
 	}
 
@@ -92,10 +92,9 @@ public class Commands extends JavaPlugin implements Listener{
 	private PluginDescriptionFile pdfFile = this.getDescription();
 	private String version = pdfFile.getVersion();
 
-	@SuppressWarnings("deprecation")
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
 						   
-	  if(!(sender instanceof Player)){
+	  /*if(!(sender instanceof Player)){
 		if(cmd.getName().equalsIgnoreCase("kelson")) {
 			sender.sendMessage(ServerInfo + "\n");
 
@@ -122,7 +121,11 @@ public class Commands extends JavaPlugin implements Listener{
 			   if(args.length == 1 && args[0].equalsIgnoreCase("reload") && sender.hasPermission("kelson.reload")){
 			   	plugin.reloadConfig();
 			   	Bukkit.broadcastMessage(ChatColor.WHITE + sender.getName() + ChatColor.YELLOW + " has reloaded kelsons plugin's config!");
-			   }*/
+			   }*/ 
+		
+		/*
+		 * Possibly remove all this commented out code or move it. 
+		 *
 			   if(args.length >1){
 				   sender.sendMessage("Too many arguments! Command help: \n" + Messages.KelsonCommandUsage());
 				   return false;
@@ -177,7 +180,7 @@ public class Commands extends JavaPlugin implements Listener{
 					   
 				   }
 			     }
-		       }
+		       }*/
 
 
 	        if(cmd.getName().equalsIgnoreCase("ipbans") && sender.hasPermission("kelson.ipbans")){

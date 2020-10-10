@@ -9,9 +9,9 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class FlyCommand implements CommandExecutor {
-	Commands plugin;
+	Main plugin;
 
-	public FlyCommand(Commands passedPlugin) {
+	public FlyCommand(Main passedPlugin) {
 		this.plugin = passedPlugin;
 	}
 
@@ -22,10 +22,10 @@ public class FlyCommand implements CommandExecutor {
 				if (args.length == 0) {
 					if (player.hasPermission("kelson.fly")) {
 						if (!player.getAllowFlight()) {
-							player.sendMessage(Commands.main + ChatColor.GREEN + "Flying enabled");
+							player.sendMessage(Main.main + ChatColor.GREEN + "Flying enabled");
 							player.setAllowFlight(true);
 						} else {
-							sender.sendMessage(Commands.main + ChatColor.GREEN + "Flying disabled");
+							sender.sendMessage(Main.main + ChatColor.GREEN + "Flying disabled");
 							player.setAllowFlight(false);
 						}
 					} else {
@@ -37,24 +37,24 @@ public class FlyCommand implements CommandExecutor {
 					if (player.hasPermission("kelson.fly.others")) {
 						final Player target = Bukkit.getPlayer(args[0]);
 						if (target == null) {
-							sender.sendMessage(Commands.main + ChatColor.RED + "Player offline");
+							sender.sendMessage(Main.main + ChatColor.RED + "Player offline");
 							return true;
 						}
 						if (!target.getAllowFlight()) {
-							sender.sendMessage(Commands.main + ChatColor.GREEN + "Fly Enabled for " + target.getName());
+							sender.sendMessage(Main.main + ChatColor.GREEN + "Fly Enabled for " + target.getName());
 							target.setAllowFlight(true);
-							target.sendMessage(Commands.main + ChatColor.GREEN + "Fly Enabled by " + player.getName());
+							target.sendMessage(Main.main + ChatColor.GREEN + "Fly Enabled by " + player.getName());
 						} else {
-							sender.sendMessage(Commands.main + ChatColor.GREEN + "Fly Disabled for " + target.getName());
+							sender.sendMessage(Main.main + ChatColor.GREEN + "Fly Disabled for " + target.getName());
 							target.setAllowFlight(false);
-							target.sendMessage(Commands.main + ChatColor.GREEN + "Fly Disabled by " + player.getName());
+							target.sendMessage(Main.main + ChatColor.GREEN + "Fly Disabled by " + player.getName());
 						}
 					} else {
-						sender.sendMessage(Commands.main + ChatColor.RED + "You don't have permission to use this command on others!");
+						sender.sendMessage(Main.main + ChatColor.RED + "You don't have permission to use this command on others!");
 					}
 				}
 			} else {
-				sender.sendMessage(Commands.main + ChatColor.RED + "Console cannot use this command!"); //Might add console usage later on
+				sender.sendMessage(Main.main + ChatColor.RED + "Console cannot use this command!"); //Might add console usage later on
 			}
 
 

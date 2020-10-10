@@ -1,5 +1,5 @@
 package me.Kelson.util;
-import me.Kelson.Commands;
+import me.Kelson.Main;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -8,8 +8,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 public class KelsonReloadCommand implements CommandExecutor{
 	
-	Commands plugin;
-			public KelsonReloadCommand(Commands passedPlugin) {
+	Main plugin;
+			public KelsonReloadCommand(Main passedPlugin) {
 				this.plugin = passedPlugin;
 			}
 

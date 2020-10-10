@@ -10,9 +10,9 @@ import org.bukkit.entity.Player;
 public class PlayerInfoCommand implements CommandExecutor {
 
 
-    Commands plugin;
+    Main plugin;
 
-    public PlayerInfoCommand(Commands passedPlugin) {
+    public PlayerInfoCommand(Main passedPlugin) {
         this.plugin = passedPlugin;
     }
     public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
@@ -21,7 +21,7 @@ public class PlayerInfoCommand implements CommandExecutor {
 
         if(!(sender instanceof Player)){
             if(args.length == 0) {
-                sender.sendMessage(Commands.main + "Error: Console must specify a player");
+                sender.sendMessage(Main.main + "Error: Console must specify a player");
             return true;
             }
             if (args.length == 1) {
@@ -78,7 +78,7 @@ public class PlayerInfoCommand implements CommandExecutor {
                             + ChatColor.GREEN + "Health: " + ChatColor.AQUA + targetPlayer.getHealth()
                     );
                 } else {
-                    sender.sendMessage(Commands.main + ChatColor.RED + "Error: You do not have permission to run this command on others!");
+                    sender.sendMessage(Main.main + ChatColor.RED + "Error: You do not have permission to run this command on others!");
                 }
             }
         }

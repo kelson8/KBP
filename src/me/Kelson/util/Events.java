@@ -1,6 +1,6 @@
 package me.Kelson.util;
 
-import me.Kelson.Commands;
+import me.Kelson.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -21,9 +21,9 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Events implements Listener{
-Commands plugin;
+Main plugin;
 	
-	public Events(Commands passedPlugin) {
+	public Events(Main passedPlugin) {
 		this.plugin = passedPlugin;
 	}
 	public Events(){

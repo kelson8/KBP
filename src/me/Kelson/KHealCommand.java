@@ -9,16 +9,14 @@ import org.bukkit.entity.Player;
 
 public class KHealCommand implements CommandExecutor{
 
-	Commands plugin;
+	Main plugin;
 
-	public KHealCommand(Commands passedPlugin) 
+	public KHealCommand(Main passedPlugin) 
 	{
 		this.plugin = passedPlugin;
 	}
 
-	@SuppressWarnings("deprecation")
-	public boolean onCommand(CommandSender sender, Command cmd,
-			String commandLabel, String[] args) {
+	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
 
 
 		if(!(sender instanceof Player)) {
@@ -30,15 +28,15 @@ public class KHealCommand implements CommandExecutor{
 				if(args.length == 1){
 				Player target = Bukkit.getServer().getPlayer(args[0]);
 				   if(target == null){
-				   	sender.sendMessage(Commands.main + args[0] + " is not online!");
+				   	sender.sendMessage(Main.main + args[0] + " is not online!");
 				   	return true;
 				   }
 					Player targetPlayer = Bukkit.getServer().getPlayer(args[0]);
 					targetPlayer.setFireTicks(0);
 					targetPlayer.setFoodLevel(20);
 					targetPlayer.setHealth(20.0);
-					sender.sendMessage(Commands.main + "You have healed " + targetPlayer.getName() + "!");
-					targetPlayer.sendMessage(Commands.main + "You have been healed by Console!");
+					sender.sendMessage(Main.main + "You have healed " + targetPlayer.getName() + "!");
+					targetPlayer.sendMessage(Main.main + "You have been healed by Console!");
 
 
 
@@ -54,12 +52,12 @@ public class KHealCommand implements CommandExecutor{
 					player.setFireTicks(0);
 					player.setFoodLevel(20);
 					player.setHealth(20.0);
-					player.sendMessage(Commands.main + "You have been healed!");
+					player.sendMessage(Main.main + "You have been healed!");
 				} else if (args.length == 1) {
 
 					Player target = Bukkit.getServer().getPlayer(args[0]);
 					if (target == null) {
-						sender.sendMessage(Commands.main + args[0] + " is not online!");
+						sender.sendMessage(Main.main + args[0] + " is not online!");
 						return true;
 					}
 
@@ -67,8 +65,8 @@ public class KHealCommand implements CommandExecutor{
 					targetPlayer.setFireTicks(0);
 					targetPlayer.setFoodLevel(20);
 					targetPlayer.setHealth(20.0);
-					player.sendMessage(Commands.main + "You have healed " + targetPlayer.getName() + "!");
-					targetPlayer.sendMessage(Commands.main + "You have been healed by " + player.getName() + "!");
+					player.sendMessage(Main.main + "You have healed " + targetPlayer.getName() + "!");
+					targetPlayer.sendMessage(Main.main + "You have been healed by " + player.getName() + "!");
 				}
 			}
 		}

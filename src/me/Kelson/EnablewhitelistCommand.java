@@ -7,9 +7,9 @@ import org.bukkit.command.CommandSender;
 
 public class EnablewhitelistCommand implements CommandExecutor 
 {
-		Commands plugin;
+		Main plugin;
 		
-		public EnablewhitelistCommand(Commands passedPlugin)
+		public EnablewhitelistCommand(Main passedPlugin)
 		{
 			this.plugin = passedPlugin;
 		}
@@ -18,7 +18,7 @@ public class EnablewhitelistCommand implements CommandExecutor
 			   
 		        if(cmd.getName().equalsIgnoreCase("enablewhitelist") && sender.hasPermission("kelson.enablewhitelist")) {
         	    plugin.getServer().setWhitelist(true);
-                Bukkit.broadcastMessage(Commands.main + sender.getName() + " Has enabled the whitelist!");
+                Bukkit.broadcastMessage(Main.main + sender.getName() + " Has enabled the whitelist!");
 		        }
                
 			return false;

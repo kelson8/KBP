@@ -11,9 +11,9 @@ import org.bukkit.event.player.PlayerJoinEvent;
 
 public class KMotdCommand implements CommandExecutor, Listener
 {
-	Commands plugin;
+	Main plugin;
 	
-	public KMotdCommand(Commands passedPlugin)
+	public KMotdCommand(Main passedPlugin)
 	{
 		this.plugin = passedPlugin;
 	}
@@ -29,8 +29,10 @@ public class KMotdCommand implements CommandExecutor, Listener
         	      if(!(sender instanceof Player)){
         	    	if (cmd.getName().equalsIgnoreCase("kmotd")) {
                         //plugin.getConfig().replaceAll("&y", ChatColor.YELLOW);
-                            sender.sendMessage("MOTD: " + ChatColor.translateAlternateColorCodes('^', plugin.getConfig().getString("motdConsole"))
-                            		.replace("*new_line*", "\n"));
+                            sender.sendMessage("MOTD: " + ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("motd"))
+                            		.replace("*new_line*", "\n")
+                            		.replace("%s", "Console")
+                            	    .replace("%w", ""));
                             return true;
         	    	}
         	      }
@@ -39,8 +41,7 @@ public class KMotdCommand implements CommandExecutor, Listener
         		//This part is the player version of the kmotd command
         		if(sender instanceof Player){
                 if (cmd.getName().equalsIgnoreCase("kmotd")) {
-                    //plugin.getConfig().replaceAll("&y", ChatColor.YELLOW);
-                        sender.sendMessage("MOTD: " + ChatColor.translateAlternateColorCodes('^', plugin.getConfig().getString("motd"))
+                        sender.sendMessage("MOTD: " + ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("motd"))
                         		.replace("%s", player.getName())
                         		.replace("%w", player.getWorld().getName())
                         		.replace("*new_line*", "\n"));

@@ -1,6 +1,6 @@
 name: KBP
 #Old name Kelsons-Plugin
-main: me.Kelson.Commands
+main: me.Kelson.Main
 version: 1.0.3_45
 description: This is the custom plugin for the kelsoncraft server!
 author: kelson8
@@ -68,9 +68,6 @@ commands:
    description: Shows the server info to the player
    permission: kelson.serverinfo
    permission-message: You do not have permission to use this command!
-
-  kelson:
-   description: Help is seen with the use of this command
 
   playerinfo:
    description: Shows a players info

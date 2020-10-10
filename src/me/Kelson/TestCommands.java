@@ -8,9 +8,9 @@ import org.bukkit.entity.Player;
 
 public class TestCommands implements CommandExecutor
 {
-	Commands plugin;
+	Main plugin;
 	
-	public TestCommands(Commands passedPlugin)
+	public TestCommands(Main passedPlugin)
 	{
 		this.plugin = passedPlugin;
 	}
@@ -28,7 +28,7 @@ public class TestCommands implements CommandExecutor
 		   }
 		} else {
 			// Need to figure out how to make this part run..
-			sender.sendMessage(Commands.main + ChatColor.DARK_RED + "Error:" + ChatColor.RED + "Console cannot use this command!");
+			sender.sendMessage(Main.main + ChatColor.DARK_RED + "Error:" + ChatColor.RED + "Console cannot use this command!");
 		}
 
 

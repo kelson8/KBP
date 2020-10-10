@@ -1,6 +1,6 @@
 package me.Kelson.util;
 
-import me.Kelson.Commands;
+import me.Kelson.Main;
 import org.bukkit.block.Sign;
 
 import java.io.File;
@@ -10,9 +10,9 @@ import java.io.PrintWriter;
 import java.util.HashMap;
 
 public class SignStorageMap {
-		Commands plugin;
+		Main plugin;
 		
-		public SignStorageMap(Commands passedPlugin)
+		public SignStorageMap(Main passedPlugin)
 		{
 			this.plugin = passedPlugin;
 		}

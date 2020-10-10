@@ -10,18 +10,17 @@ import org.bukkit.entity.Player;
 
 public class LocationCommand implements CommandExecutor {
 	
-   Commands plugin;
+   Main plugin;
 
-   public LocationCommand(Commands passedPlugin) {
+   public LocationCommand(Main passedPlugin) {
 	this.plugin = passedPlugin;
    }
 
-	@SuppressWarnings("deprecation")
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
 
 	if(!(sender instanceof Player)){
 		if(args.length == 0){
-			sender.sendMessage(Commands.main + "Error: Console must specify a player!");
+			sender.sendMessage(Main.main + "Error: Console must specify a player!");
 			return true;
 		}
 		if(args.length == 1){
@@ -74,7 +73,7 @@ public class LocationCommand implements CommandExecutor {
 						  + ChatColor.GREEN + "\nYaw: " + ChatColor.AQUA + loc1.getYaw() + ChatColor.GREEN + " (Rotation)"
 						  + ChatColor.GREEN + "\nPitch: " + ChatColor.AQUA + loc1.getPitch() + ChatColor.GREEN + " (Head angle)");
 			  } else {
-			  	sender.sendMessage(Commands.main + ChatColor.RED + "Error: You do not have permission to use this on others!");
+			  	sender.sendMessage(Main.main + ChatColor.RED + "Error: You do not have permission to use this on others!");
 			  }
 		  }
 	  }
