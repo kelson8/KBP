@@ -1,11 +1,11 @@
 name: KBP
 #Old name Kelsons-Plugin
 main: me.Kelson.Main
-version: 1.0.3_45
+version: 1.0.4_01
 description: This is the custom plugin for the kelsoncraft server!
 author: kelson8
-softdepend: [TagAPI, SQLibrary]
-load: Startup
+#softdepend: [TagAPI, SQLibrary]
+#load: Startup
 
 commands:
   kelson-help:

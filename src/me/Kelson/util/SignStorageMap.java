@@ -12,8 +12,7 @@ import java.util.HashMap;
 public class SignStorageMap {
 		Main plugin;
 		
-		public SignStorageMap(Main passedPlugin)
-		{
+		public SignStorageMap(Main passedPlugin){
 			this.plugin = passedPlugin;
 		}
 
@@ -40,20 +39,17 @@ public class SignStorageMap {
 	        // Get the coordinates of Signs from somewhere and add them to signStorage.
 	        // This is more efficient than checking every block of every loaded chunk for signs.
 	    }
-	    public void logToFile(String message)
-	    {
+	    public void logToFile(String message){
 	    	
-	        try
-	        {
+	        try{
 	            File dataFolder = plugin.getDataFolder();
-	            if(!dataFolder.exists())
-	            {
+	            if(!dataFolder.exists()){
+	            	
 	                dataFolder.mkdir();
 	            }
 	 
 	            File saveTo = new File(plugin.getDataFolder(), "sign_data.log");
-	            if (!saveTo.exists())
-	            {
+	            if (!saveTo.exists()){
 	                saveTo.createNewFile();
 	            }
 	 
@@ -74,8 +70,8 @@ public class SignStorageMap {
 	 
 	            pw.close();
 	 
-	        } catch (IOException e)
-	        {
+	        } 
+	          catch (IOException e) {
 	 
 	            e.printStackTrace();
 	 

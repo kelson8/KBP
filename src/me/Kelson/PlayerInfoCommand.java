@@ -7,6 +7,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import me.Kelson.util.Messages;
+
 public class PlayerInfoCommand implements CommandExecutor {
 
 
@@ -21,7 +23,7 @@ public class PlayerInfoCommand implements CommandExecutor {
 
         if(!(sender instanceof Player)){
             if(args.length == 0) {
-                sender.sendMessage(Main.main + "Error: Console must specify a player");
+                sender.sendMessage(Messages.KBP_Main + "Error: Console must specify a player");
             return true;
             }
             if (args.length == 1) {
@@ -64,7 +66,7 @@ public class PlayerInfoCommand implements CommandExecutor {
 
                     Player targetPlayer = player.getServer().getPlayer(args[0]);
                     if (targetPlayer == null) {
-                        sender.sendMessage(ChatColor.GREEN + args[0] + " is not online!");
+                        sender.sendMessage(Messages.KBP_Main + ChatColor.GREEN + args[0] + " is not online!");
                         return true;
                     }
                     sender.sendMessage(ChatColor.GREEN + targetPlayer.getName() + "'s info:\n"
@@ -78,7 +80,7 @@ public class PlayerInfoCommand implements CommandExecutor {
                             + ChatColor.GREEN + "Health: " + ChatColor.AQUA + targetPlayer.getHealth()
                     );
                 } else {
-                    sender.sendMessage(Main.main + ChatColor.RED + "Error: You do not have permission to run this command on others!");
+                    sender.sendMessage(Messages.KBP_Main + ChatColor.RED + "Error: You do not have permission to run this command on others!");
                 }
             }
         }

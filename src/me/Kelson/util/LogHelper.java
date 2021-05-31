@@ -10,39 +10,32 @@ public class LogHelper {
 	static Main plugin;
 
 
-	public LogHelper(Main passedPlugin)
-	{
+	public LogHelper(Main passedPlugin){
 		plugin = passedPlugin;
 	}
 
 	 public static final Logger LOGGER = Logger.getLogger("Minecraft.KBP");
 	  
-	  public static void logWarning(String msg)
-	  {
+	  public static void logWarning(String msg){
 	    LOGGER.warning(msg);
 	  }
 	  
-	  public static void logSevere(String msg)
-	  {
+	  public static void logSevere(String msg){
 	    LOGGER.severe(msg);
 	  }
 	  
-	  public static void logInfo(String msg)
-	  {
+	  public static void logInfo(String msg){
 	    LOGGER.info(msg);
 	  }
 	  
-	  public static void logDebug(String msg)
-	  {
+	  public static void logDebug(String msg){
 	    if (plugin.getConfig().getBoolean("debugMode")) {
 	      LOGGER.info(msg);
 	    }
 	  }
 	  
-	  public static void showInfo(String msg, CommandSender sender, ChatColor... altColor)
-	  {
-	    if (msg.contains("#####"))
-	    {
+	  public static void showInfo(String msg, CommandSender sender, ChatColor... altColor){
+	    if (msg.contains("#####")) {
 	      String buildup = "";
 	      String[] s = msg.split("#####");
 	      for (String sx : s) {
@@ -56,15 +49,13 @@ public class LogHelper {
 	    }
 	  }
 	  
-	  public static void showInfos(CommandSender sender, String... msg)
-	  {
+	  public static void showInfos(CommandSender sender, String... msg){
 	    for (String s : msg) {
 	      showInfo(s, sender, new ChatColor[0]);
 	    }
 	  }
 	  
-	  public static void showWarning(String msg, CommandSender sender)
-	  {
+	  public static void showWarning(String msg, CommandSender sender){
 	    if (msg.contains("#####"))
 	    {
 	      String buildup = "";
@@ -80,8 +71,7 @@ public class LogHelper {
 	    }
 	  }
 	  
-	  public static void showWarnings(CommandSender sender, String... msg)
-	  {
+	  public static void showWarnings(CommandSender sender, String... msg){
 	    for (String s : msg) {
 	      showWarning(s, sender);
 	    }

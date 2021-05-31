@@ -22,10 +22,10 @@ public class FlyCommand implements CommandExecutor {
 				if (args.length == 0) {
 					if (player.hasPermission("kelson.fly")) {
 						if (!player.getAllowFlight()) {
-							player.sendMessage(Main.main + ChatColor.GREEN + "Flying enabled");
+							player.sendMessage(Messages.KBP_Main + ChatColor.GREEN + "Flying enabled");
 							player.setAllowFlight(true);
 						} else {
-							sender.sendMessage(Main.main + ChatColor.GREEN + "Flying disabled");
+							sender.sendMessage(Messages.KBP_Main + ChatColor.GREEN + "Flying disabled");
 							player.setAllowFlight(false);
 						}
 					} else {
@@ -37,24 +37,24 @@ public class FlyCommand implements CommandExecutor {
 					if (player.hasPermission("kelson.fly.others")) {
 						final Player target = Bukkit.getPlayer(args[0]);
 						if (target == null) {
-							sender.sendMessage(Main.main + ChatColor.RED + "Player offline");
+							sender.sendMessage(Messages.KBP_Main + ChatColor.RED + "Player offline");
 							return true;
 						}
 						if (!target.getAllowFlight()) {
-							sender.sendMessage(Main.main + ChatColor.GREEN + "Fly Enabled for " + target.getName());
+							sender.sendMessage(Messages.KBP_Main + ChatColor.GREEN + "Fly Enabled for " + target.getName());
 							target.setAllowFlight(true);
-							target.sendMessage(Main.main + ChatColor.GREEN + "Fly Enabled by " + player.getName());
+							target.sendMessage(Messages.KBP_Main + ChatColor.GREEN + "Fly Enabled by " + player.getName());
 						} else {
-							sender.sendMessage(Main.main + ChatColor.GREEN + "Fly Disabled for " + target.getName());
+							sender.sendMessage(Messages.KBP_Main + ChatColor.GREEN + "Fly Disabled for " + target.getName());
 							target.setAllowFlight(false);
-							target.sendMessage(Main.main + ChatColor.GREEN + "Fly Disabled by " + player.getName());
+							target.sendMessage(Messages.KBP_Main + ChatColor.GREEN + "Fly Disabled by " + player.getName());
 						}
 					} else {
-						sender.sendMessage(Main.main + ChatColor.RED + "You don't have permission to use this command on others!");
+						sender.sendMessage(Messages.KBP_Main + ChatColor.RED + "You don't have permission to use this command on others!");
 					}
 				}
 			} else {
-				sender.sendMessage(Main.main + ChatColor.RED + "Console cannot use this command!"); //Might add console usage later on
+				sender.sendMessage(Messages.KBP_Main + ChatColor.RED + "Console cannot use this command!"); //Might add console usage later on
 			}
 
 

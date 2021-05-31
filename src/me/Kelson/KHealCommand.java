@@ -7,6 +7,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import me.Kelson.util.Messages;
+
 public class KHealCommand implements CommandExecutor{
 
 	Main plugin;
@@ -28,15 +30,15 @@ public class KHealCommand implements CommandExecutor{
 				if(args.length == 1){
 				Player target = Bukkit.getServer().getPlayer(args[0]);
 				   if(target == null){
-				   	sender.sendMessage(Main.main + args[0] + " is not online!");
+				   	sender.sendMessage(Messages.KBP_Main + args[0] + " is not online!");
 				   	return true;
 				   }
 					Player targetPlayer = Bukkit.getServer().getPlayer(args[0]);
 					targetPlayer.setFireTicks(0);
 					targetPlayer.setFoodLevel(20);
 					targetPlayer.setHealth(20.0);
-					sender.sendMessage(Main.main + "You have healed " + targetPlayer.getName() + "!");
-					targetPlayer.sendMessage(Main.main + "You have been healed by Console!");
+					sender.sendMessage(Messages.KBP_Main + "You have healed " + targetPlayer.getName() + "!");
+					targetPlayer.sendMessage(Messages.KBP_Main + "You have been healed by Console!");
 
 
 
@@ -52,12 +54,12 @@ public class KHealCommand implements CommandExecutor{
 					player.setFireTicks(0);
 					player.setFoodLevel(20);
 					player.setHealth(20.0);
-					player.sendMessage(Main.main + "You have been healed!");
+					player.sendMessage(Messages.KBP_Main + "You have been healed!");
 				} else if (args.length == 1) {
 
 					Player target = Bukkit.getServer().getPlayer(args[0]);
 					if (target == null) {
-						sender.sendMessage(Main.main + args[0] + " is not online!");
+						sender.sendMessage(Messages.KBP_Main + args[0] + " is not online!");
 						return true;
 					}
 
@@ -65,8 +67,8 @@ public class KHealCommand implements CommandExecutor{
 					targetPlayer.setFireTicks(0);
 					targetPlayer.setFoodLevel(20);
 					targetPlayer.setHealth(20.0);
-					player.sendMessage(Main.main + "You have healed " + targetPlayer.getName() + "!");
-					targetPlayer.sendMessage(Main.main + "You have been healed by " + player.getName() + "!");
+					player.sendMessage(Messages.KBP_Main + "You have healed " + targetPlayer.getName() + "!");
+					targetPlayer.sendMessage(Messages.KBP_Main + "You have been healed by " + player.getName() + "!");
 				}
 			}
 		}

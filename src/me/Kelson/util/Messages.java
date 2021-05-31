@@ -3,12 +3,31 @@ package me.Kelson.util;
 import me.Kelson.Main;
 import org.bukkit.ChatColor;
 
-public class Messages {
+public class Messages{
+    static Main plugin;
 
-	private static String NoPermissionError = Main.main + ChatColor.DARK_RED + "Error: "
+    public Messages() {
+    	
+    }
+    
+	public static String KBP_Main = ChatColor.GOLD + "[Kelsons-Plugin] " + ChatColor.GREEN;
+	
+	private static String ServerRules = "";
+	//private static String ServerMotd = plugin.getServer().getMotd(); Broken, gives null pointer? 
+	private static String ServerForum = "https://kelsoncraft.net/phpbb/";
+	private static String ServerWebsite = "https://kelsoncraft.net";
+	private static String ServerOwner = "kelson8";
+	
+	private String ServerInfo = KBP_Main + "Hi, the owner of this server is " + ChatColor.AQUA + ServerOwner + "\n"
+			//+ ChatColor.GREEN + "The servers motd is " + ServerMotd + "\n"
+					+ ChatColor.GREEN + "The servers website is " + ChatColor.AQUA + ServerWebsite + "\n"
+					+ ChatColor.GREEN + "The forums is at " + ChatColor.AQUA + ServerForum + "\n"
+					+ ChatColor.GREEN + "Read the server rules at " + ChatColor.AQUA + ServerRules + "\n";
+	
+	private static String NoPermissionError = KBP_Main + ChatColor.DARK_RED + "Error: "
 			+ ChatColor.RED + "You do not have permission to use that command!";
 
-	private static String NoPermissionErrorOth = Main.main + ChatColor.DARK_RED + "Error: "
+	private static String NoPermissionErrorOth = KBP_Main + ChatColor.DARK_RED + "Error: "
 			+ ChatColor.RED + "You do not have permission to use that command on others!";
 
 	private static String CommandsThatAreWorking = "Mostly all commands in the list seem to be working.\n";
@@ -16,32 +35,30 @@ public class Messages {
 	private static String CommandsThatAreNotWorking = "None right now.";
 
 	private static String TestCommands = "/test1 doesn't do much at all\n";
-	private static String KelsonCommandUsage =
-			Main.main + "Command Usage: \n"
+	private String KelsonCommandUsage =
+			KBP_Main + "Command Usage: \n"
 					+ ChatColor.YELLOW + "/kelson version\n"
 					+ ChatColor.YELLOW + "/kelson-reload (You have to have permission)"
 					+ ChatColor.YELLOW + "/whitelist-list";
 
-	public static String CommandsThatAreNotWorking() {
-		return CommandsThatAreNotWorking;
-	}
-
 	public static String NoPermissionError(){
 		return NoPermissionError;
 	}
+
 	public static String NoPermissionErrorOth(){
 		return NoPermissionErrorOth;
 	}
 
-	public static String CommandsThatAreWorking(){
-		return CommandsThatAreWorking;
-	}
 	public static String TestCommands(){
 		return TestCommands;
 	}
 
-	public static String KelsonCommandUsage(){
+	public String KelsonCommandUsage(){
 		return KelsonCommandUsage;
+	}
+	
+	public String ServerInfo() {
+		return ServerInfo;
 	}
 
 

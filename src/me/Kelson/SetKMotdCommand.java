@@ -10,8 +10,7 @@ public class SetKMotdCommand implements CommandExecutor{
 
 	Main plugin;
 	
-	public SetKMotdCommand(Main passedPlugin)
-	{
+	public SetKMotdCommand(Main passedPlugin){
 		this.plugin = passedPlugin;
 	}
 

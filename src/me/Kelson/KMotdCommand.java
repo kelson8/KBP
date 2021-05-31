@@ -13,8 +13,7 @@ public class KMotdCommand implements CommandExecutor, Listener
 {
 	Main plugin;
 	
-	public KMotdCommand(Main passedPlugin)
-	{
+	public KMotdCommand(Main passedPlugin){
 		this.plugin = passedPlugin;
 	}
 

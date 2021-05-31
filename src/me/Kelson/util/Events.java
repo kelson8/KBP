@@ -31,7 +31,7 @@ Main plugin;
 	}
 
 
-	@SuppressWarnings("unused")
+	//@SuppressWarnings("unused")
 	/*
 	@EventHandler
     public void onJoin(PlayerJoinEvent event) {

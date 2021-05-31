@@ -25,7 +25,7 @@ public class LightningCommand implements CommandExecutor {
     	if(!(sender instanceof Player)) {
     		
     		if(args.length == 0) {
-    			sender.sendMessage(Main.main + "Error: Console must specify a player.");
+    			sender.sendMessage(Messages.KBP_Main + "Error: Console must specify a player.");
     			return true;
     		}
     		if (args.length == 1) {
