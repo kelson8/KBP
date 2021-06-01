@@ -48,6 +48,7 @@ public class NightVisionCommand implements CommandExecutor {
 
         if(sender instanceof Player) {
             Player player = (Player) sender;
+
             if (cmd.getName().equalsIgnoreCase("nightvision") && sender.hasPermission("kelson.nightvision")) {
                 if (args.length == 0) {
                     player.sendMessage(Messages.KBP_Main + ChatColor.RED + "Error: Command usage /nightvision <on/off> [player]");
@@ -67,7 +68,6 @@ public class NightVisionCommand implements CommandExecutor {
 
                     // old if (args.length > 1 && args[1].equals(targetPlayer) && args[0].equalsIgnoreCase("on")) {
                     // old Player targetPlayer = (Player) plugin.getServer().getPlayer(args[1]);
-
 
                 } else if (args.length == 2 && args[0].equalsIgnoreCase("on") && sender.hasPermission("kelson.nightvision.others")) {
                     Player targetPlayer = Bukkit.getPlayerExact(args[1]);

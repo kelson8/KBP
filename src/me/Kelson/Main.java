@@ -32,7 +32,6 @@ public class Main extends JavaPlugin implements Listener{
 		// Been disabled since it doesn't let me save the config.. saveConfig();
 		
 	}
-	
 	@Override
 	public void onEnable() {
 		Bukkit.getServer().getPluginManager().registerEvents(this, this);
@@ -50,21 +49,7 @@ public class Main extends JavaPlugin implements Listener{
 		}
 		PluginDescriptionFile pdfFile = this.getDescription();
 		this.logger.info(pdfFile.getName() + " v" + pdfFile.getVersion() +  " Has Been Enabled!");
-	    this.getCommand("disablewhitelist").setExecutor(new DisablewhitelistCommand(this));
-	    this.getCommand("enablewhitelist").setExecutor(new EnablewhitelistCommand(this));
-	    this.getCommand("fly").setExecutor(new FlyCommand(this));
-	    this.getCommand("kheal").setExecutor(new KHealCommand(this));
-	    this.getCommand("test").setExecutor(new TestCommands(this));
-	    this.getCommand("location").setExecutor(new LocationCommand(this));
-	    this.getCommand("kelson-reload").setExecutor(new me.Kelson.util.KelsonReloadCommand(this));
-	    this.getCommand("kmotd").setExecutor(new KMotdCommand(this));
-	    this.getCommand("setkmotd").setExecutor(new SetKMotdCommand(this));
-	    this.getCommand("playerinfo").setExecutor(new PlayerInfoCommand(this));
-	    this.getCommand("god").setExecutor(new GodCommand(this));
-	    this.getCommand("nightvision").setExecutor(new NightVisionCommand(this));
-	    this.getCommand("cleareff").setExecutor(new NightVisionCommand(this));
-	    this.getCommand("lightning").setExecutor(new LightningCommand(this));
-	    this.getCommand("test1").setExecutor(new TestCommands(this));
+		RegisterCommands();
 		getConfig().options().copyDefaults(true);
 		saveConfig();
 
@@ -73,12 +58,39 @@ public class Main extends JavaPlugin implements Listener{
 	private PluginDescriptionFile pdfFile = this.getDescription();
 	private String version = pdfFile.getVersion();
 
+	public void RegisterCommands(){
+		this.getCommand("disablewhitelist").setExecutor(new DisablewhitelistCommand(this));
+		this.getCommand("enablewhitelist").setExecutor(new EnablewhitelistCommand(this));
+		this.getCommand("fly").setExecutor(new FlyCommand(this));
+		this.getCommand("kheal").setExecutor(new KHealCommand(this));
+		this.getCommand("test").setExecutor(new TestCommands(this));
+		this.getCommand("location").setExecutor(new LocationCommand(this));
+		this.getCommand("kelson-reload").setExecutor(new me.Kelson.util.KelsonReloadCommand(this));
+		this.getCommand("kmotd").setExecutor(new KMotdCommand(this));
+		this.getCommand("setkmotd").setExecutor(new SetKMotdCommand(this));
+		this.getCommand("playerinfo").setExecutor(new PlayerInfoCommand(this));
+		this.getCommand("god").setExecutor(new GodCommand(this));
+		this.getCommand("nightvision").setExecutor(new NightVisionCommand(this));
+		this.getCommand("cleareff").setExecutor(new NightVisionCommand(this));
+		this.getCommand("lightning").setExecutor(new LightningCommand(this));
+		this.getCommand("test1").setExecutor(new TestCommands(this));
+	}
+
+	public void RegisterEvents(){
+		Bukkit.getServer().getPluginManager().registerEvents(this, this);
+		Bukkit.getServer().getPluginManager().registerEvents(new Events(), this);
+	}
+
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
 
 	        if(cmd.getName().equalsIgnoreCase("ipbans") && sender.hasPermission("kelson.ipbans")){
 	        	
 	        	sender.sendMessage("ip bans: " + Bukkit.getIPBans());
 	        }
+	        if (!sender.hasPermission("kelson.ipbans")) {
+	        sender.sendMessage(Messages.NoPermissionError());
+			}
+
 	        if(cmd.getName().equalsIgnoreCase("kelson-help") && sender.hasPermission("kelson.help")){
 	        	sender.sendMessage(ChatColor.YELLOW + "-------------------------\n"
 	        			+ ChatColor.YELLOW + "This is the help for my plugin.\n"
@@ -92,11 +104,8 @@ public class Main extends JavaPlugin implements Listener{
 	        		    + ChatColor.BLUE + "Command 7: " + ChatColor.GOLD + "/kelson testCommands Shows the test commands in this plugin\n"
 	        			+ ChatColor.YELLOW + "-------------------------\n"
 	        			+ ChatColor.YELLOW + "There might be more commands that is in the plugin here later!\n"
-	        			+ ChatColor.YELLOW + "-------------------------\n"
-	        			
-	        			);
-	        	return true;
-	               }
+	        			+ ChatColor.YELLOW + "-------------------------\n");
+	        }
 		return false;
 	        }
 }

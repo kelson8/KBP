@@ -28,8 +28,8 @@ public class GodCommand implements CommandExecutor {
 							"Console needs to specify a player!");
 				
 				}
-				Player targetPlayer = Bukkit.getServer().getPlayer(args[1]);
-				Player target = Bukkit.getServer().getPlayer(args[1]);
+                Player targetPlayer = Bukkit.getServer().getPlayer(args[1]);
+                Player target = Bukkit.getServer().getPlayer(args[1]);
 				//boolean targetPlGodMode = true;
 				if(args.length == 2 && args[0].equalsIgnoreCase("on")){
 				

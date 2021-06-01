@@ -120,6 +120,23 @@ public class TestCommands implements CommandExecutor
 		       }
 		       */
 
+		            /* Test switch statements and learn to code with them later on.
+            TODO get night vision command to work with switch statements.
+            String nv = "";
+            switch (nv){
+
+                // case "nvon":
+
+                case: off
+                  do nightvision off for player and others
+
+                case: on
+                  do nightvision on for player and others..
+
+
+            }
+            */
+
 
 		return false;
 	}
