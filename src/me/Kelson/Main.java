@@ -1,12 +1,12 @@
 package me.Kelson;
 
 import me.Kelson.util.Events;
+import me.Kelson.util.LightningRodEvent;
 import me.Kelson.util.Messages;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -25,18 +25,7 @@ public class Main extends JavaPlugin implements Listener{
 		
 	}
 
-	@Override
-	public void onDisable() {
-		PluginDescriptionFile pdfFile = this.getDescription();
-		this.logger.info(pdfFile.getName() + " v" + pdfFile.getVersion() + " Has Been Disabled!");
-		// Been disabled since it doesn't let me save the config.. saveConfig();
-		
-	}
-	@Override
-	public void onEnable() {
-		Bukkit.getServer().getPluginManager().registerEvents(this, this);
-		Bukkit.getServer().getPluginManager().registerEvents(new Events(), this);
-
+	private void dataFolderCreateCheck() {
 		if(!(getDataFolder().exists())){
 			logger.log(Level.INFO, "The folder for this plugin was not found! creating one for you");
 			getDataFolder().mkdirs();
@@ -47,18 +36,35 @@ public class Main extends JavaPlugin implements Listener{
 			}
 		
 		}
-		PluginDescriptionFile pdfFile = this.getDescription();
-		this.logger.info(pdfFile.getName() + " v" + pdfFile.getVersion() +  " Has Been Enabled!");
+	}
+	
+	@SuppressWarnings("unused")
+	private void disableMessage() {
+		this.logger.info(pluginVersion);
+	}
+	
+	@Override
+	public void onDisable() {
+		this.logger.info(pluginName + " v" + pluginVersion + " Has Been Disabled!");
+		
+	}
+	@Override
+	public void onEnable() {
+		
+		dataFolderCreateCheck();
+		this.logger.info(pluginName + " v" + pluginVersion +  " Has Been Enabled!");
 		RegisterCommands();
+		RegisterEvents();
 		getConfig().options().copyDefaults(true);
 		saveConfig();
 
 
 	}
 	private PluginDescriptionFile pdfFile = this.getDescription();
-	private String version = pdfFile.getVersion();
+	private String pluginName = pdfFile.getName();
+	private String pluginVersion = pdfFile.getVersion();
 
-	public void RegisterCommands(){
+	private void RegisterCommands(){
 		this.getCommand("disablewhitelist").setExecutor(new DisablewhitelistCommand(this));
 		this.getCommand("enablewhitelist").setExecutor(new EnablewhitelistCommand(this));
 		this.getCommand("fly").setExecutor(new FlyCommand(this));
@@ -76,9 +82,10 @@ public class Main extends JavaPlugin implements Listener{
 		this.getCommand("test1").setExecutor(new TestCommands(this));
 	}
 
-	public void RegisterEvents(){
+	private void RegisterEvents(){
 		Bukkit.getServer().getPluginManager().registerEvents(this, this);
 		Bukkit.getServer().getPluginManager().registerEvents(new Events(), this);
+		Bukkit.getServer().getPluginManager().registerEvents(new LightningRodEvent(), this);
 	}
 
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
