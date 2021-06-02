@@ -91,6 +91,10 @@ commands:
 
   test1:
     description: Testing
+    
+  lightningstick:
+    description: Gives player a lightning rod
+    aliases: [ls, lightningrod]
 
 
 permissions:
@@ -122,7 +126,8 @@ permissions:
        kelson.nightvision: true
        kelson.nightvision.others: true
        kelson.testcommands: true
-       kelson.lightning_stick: true
+       kelson.lightning_rod: true
+       kelson.lightning_rod.self: true
        
    kelson.default.*:
      description: Gives the default permissions using Kelsons Plugin.

@@ -80,6 +80,7 @@ public class Main extends JavaPlugin implements Listener{
 		this.getCommand("cleareff").setExecutor(new NightVisionCommand(this));
 		this.getCommand("lightning").setExecutor(new LightningCommand(this));
 		this.getCommand("test1").setExecutor(new TestCommands(this));
+		this.getCommand("lightningstick").setExecutor(new LightningRodCommand(this));
 	}
 
 	private void RegisterEvents(){

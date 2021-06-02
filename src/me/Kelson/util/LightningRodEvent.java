@@ -1,5 +1,7 @@
 package me.Kelson.util;
 
+import java.util.ArrayList;
+
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -24,15 +26,24 @@ public class LightningRodEvent implements Listener{
 	public void LightningRodCheck(PlayerInteractEvent event) {
 		Player player = event.getPlayer();
 		if(player.getInventory().getItemInMainHand() == null){
-			return;
+			event.setCancelled(true);
 		}
+		ArrayList<String> lore = new ArrayList<String>();
+		lore.add("§b§lPosiden's");
+		lore.add("§b§lFury");
 		
 		if(player.getInventory().getItemInMainHand().getType() == (Material.STICK) && 
-				player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals("Lightning Stick")
+				player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals("§b§lLightning §b§lRod")
+			      //player.getInventory().getItemInMainHand().getItemMeta().getLore().equals(lore)
+				  //TODO make this work with getting the lore and the name, for now the lore part breaks it and it gives a null pointer when using stick without the lore.
 				&& player.hasPermission("kelson.lightning_rod")) {
 			
 			player.getWorld().strikeLightning(player.getTargetBlock(null, 50).getLocation());
 		}
+		/*if (player.getInventory().getItemInMainHand().getType() == (Material.STICK) 
+		    && !(player.getInventory().getItemInMainHand().getItemMeta().getLore() == lore)) {
+			event.setCancelled(true);
+		}*/
 		if(!player.hasPermission("kelson.lightning_rod")) {
 			event.setCancelled(true);
 		}
