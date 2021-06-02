@@ -122,6 +122,7 @@ permissions:
        kelson.nightvision: true
        kelson.nightvision.others: true
        kelson.testcommands: true
+       kelson.lightning_stick: true
        
    kelson.default.*:
      description: Gives the default permissions using Kelsons Plugin.

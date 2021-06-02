@@ -39,7 +39,7 @@ Main plugin;
 		Location loc = player.getLocation();
 		if(player.getName().equals("kelson8")){
 			player.chat("Hello everyone!");
-    	player.sendMessage("Read the rules at " + ServerRules +" or you can read the rules in /rules");
+    	player.sendMessage("Read the rules at " + ServerRules + " or you can read the rules in /rules");
 	    }
 	}
 
@@ -56,7 +56,7 @@ Main plugin;
 		Player player = event.getPlayer();
 		// Possibly test this for something later.. Bukkit.getOfflinePlayers();
 
-		//TODO possibly hook into vault and use that to give/remove a players permission on command, ex: /destory <on/off>
+		//TODO possibly hook into vault and use that to give/remove a players permission on command, ex: /destroy <on/off>
 		// Also add it for the hunger one, /nohunger <on/off>, on will give the permission and off will remove it
 
 		// Chaos mode begins..
@@ -67,6 +67,7 @@ Main plugin;
 		if(player.getInventory().getItemInMainHand().getType() == Material.BEDROCK && player.hasPermission("kelson.destroy")){
 
 			player.getWorld().strikeLightning(player.getTargetBlock(null, 50).getLocation());
+
 		}
 
 	}

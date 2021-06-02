@@ -12,7 +12,7 @@ public class Messages{
     
 	public static String KBP_Main = ChatColor.GOLD + "[Kelsons-Plugin] " + ChatColor.GREEN;
 	
-	private static String ServerRules = "";
+	//private static String ServerRules = "";
 	//private static String ServerMotd = plugin.getServer().getMotd(); Broken, gives null pointer? 
 	private static String ServerForum = "https://kelsoncraft.net/phpbb/";
 	private static String ServerWebsite = "https://kelsoncraft.net";
@@ -21,8 +21,8 @@ public class Messages{
 	private String ServerInfo = KBP_Main + "Hi, the owner of this server is " + ChatColor.AQUA + ServerOwner + "\n"
 			//+ ChatColor.GREEN + "The servers motd is " + ServerMotd + "\n"
 					+ ChatColor.GREEN + "The servers website is " + ChatColor.AQUA + ServerWebsite + "\n"
-					+ ChatColor.GREEN + "The forums is at " + ChatColor.AQUA + ServerForum + "\n"
-					+ ChatColor.GREEN + "Read the server rules at " + ChatColor.AQUA + ServerRules + "\n";
+					+ ChatColor.GREEN + "The forums is at " + ChatColor.AQUA + ServerForum + "\n";
+					//+ ChatColor.GREEN + "Read the server rules at " + ChatColor.AQUA + ServerRules + "\n";
 	
 	private static String NoPermissionError = KBP_Main + ChatColor.DARK_RED + "Error: "
 			+ ChatColor.RED + "You do not have permission to use that command!";
@@ -30,9 +30,7 @@ public class Messages{
 	private static String NoPermissionErrorOth = KBP_Main + ChatColor.DARK_RED + "Error: "
 			+ ChatColor.RED + "You do not have permission to use that command on others!";
 
-	private static String CommandsThatAreWorking = "Mostly all commands in the list seem to be working.\n";
-
-	private static String CommandsThatAreNotWorking = "None right now.";
+	private static String CommandsThatAreWorking = "All " + plugin.getName() + " commands are working!";
 
 	private static String TestCommands = "/test1 doesn't do much at all\n";
 	private String KelsonCommandUsage =
