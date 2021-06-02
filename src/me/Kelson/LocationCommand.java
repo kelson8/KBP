@@ -22,7 +22,7 @@ public class LocationCommand implements CommandExecutor {
 
 	if(!(sender instanceof Player)){
 		if(args.length == 0){
-			sender.sendMessage(Messages.KBP_Main + "Error: Console must specify a player!");
+			sender.sendMessage(Messages.ConsolePlayerError());
 			return true;
 		}
 		if(args.length == 1){

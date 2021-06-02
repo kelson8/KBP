@@ -21,7 +21,7 @@ public class GodCommand implements CommandExecutor {
     	if(!(sender instanceof Player)) {
 			if(cmd.getName().equalsIgnoreCase("god")) {
 				if(args.length == 0) {
-					sender.sendMessage(ChatColor.RED + "Error: Console must specify a player!");
+					sender.sendMessage(Messages.ConsolePlayerError());
 				}
 				if(args.length == 1){
 					sender.sendMessage(Messages.KBP_Main + ChatColor.DARK_RED + "Error: " + ChatColor.RED + 

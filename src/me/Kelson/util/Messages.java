@@ -11,6 +11,7 @@ public class Messages{
     }
     
 	public static String KBP_Main = ChatColor.GOLD + "[Kelsons-Plugin] " + ChatColor.GREEN;
+	private static String KBP_errormsg = KBP_Main + ChatColor.DARK_RED + "Error: " + ChatColor.GREEN;
 	
 	//private static String ServerRules = "";
 	//private static String ServerMotd = plugin.getServer().getMotd(); Broken, gives null pointer? 
@@ -30,7 +31,7 @@ public class Messages{
 	private static String NoPermissionErrorOth = KBP_Main + ChatColor.DARK_RED + "Error: "
 			+ ChatColor.RED + "You do not have permission to use that command on others!";
 
-	private static String CommandsThatAreWorking = "All " + plugin.getName() + " commands are working!";
+	private static String ConsolePlayerError = KBP_errormsg + " Console must specify a player!";
 
 	private static String TestCommands = "/test1 doesn't do much at all\n";
 	private String KelsonCommandUsage =
@@ -57,6 +58,12 @@ public class Messages{
 	
 	public String ServerInfo() {
 		return ServerInfo;
+	}
+	public static String ConsolePlayerError() {
+		return ConsolePlayerError;
+	}
+	public static String KBP_errormsg() {
+		return KBP_errormsg;
 	}
 
 
