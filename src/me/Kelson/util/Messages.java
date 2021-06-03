@@ -31,7 +31,7 @@ public class Messages{
 	private static String NoPermissionErrorOth = KBP_Main + ChatColor.DARK_RED + "Error: "
 			+ ChatColor.RED + "You do not have permission to use that command on others!";
 
-	private static String ConsolePlayerError = KBP_errormsg + " Console must specify a player!";
+	private static String ConsolePlayerError = KBP_errormsg + "Console must specify a player!";
 
 	private static String TestCommands = "/test1 doesn't do much at all\n";
 	private String KelsonCommandUsage =

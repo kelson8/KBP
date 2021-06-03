@@ -31,7 +31,8 @@ public class KMotdCommand implements CommandExecutor, Listener
                             sender.sendMessage("MOTD: " + ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("motd"))
                             		.replace("*new_line*", "\n")
                             		.replace("%s", "Console")
-                            	    .replace("%w", ""));
+                            	    .replace("%w", "")
+                            	    .replace("player", ""));
                             return true;
         	    	}
         	      }

@@ -1,13 +1,10 @@
 # Default config for Kelson's Bukkit Plugin
-motd: ^5Hello player %s!
-motdConsole: ^fHello console!
+motd: '&5Hello player %s!'
 # Welcome message coming soon!
 welcomemsg:
-- &6Welcome to kelsoncraft %s!
-PlayerMove: false
-BlockBreak: false
+- '&6Welcome to kelsoncraft %s!'
+
 NightVisionTime: 9999
-PickupBlockedItemMessage: Hello
-debugMode: true
-KBPUsage: |
- Hello %s, use /kbp help to find out info about this command!
+
+#debugMode: true #No longer in use.
+nv_particles: false

@@ -77,9 +77,7 @@ public class Main extends JavaPlugin implements Listener{
 		this.getCommand("playerinfo").setExecutor(new PlayerInfoCommand(this));
 		this.getCommand("god").setExecutor(new GodCommand(this));
 		this.getCommand("nightvision").setExecutor(new NightVisionCommand(this));
-		this.getCommand("cleareff").setExecutor(new NightVisionCommand(this));
 		this.getCommand("lightning").setExecutor(new LightningCommand(this));
-		this.getCommand("test1").setExecutor(new TestCommands(this));
 		this.getCommand("lightningstick").setExecutor(new LightningRodCommand(this));
 	}
 

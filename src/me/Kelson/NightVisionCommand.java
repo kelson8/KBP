@@ -23,46 +23,56 @@ public class NightVisionCommand implements CommandExecutor {
 
         // This part of the command allows the console to give players nightvision
         if(!(sender instanceof Player)) {
-        	Player targetPlayer = Bukkit.getPlayerExact(args[1]);
+        	
             if (cmd.getName().equalsIgnoreCase("nightvision")) {
                 if(args.length == 0){
-                    sender.sendMessage(Messages.KBP_Main + ChatColor.RED + "Error: Command usage /nightvision <on/off> [player]");
+                    sender.sendMessage(Messages.KBP_errormsg() + "Command usage: /nightvision <on/off> [player]");
                 }
                 if(args.length == 1){
-                    sender.sendMessage(Messages.KBP_Main + ChatColor.RED + "Error: Console cannot use this on itself!");
+                    sender.sendMessage(Messages.KBP_errormsg() + "Console cannot use this on itself!");
                 }
                 if (args.length == 2 && args[0].equalsIgnoreCase("on")){
+                	Player targetPlayer = Bukkit.getPlayerExact(args[1]);
+                	
                     targetPlayer.removePotionEffect(PotionEffectType.NIGHT_VISION);
-                    targetPlayer.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, plugin.getConfig().getInt("NightVisionTime"), 1));
+                    targetPlayer.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, plugin.getConfig().getInt("NightVisionTime"), 1, 
+                    		false, plugin.getConfig().getBoolean("nv_particles")));
                     sender.sendMessage(Messages.KBP_Main + "You have enabled night vision for " + targetPlayer.getName());
                     targetPlayer.sendMessage(Messages.KBP_Main + "Your night vision has been enabled by " + sender.getName());
                 }
                 if(args.length == 2 && args[0].equalsIgnoreCase("off")){
+                	Player targetPlayer = Bukkit.getPlayerExact(args[1]);
+                	
                     targetPlayer.removePotionEffect(PotionEffectType.NIGHT_VISION);
                     sender.sendMessage(Messages.KBP_Main + "You have disabled night vision for " + targetPlayer.getName());
                     targetPlayer.sendMessage(Messages.KBP_Main + "Your night vision has been disabled by " + sender.getName());
+                } 
+                if (args.length > 2) {
+                	sender.sendMessage(Messages.KBP_errormsg() + "Too mant arguments! Command usage: /nightvision <on/off> [player]");
                 }
             }
         }
-
 
         if(sender instanceof Player) {
             Player player = (Player) sender;
 
             if (cmd.getName().equalsIgnoreCase("nightvision") && sender.hasPermission("kelson.nightvision")) {
                 if (args.length == 0) {
-                    player.sendMessage(Messages.KBP_Main + ChatColor.RED + "Error: Command usage /nightvision <on/off> [player]");
+                    player.sendMessage(Messages.KBP_errormsg() + "Command usage: /nightvision <on/off> [player]");
                 }
 
                 // If the args = 2 this part doesn't run, prevents it from being run on yourself when specifying players.
                 if (args.length > 0 && args[0].equalsIgnoreCase("on") && !(args.length == 2)) {
+                	
                     player.removePotionEffect(PotionEffectType.NIGHT_VISION);
                     //player.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, 9999, 1));
-                    player.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, plugin.getConfig().getInt("NightVisionTime"), 1));
+                    player.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, plugin.getConfig().getInt("NightVisionTime"), 1, 
+                    		false, plugin.getConfig().getBoolean("nv_particles")));
                     sender.sendMessage(Messages.KBP_Main + "You have enabled your night vision!");
 
 
                 } else if (args.length > 0 && args[0].equalsIgnoreCase("off") && !(args.length == 2)) {
+                	
                     player.removePotionEffect(PotionEffectType.NIGHT_VISION);
                     sender.sendMessage(Messages.KBP_Main + "You have disabled your night vision!");
 
@@ -73,7 +83,9 @@ public class NightVisionCommand implements CommandExecutor {
                     Player targetPlayer = Bukkit.getPlayerExact(args[1]);
 
                     targetPlayer.removePotionEffect(PotionEffectType.NIGHT_VISION);
-                    targetPlayer.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, plugin.getConfig().getInt("NightVisionTime"), 1));
+                    targetPlayer.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, plugin.getConfig().getInt("NightVisionTime"), 1, 
+                    		false, plugin.getConfig().getBoolean("nv_particles")));
+                    
                     sender.sendMessage(Messages.KBP_Main + "You have enabled night vision for " + targetPlayer.getName());
                     targetPlayer.sendMessage(Messages.KBP_Main + "Your night vision has been enabled by " + sender.getName());
 
@@ -91,22 +103,11 @@ public class NightVisionCommand implements CommandExecutor {
                     // Test to make sure this is giving the error when it should.
                     sender.sendMessage(Messages.NoPermissionErrorOth());*/
                 }
-
-
             } else {
                 // Test to make sure this is giving the error when it should.
                 sender.sendMessage(Messages.NoPermissionError());
             }
         }
-
-        //TODO make the nightvision command run on others, /nv <on/off> [player], this might be ready
-        if(cmd.getName().equalsIgnoreCase("cleareff") && sender.hasPermission("kelson.effect.clear")){
-            //player.removePotionEffect(PotionEffectType.NIGHT_VISION);
-            Player player = (Player) sender;
-            player.performCommand("effect " + player.getName() + " clear");
-        }
-
-
         return false;
     }
 }

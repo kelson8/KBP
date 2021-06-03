@@ -86,9 +86,6 @@ commands:
     description: Enables/disables nightvision
     aliases: [nv]
 
-  cleareff:
-    description: Testing
-
   test1:
     description: Testing
     
