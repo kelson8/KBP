@@ -40,8 +40,10 @@ public class LightningCommand implements CommandExecutor {
         World world = player.getWorld();
         if(args.length == 0 && cmd.getName().equalsIgnoreCase("lightning") && sender.hasPermission("kelson.smite")) {
             
+        	world.strikeLightning(player.getTargetBlock(null, 600).getLocation());
+			
             //world.strikeLightning(player.getLocation());
-            world.strikeLightning(player.getTargetBlock(null, 600).getLocation());
+            //world.strikeLightning(player.getTargetBlock(null, 600).getLocation());
         	
         	//world.createExplosion(player.getTargetBlock(null, 600).getLocation(), 20);
         }

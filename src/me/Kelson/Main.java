@@ -20,9 +20,7 @@ public class Main extends JavaPlugin implements Listener{
 	public final Logger logger = Logger.getLogger("Minecraft.KBP");
 	public static Main plugin;
 
-
 	public Main(){
-		
 	}
 
 	private void dataFolderCreateCheck() {

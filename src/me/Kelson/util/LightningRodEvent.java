@@ -3,6 +3,7 @@ package me.Kelson.util;
 import java.util.ArrayList;
 
 import org.bukkit.Material;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -38,7 +39,12 @@ public class LightningRodEvent implements Listener{
 				  //TODO make this work with getting the lore and the name, for now the lore part breaks it and it gives a null pointer when using stick without the lore.
 				&& player.hasPermission("kelson.lightning_rod")) {
 			
-			player.getWorld().strikeLightning(player.getTargetBlock(null, 50).getLocation());
+			//YamlConfiguration lstrike_intc = new YamlConfiguration(); //Possibly use this for something?
+			//int lstrike_int = plugin.getConfig().getInt("lightning_strikes");
+			for (int i=0; i < 10; i++) { // Change int i to  however many lightning strikes i want, cannot get it to work with config for now.
+										 // Loops the code below as many times as i is less then number above
+				player.getWorld().strikeLightning(player.getTargetBlock(null, 50).getLocation());
+			}
 		}
 		/*if (player.getInventory().getItemInMainHand().getType() == (Material.STICK) 
 		    && !(player.getInventory().getItemInMainHand().getItemMeta().getLore() == lore)) {

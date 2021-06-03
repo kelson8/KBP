@@ -3,8 +3,7 @@ motd: '&5Hello player %s!'
 # Welcome message coming soon!
 welcomemsg:
 - '&6Welcome to kelsoncraft %s!'
-
 NightVisionTime: 9999
-
 #debugMode: true #No longer in use.
 nv_particles: false
+lightning_strikes: 50

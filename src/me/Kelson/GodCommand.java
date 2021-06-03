@@ -25,35 +25,40 @@ public class GodCommand implements CommandExecutor {
     		
 			if(cmd.getName().equalsIgnoreCase("god")) {
 				if(args.length == 0) {
-					sender.sendMessage(Messages.ConsolePlayerError() + "/god <on/off> <player>");
+					sender.sendMessage(Messages.ConsolePlayerError() + " Usage: /god <on/off> <player>");
+					return true;
 				}
 				if(args.length == 1){
-					sender.sendMessage(Messages.ConsolePlayerError() + "/god <on/off> <player>");
+					sender.sendMessage(Messages.ConsolePlayerError() + " Usage: /god <on/off> <player>");
+					return true;
 				
 				}
 
 				
 				//boolean targetPlGodMode = true;
-				Player targetPlayer = Bukkit.getServer().getPlayerExact(args[0]);
-				  if (targetPlayer == null) {
+				Player targetPlayer1 = Bukkit.getServer().getPlayerExact(args[0]);
+				  if (targetPlayer1 == null) {
 					sender.sendMessage(Messages.KBP_Main + args[1] + " is not online!");
+					return true;
 				}
-				if(args.length == 2 && targetPlayer != null){
+				if(args.length == 2){
 					if(args[0].equalsIgnoreCase("on")) {
 	                //Player targetPlayer = Bukkit.getServer().getPlayer(args[1]);
 					//TODO Change targetPLGodMode to true once is fired
-				
+					Player targetPlayer = Bukkit.getServer().getPlayerExact(args[1]);
 					targetPlayer.setFoodLevel(20);
 					targetPlayer.setHealth(20);
 					targetPlayer.setInvulnerable(true);
 					sender.sendMessage(Messages.KBP_Main + "You have enabled god mode for: " + targetPlayer.getName() + "!");
 					targetPlayer.sendMessage(Messages.KBP_Main + "You are now invincible, Console enabled god mode for you!");
+					return false;
 					} 
 				}
 					
-				if (args.length == 2 && targetPlayer !=null) {
+				if (args.length == 2) {
 					if(args[0].equalsIgnoreCase("off")) {
 	                //Player targetPlayer = Bukkit.getServer().getPlayer(args[1]);
+					Player targetPlayer = Bukkit.getServer().getPlayerExact(args[1]);
 	                
 					targetPlayer.setInvulnerable(false);
 					sender.sendMessage(Messages.KBP_Main + "You have disabled god mode for: " + targetPlayer.getName() + "!");
