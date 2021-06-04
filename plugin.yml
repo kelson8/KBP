@@ -120,6 +120,7 @@ permissions:
        kelson.destory: true
        kelson.playerinfo.others: true
        kelson.god: true
+       kelson.god.others: true
        kelson.nightvision: true
        kelson.nightvision.others: true
        kelson.testcommands: true
@@ -131,5 +132,6 @@ permissions:
      default: true
      children:
        kelson.location: true
+       kelson.kmotd: true
        kelson.playerinfo: true
      
