@@ -1,5 +1,17 @@
 package me.Kelson;
 
+import me.Kelson.commands.DisablewhitelistCommand;
+import me.Kelson.commands.EnablewhitelistCommand;
+import me.Kelson.commands.FlyCommand;
+import me.Kelson.commands.GodCommand;
+import me.Kelson.commands.KHealCommand;
+import me.Kelson.commands.KMotdCommand;
+import me.Kelson.commands.LightningCommand;
+import me.Kelson.commands.LightningRodCommand;
+import me.Kelson.commands.LocationCommand;
+import me.Kelson.commands.NightVisionCommand;
+import me.Kelson.commands.PlayerInfoCommand;
+import me.Kelson.commands.SetKMotdCommand;
 import me.Kelson.util.Events;
 import me.Kelson.util.LightningRodEvent;
 import me.Kelson.util.Messages;

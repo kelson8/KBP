@@ -1,4 +1,4 @@
-package me.Kelson;
+package me.Kelson.commands;
 
 import java.util.Arrays;
 
@@ -12,6 +12,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import me.Kelson.Main;
 import me.Kelson.util.Messages;
 
 public class LightningRodCommand implements CommandExecutor{

@@ -1,4 +1,4 @@
-package me.Kelson;
+package me.Kelson.commands;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -8,6 +8,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+
+import me.Kelson.Main;
 
 public class KMotdCommand implements CommandExecutor, Listener
 {

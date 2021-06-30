@@ -1,4 +1,4 @@
-package me.Kelson;
+package me.Kelson.commands;
 
 import org.bukkit.Bukkit;
 
@@ -8,6 +8,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import me.Kelson.Main;
 import me.Kelson.util.Messages;
 
 public class LightningCommand implements CommandExecutor {

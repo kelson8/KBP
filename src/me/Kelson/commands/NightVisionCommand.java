@@ -1,5 +1,6 @@
-package me.Kelson;
+package me.Kelson.commands;
 
+import me.Kelson.Main;
 import me.Kelson.util.Messages;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
