@@ -15,10 +15,10 @@ import org.bukkit.inventory.meta.ItemMeta;
 import me.Kelson.Main;
 import me.Kelson.util.Messages;
 
-public class LightningRodCommand implements CommandExecutor{
+public class LightningStickCommand implements CommandExecutor{
     Main plugin;
 
-    public LightningRodCommand(Main passedPlugin) {
+    public LightningStickCommand(Main passedPlugin) {
         this.plugin = passedPlugin;
     }
 
@@ -53,6 +53,7 @@ public class LightningRodCommand implements CommandExecutor{
     		
     		if(sender instanceof Player) {
     		Player player = (Player) sender;
+    		
     		if(cmd.getName().equalsIgnoreCase("lightningstick") && args.length == 0 && sender.hasPermission("kelson.lightning_rod.self")) {
     			PlayerInventory playerInv = player.getInventory();
     			
@@ -67,6 +68,9 @@ public class LightningRodCommand implements CommandExecutor{
     			playerInv.addItem(item);
     			
     			sender.sendMessage(Messages.KBP_Main + "You have given yourself a lightning rod!");
+    			
+    			//Below code is broken, doesn't work right at the moment.
+    			/*
     			if (args.length == 1 && sender.hasPermission("kelson.lightning_rod")) {
         			
         			Player targetPlayer = Bukkit.getServer().getPlayer(args[0]);
@@ -84,7 +88,7 @@ public class LightningRodCommand implements CommandExecutor{
         		if(args.length > 1) {
         			sender.sendMessage(Messages.KBP_errormsg() + "Invalid usage, command usage: /ls <player>");
         			}
-    			}
+    			}*/
     		
     		}
     	}

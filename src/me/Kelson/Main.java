@@ -7,7 +7,7 @@ import me.Kelson.commands.GodCommand;
 import me.Kelson.commands.KHealCommand;
 import me.Kelson.commands.KMotdCommand;
 import me.Kelson.commands.LightningCommand;
-import me.Kelson.commands.LightningRodCommand;
+import me.Kelson.commands.LightningStickCommand;
 import me.Kelson.commands.LocationCommand;
 import me.Kelson.commands.NightVisionCommand;
 import me.Kelson.commands.PlayerInfoCommand;
@@ -82,7 +82,7 @@ public class Main extends JavaPlugin implements Listener{
 		this.getCommand("god").setExecutor(new GodCommand(this));
 		this.getCommand("nightvision").setExecutor(new NightVisionCommand(this));
 		this.getCommand("lightning").setExecutor(new LightningCommand(this));
-		this.getCommand("lightningstick").setExecutor(new LightningRodCommand(this));
+		this.getCommand("lightningstick").setExecutor(new LightningStickCommand(this));
 	}
 
 	private void RegisterEvents(){
