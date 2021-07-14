@@ -3,7 +3,6 @@ package me.Kelson.util;
 import java.util.ArrayList;
 
 import org.bukkit.Material;
-import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -13,7 +12,7 @@ import me.Kelson.Main;
 
 public class LightningRodEvent implements Listener{
 
-    Main plugin;
+    private Main plugin;
 	
 	public LightningRodEvent(Main passedPlugin) {
 		this.plugin = passedPlugin;
@@ -26,6 +25,7 @@ public class LightningRodEvent implements Listener{
 	@EventHandler
 	public void LightningRodCheck(PlayerInteractEvent event) {
 		Player player = event.getPlayer();
+		
 		if(player.getInventory().getItemInMainHand() == null){
 			event.setCancelled(true);
 		}
@@ -38,14 +38,22 @@ public class LightningRodEvent implements Listener{
 			      //player.getInventory().getItemInMainHand().getItemMeta().getLore().equals(lore)
 				  //TODO make this work with getting the lore and the name, for now the lore part breaks it and it gives a null pointer when using stick without the lore.
 				&& player.hasPermission("kelson.lightning_rod")) {
-			
-			//YamlConfiguration lstrike_intc = new YamlConfiguration(); //Possibly use this for something?
+		
 			//int lstrike_int = plugin.getConfig().getInt("lightning_strikes");
-			for (int i=0; i < 10; i++) { // Change int i to  however many lightning strikes i want, cannot get it to work with config for now.
+			
+			//Might do nothing.
+			/*if (lstrike_int == 0){
+				event.setCancelled(true);
+			}*/
+			for (int i=0; i<100 ; i++) { // Change int i to  however many lightning strikes i want, cannot get it to work with config for now.
+			
+		    //for (int i=0; i < lstrike_int; i++) {
 										 // Loops the code below as many times as i is less then number above
 				player.getWorld().strikeLightning(player.getTargetBlock(null, 50).getLocation());
 			}
-		}
+	}
+		    
+
 		/*if (player.getInventory().getItemInMainHand().getType() == (Material.STICK) 
 		    && !(player.getInventory().getItemInMainHand().getItemMeta().getLore() == lore)) {
 			event.setCancelled(true);

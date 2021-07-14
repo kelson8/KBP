@@ -56,13 +56,15 @@ Main plugin;
 		Player player = event.getPlayer();
 		// Possibly test this for something later.. Bukkit.getOfflinePlayers();
 
-		//TODO possibly hook into vault and use that to give/remove a players permission on command, ex: /destroy <on/off>
+		//TODO possibly hook into vault and use that to give/remove a players permission on command, ex: /destroy <on/off> [player]
 		// Also add it for the hunger one, /nohunger <on/off>, on will give the permission and off will remove it
 
 		// Chaos mode begins..
 		if(player.getInventory().getItemInMainHand().getType() == Material.BARRIER && player.hasPermission("kelson.destroy")) {
 			//player.getWorld().strikeLightning(player.getTargetBlock(null, 50).getLocation());
+			//for (int i=0; i<3; i++) {
 			player.getWorld().createExplosion(player.getTargetBlock(null, 50).getLocation(), 100);
+			//}
 		}
 		if(player.getInventory().getItemInMainHand().getType() == Material.BEDROCK && player.hasPermission("kelson.destroy")){
 

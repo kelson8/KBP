@@ -16,7 +16,6 @@ import me.Kelson.util.Events;
 import me.Kelson.util.LightningRodEvent;
 import me.Kelson.util.Messages;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.event.Listener;
@@ -46,11 +45,6 @@ public class Main extends JavaPlugin implements Listener{
 			}
 		
 		}
-	}
-	
-	@SuppressWarnings("unused")
-	private void disableMessage() {
-		this.logger.info(pluginVersion);
 	}
 	
 	@Override
@@ -107,21 +101,6 @@ public class Main extends JavaPlugin implements Listener{
 	        sender.sendMessage(Messages.NoPermissionError());
 			}
 
-	        if(cmd.getName().equalsIgnoreCase("kelson-help") && sender.hasPermission("kelson.help")){
-	        	sender.sendMessage(ChatColor.YELLOW + "-------------------------\n"
-	        			+ ChatColor.YELLOW + "This is the help for my plugin.\n"
-	        			+ ChatColor.YELLOW + "-------------------------\n"
-	        			+ ChatColor.BLUE + "Command 1: " + ChatColor.GOLD + "/kheal [playername] this heals the player, heals the targetplayer if specified\n"
-	        			+ ChatColor.BLUE + "Command 2: " + ChatColor.GOLD + "/fly [player] This toggles your flying on/off and if specified another player.\n"
-	        			+ ChatColor.BLUE + "Command 3: " + ChatColor.GOLD + "/disablewhitelist this will disable the whitelist\n"
-	        			+ ChatColor.BLUE + "Command 4: " + ChatColor.GOLD + "/enablewhitelist this will enable the whitelist\n"
-	        			+ ChatColor.BLUE + "Command 5: " + ChatColor.GOLD + "/kmotd this command shows the motd to the players\n"
-	        		    + ChatColor.BLUE + "Command 6: " + ChatColor.GOLD + "/location [playername] this command shows your location if no player is specified and shows a players location if a player is specified\n"
-	        		    + ChatColor.BLUE + "Command 7: " + ChatColor.GOLD + "/kelson testCommands Shows the test commands in this plugin\n"
-	        			+ ChatColor.YELLOW + "-------------------------\n"
-	        			+ ChatColor.YELLOW + "There might be more commands that is in the plugin here later!\n"
-	        			+ ChatColor.YELLOW + "-------------------------\n");
-	        }
 		return false;
 	        }
 }

@@ -67,13 +67,26 @@ public class LightningRodCommand implements CommandExecutor{
     			playerInv.addItem(item);
     			
     			sender.sendMessage(Messages.KBP_Main + "You have given yourself a lightning rod!");
-    			
-    			} else {
-    				sender.sendMessage(Messages.NoPermissionError());
+    			if (args.length == 1 && sender.hasPermission("kelson.lightning_rod")) {
+        			
+        			Player targetPlayer = Bukkit.getServer().getPlayer(args[0]);
+        			PlayerInventory targetPlayerInv = targetPlayer.getInventory();
+        			
+        			targetPlayer.sendMessage(Messages.KBP_Main + sender.getName() + " has given you a lightning stick!");
+        			sender.sendMessage(Messages.KBP_Main + "You have given a lightning stick to " + targetPlayer.getName() + "!");
+        			
+        			meta.setDisplayName("§b§lLightning §b§lRod");
+        			meta.setLore(Arrays.asList("§b§lPosiden's", "§b§lFury"));
+        			item.setItemMeta(meta);
+        			
+        			targetPlayerInv.addItem(item); //TODO figure out how to set the item display name when given to player...
+        			
+        		if(args.length > 1) {
+        			sender.sendMessage(Messages.KBP_errormsg() + "Invalid usage, command usage: /ls <player>");
+        			}
     			}
-    			
     		
-    		
+    		}
     	}
     	
     	
