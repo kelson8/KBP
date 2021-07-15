@@ -69,10 +69,14 @@ public class LightningStickCommand implements CommandExecutor{
     			
     			sender.sendMessage(Messages.KBP_Main + "You have given yourself a lightning rod!");
     			
-    			//Below code is broken, doesn't work right at the moment.
-    			/*
+    			return true;
+    		}
+    			
     			if (args.length == 1 && sender.hasPermission("kelson.lightning_rod")) {
         			
+        			ItemStack item = new ItemStack(Material.STICK);
+        			ItemMeta meta = item.getItemMeta();
+    				
         			Player targetPlayer = Bukkit.getServer().getPlayer(args[0]);
         			PlayerInventory targetPlayerInv = targetPlayer.getInventory();
         			
@@ -88,9 +92,9 @@ public class LightningStickCommand implements CommandExecutor{
         		if(args.length > 1) {
         			sender.sendMessage(Messages.KBP_errormsg() + "Invalid usage, command usage: /ls <player>");
         			}
-    			}*/
+    			}
     		
-    		}
+    		
     	}
     	
     	
