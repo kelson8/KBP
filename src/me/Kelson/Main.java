@@ -1,5 +1,16 @@
 package me.Kelson;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import org.bukkit.Bukkit;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
+import org.bukkit.event.Listener;
+import org.bukkit.plugin.PluginDescriptionFile;
+import org.bukkit.plugin.java.JavaPlugin;
+
 import me.Kelson.commands.DisablewhitelistCommand;
 import me.Kelson.commands.EnablewhitelistCommand;
 import me.Kelson.commands.FlyCommand;
@@ -15,17 +26,8 @@ import me.Kelson.commands.PlayerInfoCommand;
 import me.Kelson.commands.SetKMotdCommand;
 import me.Kelson.util.Events;
 import me.Kelson.util.LightningRodEvent;
+import me.Kelson.util.LocalChatEvent;
 import me.Kelson.util.Messages;
-import org.bukkit.Bukkit;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
-import org.bukkit.event.Listener;
-import org.bukkit.plugin.PluginDescriptionFile;
-import org.bukkit.plugin.java.JavaPlugin;
-
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class Main extends JavaPlugin implements Listener{
 	//The config file stuff can be in other classes by typing plugin.getConfig or just plugin.
@@ -90,6 +92,7 @@ public class Main extends JavaPlugin implements Listener{
 		Bukkit.getServer().getPluginManager().registerEvents(this, this);
 		Bukkit.getServer().getPluginManager().registerEvents(new Events(), this);
 		Bukkit.getServer().getPluginManager().registerEvents(new LightningRodEvent(), this);
+		Bukkit.getServer().getPluginManager().registerEvents(new LocalChatEvent(), this);
 	}
 
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
