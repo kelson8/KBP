@@ -77,6 +77,7 @@ Main plugin;
 	}
 	
 	public final HashMap<Location, String> signs = new HashMap<Location, String>();
+	/*
 	//This is used to block TNT, Lava blocks and Lava buckets from working in a dispenser
 	@EventHandler
 	public void onBlockDispense(BlockDispenseEvent event) {
@@ -93,47 +94,10 @@ Main plugin;
 	  if(event.getItem() == isLava_Bucket){
 		  event.setCancelled(true);
 	  }
-	}
-
-	/*
-	public void playerLocalChat(Player player, String message, ChatColor msgColor, boolean global){
-		try {
-			List<Player> nearby = new ArrayList<Player>(6);
-			Location playerloc = player.getLocation();
-			for(Player onlineplayer : plugin.getServer().getOnlinePlayers()){
-				Location onlinePlayerLoc = onlineplayer.getLocation();
-
-				if (global || onlinePlayerLoc.getWorld().equals(playerloc.getWorld())
-				&& onlineplayer.getLocation().distance(playerloc) <= 50
-				&& onlineplayer.getWorld().getWorldType() == player.getWorld().getWorldType()) {
-					nearby.add(onlineplayer);
-
-				}
-			}
-
-			boolean gotOne = false;
-			// Innectis only, cannot use ChatMessage msg = new ChatMessage(message, msgColor);
-
-			for(Player target : nearby){
-				// Skip yourself.
-				if(target.getName().equalsIgnoreCase(player.getName())){
-					continue;
-				}
-				String printMsg = message;
-				target.sendMessage(printMsg);
-			}
-
-
-
-		} catch (ConcurrentModificationException cme){
-			player.sendMessage(Commands.main + ChatColor.DARK_RED + "Error!");
-		}
-	}
-*/
+	}*/
 	 
 	@EventHandler
 	public void onPlayerChat(AsyncPlayerChatEvent event) {
-		List<Player> nearby = new ArrayList<Player>(6);
 		Player player = event.getPlayer();
 		String message = event.getMessage();
 		//This is the localchat in this plugin
@@ -153,7 +117,8 @@ Main plugin;
 	    	  
 	        if(recipientLoc.getWorld().equals(playerLoc.getWorld()) 
 	        		&& recipient.getLocation().distance(playerLoc) <= 50
-	        		&& recipient.getWorld().getWorldType() == player.getWorld().getWorldType()) {
+	        		&& recipient.getWorld() == player.getWorld()) {
+
 	        	recipients.add(recipient);
                 event.getRecipients().addAll(recipients);
                 event.setMessage(message);
@@ -163,16 +128,6 @@ Main plugin;
                 event.setCancelled(true);	
                 }
 	        	
-	          /*if(playerLoc.distanceSquared(recipient.getLocation()) <= squaredDistance) {
-	            recipients.add(recipient);
-	          
-	          if (recipient.getLocation().distanceSquared(player.getLocation()) < squaredDistance || recipient.hasPermission("kelson.localchat.spy")) {
-	                recipient.sendMessage(message);
-	          // to localchat use a @ in front of your message like this "@hi"
-
-	    	 
-	            }
-	          }*/
 	        
 	      }
 	    }
