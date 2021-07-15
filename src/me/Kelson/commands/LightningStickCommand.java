@@ -89,10 +89,18 @@ public class LightningStickCommand implements CommandExecutor{
         			
         			targetPlayerInv.addItem(item);
         			
+        			return true;
+    			}
+        			
         		if(args.length > 1) {
         			sender.sendMessage(Messages.KBP_errormsg() + "Invalid usage, command usage: /ls <player>");
+        			
+        			return true;
+        		}
+        		
+        		if(!(sender.hasPermission("kelson.lightning_rod"))) {
+        			sender.sendMessage(Messages.NoPermissionError());
         			}
-    			}
     		
     		
     	}

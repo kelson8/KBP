@@ -1,7 +1,11 @@
 package me.Kelson.util;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -126,8 +130,7 @@ Main plugin;
 		}
 	}
 */
-	/* 
-	//Can no longer test due to not having an alt anymore.
+	 
 	@EventHandler
 	public void onPlayerChat(AsyncPlayerChatEvent event) {
 		List<Player> nearby = new ArrayList<Player>(6);
@@ -143,7 +146,7 @@ Main plugin;
 	      Location playerLoc = event.getPlayer().getLocation(); 
 	      
 	      List<Player> recipients = new ArrayList<Player>();
-	      int squaredDistance = 64 * 64;
+	      //int squaredDistance = 64 * 64;
 	      
 	      for(Player recipient : Bukkit.getServer().getOnlinePlayers()) {
 	    	  Location recipientLoc = recipient.getLocation();
@@ -152,6 +155,13 @@ Main plugin;
 	        		&& recipient.getLocation().distance(playerLoc) <= 50
 	        		&& recipient.getWorld().getWorldType() == player.getWorld().getWorldType()) {
 	        	recipients.add(recipient);
+                event.getRecipients().addAll(recipients);
+                event.setMessage(message);
+                
+	        } else { //Runs when no one else is nearby.
+	        	event.getPlayer().sendMessage(Messages.KBP_errormsg() + "No one was around!");
+                event.setCancelled(true);	
+                }
 	        	
 	          /*if(playerLoc.distanceSquared(recipient.getLocation()) <= squaredDistance) {
 	            recipients.add(recipient);
@@ -159,12 +169,12 @@ Main plugin;
 	          if (recipient.getLocation().distanceSquared(player.getLocation()) < squaredDistance || recipient.hasPermission("kelson.localchat.spy")) {
 	                recipient.sendMessage(message);
 	          // to localchat use a @ in front of your message like this "@hi"
-	                event.getRecipients().addAll(recipients);
-	                event.setMessage(message);
+
 	    	 
 	            }
-	          }
-	        }
+	          }*/
+	        
 	      }
-	    } */
+	    }
 	}
+}
