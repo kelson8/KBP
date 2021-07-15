@@ -44,7 +44,7 @@ public class LightningStickCommand implements CommandExecutor{
     			meta.setLore(Arrays.asList("§b§lPosiden's", "§b§lFury"));
     			item.setItemMeta(meta);
     			
-    			targetPlayerInv.addItem(item); //TODO figure out how to set the item display name when given to player...
+    			targetPlayerInv.addItem(item);
     		if(args.length > 1) {
     			sender.sendMessage(Messages.KBP_errormsg() + "Invalid usage, command usage: /ls <player>");
     			}
@@ -87,7 +87,7 @@ public class LightningStickCommand implements CommandExecutor{
         			meta.setLore(Arrays.asList("§b§lPosiden's", "§b§lFury"));
         			item.setItemMeta(meta);
         			
-        			targetPlayerInv.addItem(item); //TODO figure out how to set the item display name when given to player...
+        			targetPlayerInv.addItem(item);
         			
         		if(args.length > 1) {
         			sender.sendMessage(Messages.KBP_errormsg() + "Invalid usage, command usage: /ls <player>");

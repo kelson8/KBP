@@ -35,23 +35,22 @@ public class LightningRodEvent implements Listener{
 		
 		if(player.getInventory().getItemInMainHand().getType() == (Material.STICK) && 
 				player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals("§b§lLightning §b§lRod")
-			      //player.getInventory().getItemInMainHand().getItemMeta().getLore().equals(lore)
+			      && player.getInventory().getItemInMainHand().getItemMeta().getLore().equals(lore)
 				  //TODO make this work with getting the lore and the name, for now the lore part breaks it and it gives a null pointer when using stick without the lore.
 				&& player.hasPermission("kelson.lightning_rod")) {
-		
-			//int lstrike_int = plugin.getConfig().getInt("lightning_strikes");
 			
-			//Might do nothing.
-			/*if (lstrike_int == 0){
-				event.setCancelled(true);
-			}*/
 			for (int i=0; i<100 ; i++) { // Change int i to  however many lightning strikes i want, cannot get it to work with config for now.
-			
-		    //for (int i=0; i < lstrike_int; i++) {
-										 // Loops the code below as many times as i is less then number above
+				// Loops the code below as many times as i is less then number above
+			    //for (int i=0; i < lstrike_int; i++) {
+				
 				player.getWorld().strikeLightning(player.getTargetBlock(null, 50).getLocation());
-			}
-	}
+				}
+			
+		} else { //Possibly fixes null pointer. 
+			event.setCancelled(true);
+			
+			//int lstrike_int = plugin.getConfig().getInt("lightning_strikes"); //This code gives null pointer, try to fix.
+		}
 		    
 
 		/*if (player.getInventory().getItemInMainHand().getType() == (Material.STICK) 

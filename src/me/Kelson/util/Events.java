@@ -30,27 +30,6 @@ Main plugin;
 		//This is what goes in the onEnable() in the main class don't remove it!
 	}
 
-
-	//@SuppressWarnings("unused")
-	/*
-	@EventHandler
-    public void onJoin(PlayerJoinEvent event) {
-		Player player = event.getPlayer();
-		Location loc = player.getLocation();
-		if(player.getName().equals("kelson8")){
-			player.chat("Hello everyone!");
-    	player.sendMessage("Read the rules at " + ServerRules + " or you can read the rules in /rules");
-	    }
-	}
-
-	@EventHandler
-	public void onLogin(PlayerLoginEvent event){
-		Player player = event.getPlayer();
-		if(player.getName().equals("kelson8")){
-			player.chat("Hello everyone!");
-		}
-	}*/
-
 	@EventHandler
 	public void onPlayerInteractBlock(PlayerInteractEvent event){
 		Player player = event.getPlayer();
@@ -173,38 +152,45 @@ Main plugin;
 		}
 	}
 */
-
+	/* 
+	//Can no longer test due to not having an alt anymore.
 	@EventHandler
 	public void onPlayerChat(AsyncPlayerChatEvent event) {
+		List<Player> nearby = new ArrayList<Player>(6);
 		Player player = event.getPlayer();
 		String message = event.getMessage();
 		//This is the localchat in this plugin
-	    if(message.length() > 1 && message.startsWith("@"))
-	    {
+	    if(message.length() > 1 && message.startsWith("@")){
+	    	
 	      event.setFormat(ChatColor.GOLD + "[LocalChat] " + ChatColor.AQUA + player.getName() + ": " + ChatColor.GREEN + event.getMessage()
 	    		  .replace("@", ""));
 	      event.getRecipients().clear();
-	      Location playerLocation = event.getPlayer().getLocation();
+	      
+	      Location playerLoc = event.getPlayer().getLocation(); 
+	      
 	      List<Player> recipients = new ArrayList<Player>();
 	      int squaredDistance = 64 * 64;
-	      for(Player recipient : Bukkit.getServer().getOnlinePlayers())
-	      {
-	    		  
-	        if(recipient.getWorld().equals(event.getPlayer().getWorld().getPlayers()))
-	        {
-	          if(playerLocation.distanceSquared(recipient.getLocation()) <= squaredDistance)
-	          {
+	      
+	      for(Player recipient : Bukkit.getServer().getOnlinePlayers()) {
+	    	  Location recipientLoc = recipient.getLocation();
+	    	  
+	        if(recipientLoc.getWorld().equals(playerLoc.getWorld()) 
+	        		&& recipient.getLocation().distance(playerLoc) <= 50
+	        		&& recipient.getWorld().getWorldType() == player.getWorld().getWorldType()) {
+	        	recipients.add(recipient);
+	        	
+	          /*if(playerLoc.distanceSquared(recipient.getLocation()) <= squaredDistance) {
 	            recipients.add(recipient);
-	          }
+	          
 	          if (recipient.getLocation().distanceSquared(player.getLocation()) < squaredDistance || recipient.hasPermission("kelson.localchat.spy")) {
 	                recipient.sendMessage(message);
 	          // to localchat use a @ in front of your message like this "@hi"
-	      event.getRecipients().addAll(recipients);
-	      event.setMessage(message);
+	                event.getRecipients().addAll(recipients);
+	                event.setMessage(message);
 	    	 
+	            }
 	          }
+	        }
 	      }
-	  }
-    } 
-  }
-}
+	    } */
+	}

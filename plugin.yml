@@ -92,6 +92,10 @@ commands:
   lightningstick:
     description: Gives player a lightning rod
     aliases: [ls, lightningrod]
+    
+  itemrename:
+    description: Renames item in hand, color codes with with symbol &
+    aliases: [ir]
 
 
 permissions:

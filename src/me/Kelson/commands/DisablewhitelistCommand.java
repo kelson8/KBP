@@ -8,8 +8,7 @@ import org.bukkit.command.CommandSender;
 import me.Kelson.Main;
 import me.Kelson.util.Messages;
 
-public class DisablewhitelistCommand implements CommandExecutor 
-{
+public class DisablewhitelistCommand implements CommandExecutor {
 		Main plugin;
 		
 		public DisablewhitelistCommand(Main passedPlugin){

@@ -4,6 +4,7 @@ import me.Kelson.commands.DisablewhitelistCommand;
 import me.Kelson.commands.EnablewhitelistCommand;
 import me.Kelson.commands.FlyCommand;
 import me.Kelson.commands.GodCommand;
+import me.Kelson.commands.ItemRenameCommand;
 import me.Kelson.commands.KHealCommand;
 import me.Kelson.commands.KMotdCommand;
 import me.Kelson.commands.LightningCommand;
@@ -50,7 +51,7 @@ public class Main extends JavaPlugin implements Listener{
 	@Override
 	public void onDisable() {
 		this.logger.info(pluginName + " v" + pluginVersion + " Has Been Disabled!");
-		
+
 	}
 	@Override
 	public void onEnable() {
@@ -61,7 +62,6 @@ public class Main extends JavaPlugin implements Listener{
 		RegisterEvents();
 		getConfig().options().copyDefaults(true);
 		saveConfig();
-
 
 	}
 	private PluginDescriptionFile pdfFile = this.getDescription();
@@ -83,6 +83,7 @@ public class Main extends JavaPlugin implements Listener{
 		this.getCommand("nightvision").setExecutor(new NightVisionCommand(this));
 		this.getCommand("lightning").setExecutor(new LightningCommand(this));
 		this.getCommand("lightningstick").setExecutor(new LightningStickCommand(this));
+		this.getCommand("itemrename").setExecutor(new ItemRenameCommand(this));
 	}
 
 	private void RegisterEvents(){
@@ -94,9 +95,10 @@ public class Main extends JavaPlugin implements Listener{
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
 
 	        if(cmd.getName().equalsIgnoreCase("ipbans") && sender.hasPermission("kelson.ipbans")){
-	        	
 	        	sender.sendMessage("ip bans: " + Bukkit.getIPBans());
-	        }
+
+	        } 
+	        
 	        if (!sender.hasPermission("kelson.ipbans")) {
 	        sender.sendMessage(Messages.NoPermissionError());
 			}
