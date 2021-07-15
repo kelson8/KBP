@@ -1,24 +1,19 @@
 package me.Kelson.util;
 
-import me.Kelson.Main;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
+import java.util.HashMap;
+
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockDispenseEvent;
-import org.bukkit.event.block.BlockPlaceEvent;
-import org.bukkit.event.enchantment.EnchantItemEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.event.player.PlayerLevelChangeEvent;
+import org.bukkit.inventory.ItemStack;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import me.Kelson.Main;
 
 public class Events implements Listener{
 Main plugin;
@@ -76,45 +71,24 @@ Main plugin;
 			event.setCancelled(true);
 		}
 	}
-
-	@EventHandler
-	public void EnchantItemEvent(EnchantItemEvent event){
-	}
-	@EventHandler
-	public void PlayerLevelChangeEvent(PlayerLevelChangeEvent e){
-		
-	}
+	
 	public final HashMap<Location, String> signs = new HashMap<Location, String>();
 	//This is used to block TNT, Lava blocks and Lava buckets from working in a dispenser
 	@EventHandler
 	public void onBlockDispense(BlockDispenseEvent event) {
-	  if(event.getItem().equals(Material.TNT)){
-		  event.setItem(null);
+		ItemStack isTnt = new ItemStack(Material.TNT);
+		ItemStack isLava = new ItemStack(Material.LAVA);
+		ItemStack isLava_Bucket = new ItemStack(Material.LAVA_BUCKET);
+
+	  if(event.getItem() == isTnt){
+		  event.setCancelled(true);
 	  }
-	  if(event.getItem().equals(Material.LAVA)){
-		  event.setItem(null);
+	  if(event.getItem() == isLava){
+		  event.setCancelled(true);
 	  }
-	  if(event.getItem().equals(Material.LAVA_BUCKET)){
-		  event.setItem(null);
+	  if(event.getItem() == isLava_Bucket){
+		  event.setCancelled(true);
 	  }
-	  if(event.getBlock().equals(Material.TNT)){
-		  event.setItem(null);
-	  }
-	}
-	@EventHandler
-	public void onBlockPlace(BlockPlaceEvent event){
-		if(event.getBlockPlaced().equals(Material.TNT)){
-			//event.getPlayer().sendMessage(ChatColor.RED + "You are not allowed to use " + ChatColor.YELLOW + "TNT" + ChatColor.RED + " in this server!");
-			event.setCancelled(true);
-		}
-		if(event.getBlockPlaced().equals(Material.LAVA)){
-			//event.getPlayer().sendMessage(ChatColor.RED + "You are not allowed to use " + ChatColor.YELLOW + "Lava_Block" + ChatColor.RED + " in this server!");
-			event.setCancelled(true);
-		}
-		if(event.getBlockPlaced().equals(Material.LAVA_BUCKET)){
-			//event.getPlayer().sendMessage(ChatColor.RED + "You are not allowed to use " + ChatColor.YELLOW + "Lava_Bucket" + ChatColor.RED + " in this server!");
-			event.setCancelled(true);
-		}
 	}
 
 	/*

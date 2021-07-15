@@ -46,11 +46,10 @@ public class LightningRodEvent implements Listener{
 				player.getWorld().strikeLightning(player.getTargetBlock(null, 50).getLocation());
 				}
 			
-		} else { //Possibly fixes null pointer. 
-			event.setCancelled(true);
+		}
 			
 			//int lstrike_int = plugin.getConfig().getInt("lightning_strikes"); //This code gives null pointer, try to fix.
-		}
+		
 		    
 
 		/*if (player.getInventory().getItemInMainHand().getType() == (Material.STICK) 
