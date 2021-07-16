@@ -15,7 +15,7 @@ import me.Kelson.Main;
 
 public class LocalChatEvent implements Listener{
 	
-	Main plugin;
+	private Main plugin;
 	
 	public LocalChatEvent(Main passedPlugin) {
 		this.plugin = passedPlugin;
@@ -26,10 +26,18 @@ public class LocalChatEvent implements Listener{
 	
 	@EventHandler
 	public void onPlayerChat(AsyncPlayerChatEvent event) {
+	    /*if(plugin.getConfig().getString("localchat") == null) {
+			event.setCancelled(true);
+		}*/ //This should check if the localchat string in the config is null, not working right now.
+
+		
 		Player player = event.getPlayer();
 		String message = event.getMessage();
 		//This is the localchat in this plugin
 	    if(message.length() > 1 && message.startsWith("@")){
+	    	
+	    //TODO make this below work with a value from config
+		//if (message.length() > 1 && message.startsWith(plugin.getConfig().getString("localchat").toString())) {
 	    	
 	      event.setFormat(ChatColor.GOLD + "[LocalChat] " + ChatColor.AQUA + player.getName() + ": " + ChatColor.GREEN + event.getMessage()
 	    		  .replace("@", ""));

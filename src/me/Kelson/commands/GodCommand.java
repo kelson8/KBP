@@ -1,6 +1,9 @@
 package me.Kelson.commands;
 
+import java.util.UUID;
+
 import org.bukkit.Bukkit;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -33,7 +36,6 @@ public class GodCommand implements CommandExecutor {
 					return true;
 				}
 
-				//boolean targetPlGodMode = true;
 				Player targetPlayer = Bukkit.getServer().getPlayerExact(args[1]);
 				  if (targetPlayer == null) {
 					sender.sendMessage(Messages.KBP_Main + args[1] + " is not online!");
@@ -67,9 +69,10 @@ public class GodCommand implements CommandExecutor {
     				sender.sendMessage(Messages.KBP_Main + "Error in command usage: /god <on/off>");
     				return true;
     			}
+    		
 
     			if(args.length == 1 && !(args.length == 2)) {
-    				if (args[0].equalsIgnoreCase("on")) {
+    				if (args[0].equalsIgnoreCase("on") && args.length < 2) {
     					player.setHealth(20);
     					player.setFoodLevel(20);
     					player.setInvulnerable(true);
@@ -77,39 +80,42 @@ public class GodCommand implements CommandExecutor {
     					
     					return true;
     				} 
-    				if (args[0].equalsIgnoreCase("off")) {
+    			}
+    				if (args[0].equalsIgnoreCase("off") && args.length < 2) {
     					player.setInvulnerable(false);
     					player.sendMessage(Messages.KBP_Main + "You now have god mode disabled!"); 
-    					
+    					    					
     					return true;
                         
                     }
         				//boolean targetPlGodMode = true;
-    				Player targetPlayer = Bukkit.getServer().getPlayerExact(args[1]);
-    				if (targetPlayer == null) {
-    					sender.sendMessage(Messages.KBP_Main + args[1] + " is not online!");
-    					return true;
-    				}
+    				Player targetPlayer = Bukkit.getServer().getPlayerExact(args[1]); //Gives null pointer, try to fix
+    				//OfflinePlayer offlinePlayer = Bukkit.getServer().getOfflinePlayer(UUID.fromString(args[1]));
+   
     				if(args.length == 2 && sender.hasPermission("kelson.god.others")){
-    					if(args[0].equalsIgnoreCase("on")) {
+    					if (targetPlayer == null) {
+    						sender.sendMessage(Messages.KBP_Main + args[1] + " is not online!");    					
+    						return true;
+    					}
+        				
+    					if(args[0].equalsIgnoreCase("on") ) {
     						//TODO Change targetPLGodMode to true once is fired
-    						//Player targetPlayer = Bukkit.getServer().getPlayerExact(args[1]);
     						targetPlayer.setFoodLevel(20);
         					targetPlayer.setHealth(20);
         					targetPlayer.setInvulnerable(true);
         					sender.sendMessage(Messages.KBP_Main + "You have enabled god mode for: " + targetPlayer.getName() + "!");
-        					targetPlayer.sendMessage(Messages.KBP_Main + "You are now invincible, %s enabled god mode for you!".replace("", sender.getName()));
+        					targetPlayer.sendMessage(Messages.KBP_Main + "You are now invincible, %s enabled god mode for you!".replace("%s", sender.getName()));
         					return true;
         					}
+    				
     					if(args[0].equalsIgnoreCase("off")) {
     						targetPlayer.setInvulnerable(false);
     						sender.sendMessage(Messages.KBP_Main + "You have disabled god mode for: " + targetPlayer.getName() + "!");
     						targetPlayer.sendMessage(Messages.KBP_Main + "You are no longer invincible, %s disabled your god mode!".replace("%s", sender.getName()));
     					}
     				}
-    			}
-    		} 
-    		if(!sender.hasPermission("kelson.god")) {
+
+    		} else {
     			sender.sendMessage(Messages.NoPermissionError());
     		}
     	}
