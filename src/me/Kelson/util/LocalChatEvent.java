@@ -15,7 +15,7 @@ import me.Kelson.Main;
 
 public class LocalChatEvent implements Listener{
 	
-	private Main plugin;
+	Main plugin;
 	
 	public LocalChatEvent(Main passedPlugin) {
 		this.plugin = passedPlugin;
@@ -46,7 +46,6 @@ public class LocalChatEvent implements Listener{
 	      Location playerLoc = event.getPlayer().getLocation(); 
 	      
 	      List<Player> recipients = new ArrayList<Player>();
-	      //int squaredDistance = 64 * 64;
 	      
 	      for(Player recipient : Bukkit.getServer().getOnlinePlayers()) {
 	    	  Location recipientLoc = recipient.getLocation();
@@ -63,9 +62,8 @@ public class LocalChatEvent implements Listener{
 	        	event.getPlayer().sendMessage(Messages.KBP_errormsg() + "No one was around!");
                 event.setCancelled(true);	
                 }
-	        	
-	        
-	      }
+
+	    	}
 	    }
 	}
 }

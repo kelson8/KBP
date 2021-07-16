@@ -1,14 +1,22 @@
 package me.Kelson.util;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.potion.PotionEffectType;
+
 import me.Kelson.Main;
 
 public class Events implements Listener{
@@ -45,18 +53,39 @@ Main plugin;
 	}
 
 	@EventHandler
-	public void onFoodChange(FoodLevelChangeEvent event)
-	{
+	public void onFoodChange(FoodLevelChangeEvent event){
 
 		//If the player has permission or if the player is op it disables their hunger
-		if ((event.getEntity().hasPermission("no.hunger")) || (event.getEntity().isOp())) {
-			//event.setCancelled(true);
+		
+		if ((event.getEntity().hasPermission("no.hunger"))
+				&& event.getEntity().hasPotionEffect(PotionEffectType.NIGHT_VISION)) {
+			event.setCancelled(true);
 
 		} else {
-			//event.setCancelled(false);
+			event.setCancelled(false);
 		}
 
 	}
+	
+	@EventHandler
+	//This code makes it to where the lightning stick won't break blocks.
+	public void onBlockBreak(BlockBreakEvent event) {
+		Player player = event.getPlayer();
+		
+		ArrayList<String> lore = new ArrayList<String>();
+		lore.add("§b§lPosiden's");
+		lore.add("§b§lFury");
+		
+		if(player.getInventory().getItemInMainHand().getType() == Material.STICK
+				  && player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals("§b§lLightning §b§lRod")
+			      && player.getInventory().getItemInMainHand().getItemMeta().getLore().equals(lore)
+				  && player.hasPermission("kelson.lightning_rod")) {
+		//if(meta.getDisplayName().equals("§b§lLightning §b§lRod") && meta.getLore().equals(Arrays.asList("§b§lPosiden's", "§b§lFury"))) {
+			event.setCancelled(true);
+		} else {
+			event.setCancelled(false);
+			}
+		}
 
 	@EventHandler
 	public void onPlayerChat1(AsyncPlayerChatEvent event) {

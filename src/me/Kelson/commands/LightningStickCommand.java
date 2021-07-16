@@ -34,11 +34,10 @@ public class LightningStickCommand implements CommandExecutor{
     			Player targetPlayer = Bukkit.getServer().getPlayer(args[0]);
     			PlayerInventory targetPlayerInv = targetPlayer.getInventory();
     			ItemStack item = new ItemStack(Material.STICK);
-    			
+    			ItemMeta meta = item.getItemMeta();
     			
     			targetPlayer.sendMessage(Messages.KBP_Main + "You have been given a lightning stick from console.");
     			sender.sendMessage(Messages.KBP_Main + "You have given a lightning stick to " + targetPlayer.getName() + "!");
-    			ItemMeta meta = item.getItemMeta();
     			
     			meta.setDisplayName("§b§lLightning §b§lRod");
     			meta.setLore(Arrays.asList("§b§lPosiden's", "§b§lFury"));
@@ -86,7 +85,7 @@ public class LightningStickCommand implements CommandExecutor{
         			meta.setDisplayName("§b§lLightning §b§lRod");
         			meta.setLore(Arrays.asList("§b§lPosiden's", "§b§lFury"));
         			item.setItemMeta(meta);
-        			
+
         			targetPlayerInv.addItem(item);
         			
         			return true;
