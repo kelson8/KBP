@@ -51,10 +51,6 @@ public class LightningRodEvent implements Listener{
 		}
 			
 			//int lstrike_int = plugin.getConfig().getInt("lightning_strikes"); //This code gives null pointer, try to fix.
-
-		if(!player.hasPermission("kelson.lightning_rod")) {
-			event.setCancelled(true);
-		}
 	}
 	
 	

@@ -19,6 +19,7 @@ import org.bukkit.potion.PotionEffectType;
 
 import me.Kelson.Main;
 
+@SuppressWarnings("unused")
 public class Events implements Listener{
 Main plugin;
 	
@@ -67,8 +68,11 @@ Main plugin;
 
 	}
 	
+	
 	@EventHandler
 	//This code makes it to where the lightning stick won't break blocks.
+	
+	
 	public void onBlockBreak(BlockBreakEvent event) {
 		Player player = event.getPlayer();
 		
@@ -97,24 +101,6 @@ Main plugin;
 		}
 	}
 	
-	public final HashMap<Location, String> signs = new HashMap<Location, String>();
-	/*
-	//This is used to block TNT, Lava blocks and Lava buckets from working in a dispenser
-	@EventHandler
-	public void onBlockDispense(BlockDispenseEvent event) {
-		ItemStack isTnt = new ItemStack(Material.TNT);
-		ItemStack isLava = new ItemStack(Material.LAVA);
-		ItemStack isLava_Bucket = new ItemStack(Material.LAVA_BUCKET);
-
-	  if(event.getItem() == isTnt){
-		  event.setCancelled(true);
-	  }
-	  if(event.getItem() == isLava){
-		  event.setCancelled(true);
-	  }
-	  if(event.getItem() == isLava_Bucket){
-		  event.setCancelled(true);
-	  }
-	}*/
+	public final HashMap<Location, String> signs = new HashMap<Location, String>(); //? I have no idea what this does.
 
 }

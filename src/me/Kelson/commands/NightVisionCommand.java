@@ -87,9 +87,9 @@ public class NightVisionCommand implements CommandExecutor {
                     // old Player targetPlayer = (Player) plugin.getServer().getPlayer(args[1]);
 
                 } 
-                if (args.length == 2) {
+                if (args.length == 2 && sender.hasPermission("kelson.nightvision.others")) {
                 	
-                	if (args[0].equalsIgnoreCase("on") && sender.hasPermission("kelson.nightvision.others")) {
+                	if (args[0].equalsIgnoreCase("on")) {
                 		Player targetPlayer = Bukkit.getPlayerExact(args[1]);
 					
                 		if (targetPlayer == null) {
@@ -106,7 +106,7 @@ public class NightVisionCommand implements CommandExecutor {
 
 
                 	  }
-                	if (args[0].equalsIgnoreCase("off") && sender.hasPermission("kelson.nightvision.others")) {
+                	if (args[0].equalsIgnoreCase("off")) {
                 		Player targetPlayer = Bukkit.getPlayerExact(args[1]);
 
                 		targetPlayer.removePotionEffect(PotionEffectType.NIGHT_VISION);
