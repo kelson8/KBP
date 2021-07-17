@@ -30,6 +30,12 @@ public class LightningCommand implements CommandExecutor {
     		}
     		if (args.length == 1) {
     			Player target = Bukkit.getServer().getPlayer(args[0]);
+    			
+    			if(target == null){
+    				sender.sendMessage(Messages.KBP_Main + args[0] + " is not online!");
+    				return true;
+    			}
+
     			World world = target.getWorld();
     			//world.strikeLightning(target.getLocation());
     			//Too annoying, was disabled. target.sendMessage(Main.main + "Oh no, someone has struck you with lightning");
@@ -56,8 +62,16 @@ public class LightningCommand implements CommandExecutor {
            
             if(args.length == 1 && sender.hasPermission("kelson.smite.others")){
             	Player targetPlayer = Bukkit.getPlayerExact(args[0]);
+				   
+            	if(targetPlayer == null){
+            		sender.sendMessage(Messages.KBP_Main + args[0] + " is not online!");
+            		return true;
+            	}
                 //targetPlayer.sendMessage(Commands.main + "You have been struck by lightning!");
                 world.strikeLightning(targetPlayer.getLocation());
+            if(args.length >2) {
+            	sender.sendMessage("Error"); //fix message later
+            	}
             }
             //TODO make this command strike lightning to a X Y Z.
             if(!sender.hasPermission("kelson.smite")){

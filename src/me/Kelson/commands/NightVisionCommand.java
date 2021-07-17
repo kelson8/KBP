@@ -87,31 +87,33 @@ public class NightVisionCommand implements CommandExecutor {
                     // old Player targetPlayer = (Player) plugin.getServer().getPlayer(args[1]);
 
                 } 
-                if (args.length == 2 && args[0].equalsIgnoreCase("on") && sender.hasPermission("kelson.nightvision.others")) {
-                    Player targetPlayer = Bukkit.getPlayerExact(args[1]);
+                if (args.length == 2) {
+                	
+                	if (args[0].equalsIgnoreCase("on") && sender.hasPermission("kelson.nightvision.others")) {
+                		Player targetPlayer = Bukkit.getPlayerExact(args[1]);
 					
-                    if (targetPlayer == null) {
-						sender.sendMessage(Messages.KBP_Main + args[1] + " is not online!");
-						return true;
-					}
+                		if (targetPlayer == null) {
+                			sender.sendMessage(Messages.KBP_Main + args[1] + " is not online!");
+                			return true;
+                		}
 
-                    targetPlayer.removePotionEffect(PotionEffectType.NIGHT_VISION);
-                    targetPlayer.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, plugin.getConfig().getInt("NightVisionTime"), 1, 
-                    		false, plugin.getConfig().getBoolean("nv_particles")));
+                		targetPlayer.removePotionEffect(PotionEffectType.NIGHT_VISION);
+                		targetPlayer.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, plugin.getConfig().getInt("NightVisionTime"), 1, 
+                				false, plugin.getConfig().getBoolean("nv_particles")));
                     
-                    sender.sendMessage(Messages.KBP_Main + "You have enabled night vision for " + targetPlayer.getName());
-                    targetPlayer.sendMessage(Messages.KBP_Main + "Your night vision has been enabled by " + sender.getName());
+                		sender.sendMessage(Messages.KBP_Main + "You have enabled night vision for " + targetPlayer.getName());
+                		targetPlayer.sendMessage(Messages.KBP_Main + "Your night vision has been enabled by " + sender.getName());
 
 
-                }
-                if (args.length == 2 && args[0].equalsIgnoreCase("off") && sender.hasPermission("kelson.nightvision.others")) {
-                    Player targetPlayer = Bukkit.getPlayerExact(args[1]);
+                	  }
+                	if (args[0].equalsIgnoreCase("off") && sender.hasPermission("kelson.nightvision.others")) {
+                		Player targetPlayer = Bukkit.getPlayerExact(args[1]);
 
-                    targetPlayer.removePotionEffect(PotionEffectType.NIGHT_VISION);
-                    sender.sendMessage(Messages.KBP_Main + "You have disabled night vision for " + targetPlayer.getName());
-                    targetPlayer.sendMessage(Messages.KBP_Main + "Your night vision has been disabled by " + sender.getName());
+                		targetPlayer.removePotionEffect(PotionEffectType.NIGHT_VISION);
+                		sender.sendMessage(Messages.KBP_Main + "You have disabled night vision for " + targetPlayer.getName());
+                		targetPlayer.sendMessage(Messages.KBP_Main + "Your night vision has been disabled by " + sender.getName());
 
-
+                	 }
                 /* This is sending the error when i type, /nv <player> instead of /nv <on/off> [player] like it should.. disabled for now
                 } else {
                     // Test to make sure this is giving the error when it should.

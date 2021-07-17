@@ -11,6 +11,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.w3c.dom.events.Event;
 
 import me.Kelson.Main;
 import me.Kelson.util.Messages;
@@ -30,8 +31,13 @@ public class LightningStickCommand implements CommandExecutor{
     		}
     		
     		if(args.length == 1) {
-    			
     			Player targetPlayer = Bukkit.getServer().getPlayer(args[0]);
+    			
+    			if(targetPlayer == null) {
+    				sender.sendMessage(Messages.KBP_Main + args[1] + " is not online!");
+    				return true;
+    			}
+    			
     			PlayerInventory targetPlayerInv = targetPlayer.getInventory();
     			ItemStack item = new ItemStack(Material.STICK);
     			ItemMeta meta = item.getItemMeta();
@@ -72,11 +78,14 @@ public class LightningStickCommand implements CommandExecutor{
     		}
     			
     			if (args.length == 1 && sender.hasPermission("kelson.lightning_rod")) {
-        			
+    				Player targetPlayer = Bukkit.getServer().getPlayer(args[0]);
+    				
+        			if(targetPlayer == null) {
+        				sender.sendMessage(Messages.KBP_Main + args[1] + " is not online!");
+        				return true;
+        			}
         			ItemStack item = new ItemStack(Material.STICK);
         			ItemMeta meta = item.getItemMeta();
-    				
-        			Player targetPlayer = Bukkit.getServer().getPlayer(args[0]);
         			PlayerInventory targetPlayerInv = targetPlayer.getInventory();
         			
         			targetPlayer.sendMessage(Messages.KBP_Main + sender.getName() + " has given you a lightning stick!");
