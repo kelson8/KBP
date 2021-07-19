@@ -96,6 +96,10 @@ commands:
   itemrename:
     description: Renames item in hand, color codes with with symbol &
     aliases: [ir]
+    
+  flyspeed:
+    description: Changes your flying speed
+    aliases: [fs]
 
 
 permissions:
@@ -130,6 +134,7 @@ permissions:
        kelson.testcommands: true
        kelson.lightning_rod: true
        kelson.lightning_rod.self: true
+       kelson.flyspeed: true
        
    kelson.default.*:
      description: Gives the default permissions using Kelsons Plugin.

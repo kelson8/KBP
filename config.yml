@@ -6,4 +6,4 @@ welcomemsg:
 NightVisionTime: 9999
 #debugMode: true #No longer in use.
 nv_particles: false
-lightning_strikes: 50
+lightning_strikes: 5

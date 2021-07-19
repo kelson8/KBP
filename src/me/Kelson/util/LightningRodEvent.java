@@ -30,8 +30,8 @@ public class LightningRodEvent implements Listener{
 			event.setCancelled(true);
 		}
 		ArrayList<String> lore = new ArrayList<String>();
-		lore.add("§b§lPosiden's");
-		lore.add("§b§lFury");
+		lore.add("§4§lPosiden's");
+		lore.add("§4§lFury");
 		
 		if(player.getInventory().getItemInMainHand().getType() == (Material.STICK) && 
 				player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals("§b§lLightning §b§lRod")
@@ -40,13 +40,10 @@ public class LightningRodEvent implements Listener{
 			
 			//TODO set message below where it randomly runs when the lightning stick is being used.
 			//Bukkit.broadcastMessage(ChatColor.RED + "DEATH has been struck upon thee. I BLAME: " + player.getName());
-			
-			
-			
-			
-			for (int i=0; i<20 ; i++) { // Change int i to  however many lightning strikes i want, cannot get it to work with config for now.
+		
+			//Main instance = Main.getInstance();
+			for (int i=0; i<5 ; i++) { // Change int i to however many lightning strikes i want, cannot get it to work with config for now.
 				// Loops the code below as many times as i is less then number above
-			    //
 				
 				player.getWorld().strikeLightning(player.getTargetBlock(null, 50).getLocation());
 				

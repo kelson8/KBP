@@ -14,6 +14,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import me.Kelson.commands.DisablewhitelistCommand;
 import me.Kelson.commands.EnablewhitelistCommand;
 import me.Kelson.commands.FlyCommand;
+import me.Kelson.commands.FlySpeedCommand;
 import me.Kelson.commands.GodCommand;
 import me.Kelson.commands.ItemRenameCommand;
 import me.Kelson.commands.KHealCommand;
@@ -33,6 +34,7 @@ public class Main extends JavaPlugin implements Listener{
 	//The config file stuff can be in other classes by typing plugin.getConfig or just plugin.
 	public final Logger logger = Logger.getLogger("Minecraft.KBP");
 	public static Main plugin;
+	public static Main instance;
 
 	public Main(){
 	}
@@ -72,6 +74,11 @@ public class Main extends JavaPlugin implements Listener{
 		saveConfig();
 
 	}
+	
+	public static Main getInstance(){
+		return instance;
+	}
+	
 	private PluginDescriptionFile pdfFile = this.getDescription();
 	private String pluginName = pdfFile.getName();
 	private String pluginVersion = pdfFile.getVersion();
@@ -92,6 +99,7 @@ public class Main extends JavaPlugin implements Listener{
 		this.getCommand("lightning").setExecutor(new LightningCommand(this));
 		this.getCommand("lightningstick").setExecutor(new LightningStickCommand(this));
 		this.getCommand("itemrename").setExecutor(new ItemRenameCommand(this));
+		this.getCommand("flyspeed").setExecutor(new FlySpeedCommand(this));
 	}
 
 	private void RegisterEvents(){

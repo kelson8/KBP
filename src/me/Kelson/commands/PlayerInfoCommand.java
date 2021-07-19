@@ -62,14 +62,20 @@ public class PlayerInfoCommand implements CommandExecutor {
                             + ChatColor.GREEN + "Online: " + ChatColor.AQUA + player.getPlayer().isOnline() + "\n"
                             + ChatColor.GREEN + "Ip Address: " + ChatColor.AQUA + player.getAddress().getAddress() + "\n"
                             + ChatColor.GREEN + "Name: " + ChatColor.AQUA + player.getName() + "\n"
-                            + ChatColor.GREEN + "Health: " + ChatColor.AQUA + player.getHealth());
+                            + ChatColor.GREEN + "Health: " + ChatColor.AQUA + player.getHealth() + "\n"
+                    		+ ChatColor.GREEN + "UUID: " + ChatColor.AQUA + player.getUniqueId() + "\n"
+                    		+ player.isFlying()
+                    
+                    		);
                 } else if (args.length == 1 && sender.hasPermission("kelson.playerinfo.others")) {
 
                     Player targetPlayer = player.getServer().getPlayer(args[0]);
+                    
                     if (targetPlayer == null) {
                         sender.sendMessage(Messages.KBP_Main + ChatColor.GREEN + args[0] + " is not online!");
                         return true;
                     }
+                    
                     sender.sendMessage(ChatColor.GREEN + targetPlayer.getName() + "'s info:\n"
                             + ChatColor.GREEN + "Gamemode: " + ChatColor.AQUA + targetPlayer.getGameMode() + "\n"
                             + ChatColor.GREEN + "Location: " + ChatColor.AQUA + targetPlayer.getWorld().getName() + "\n"
@@ -80,6 +86,7 @@ public class PlayerInfoCommand implements CommandExecutor {
                             + ChatColor.GREEN + "Name: " + ChatColor.AQUA + targetPlayer.getName() + "\n"
                             + ChatColor.GREEN + "Health: " + ChatColor.AQUA + targetPlayer.getHealth()
                     );
+
                 } else {
                     sender.sendMessage(Messages.KBP_Main + ChatColor.RED + "Error: You do not have permission to run this command on others!");
                 }

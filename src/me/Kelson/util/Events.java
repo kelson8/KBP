@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
+import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -75,7 +76,20 @@ Main plugin;
 	
 	@EventHandler
 	public void flyListener(PlayerToggleFlightEvent e) {
+		/*
+		 * This works like this, see if I can use this event for something useful sometime.
+		Player player = e.getPlayer();
+		GameMode gameMode = player.getGameMode();
+		
+		if (player.getAllowFlight() && gameMode.equals(GameMode.ADVENTURE) && !player.hasPermission("kelson.fly.adventure")) {
+			e.setCancelled(true);
 		}
+		if(player.getAllowFlight() && gameMode.equals(GameMode.SURVIVAL) && !player.hasPermission("kelson.fly.survival")) {
+			e.setCancelled(true);
+		}
+		*/
+		
+	}
 	
 	
 	@EventHandler

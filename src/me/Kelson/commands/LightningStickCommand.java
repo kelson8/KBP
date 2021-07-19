@@ -46,7 +46,7 @@ public class LightningStickCommand implements CommandExecutor{
     			sender.sendMessage(Messages.KBP_Main + "You have given a lightning stick to " + targetPlayer.getName() + "!");
     			
     			meta.setDisplayName("§b§lLightning §b§lRod");
-    			meta.setLore(Arrays.asList("§b§lPosiden's", "§b§lFury"));
+    			meta.setLore(Arrays.asList("§4§lPosiden's", "§4§lFury"));
     			item.setItemMeta(meta);
     			
     			targetPlayerInv.addItem(item);
@@ -67,7 +67,7 @@ public class LightningStickCommand implements CommandExecutor{
     			
     			meta.setDisplayName("§b§lLightning §b§lRod");
     			
-    			meta.setLore(Arrays.asList("§b§lPosiden's", "§b§lFury"));
+    			meta.setLore(Arrays.asList("§4§lPosiden's", "§4§lFury"));
     			item.setItemMeta(meta);
     			
     			playerInv.addItem(item);
@@ -92,7 +92,7 @@ public class LightningStickCommand implements CommandExecutor{
         			sender.sendMessage(Messages.KBP_Main + "You have given a lightning stick to " + targetPlayer.getName() + "!");
         			
         			meta.setDisplayName("§b§lLightning §b§lRod");
-        			meta.setLore(Arrays.asList("§b§lPosiden's", "§b§lFury"));
+        			meta.setLore(Arrays.asList("§4§lPosiden's", "§4§lFury"));
         			item.setItemMeta(meta);
 
         			targetPlayerInv.addItem(item);

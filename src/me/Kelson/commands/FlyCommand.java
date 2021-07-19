@@ -39,11 +39,16 @@ public class FlyCommand implements CommandExecutor {
 					Location location = player.getLocation();
 					int highesty = location.getWorld().getHighestBlockYAt(location);
 					
-						if (args[0].equalsIgnoreCase("on") && !player.getAllowFlight() && !(args.length == 2)) {
+					if (args.length == 1) {
+						if (args[0].equalsIgnoreCase("on") && !player.getAllowFlight()) {
 							player.sendMessage(Messages.KBP_Main + ChatColor.GREEN + "Flying enabled");
 							player.setAllowFlight(true);
 
 						} 
+						else if (args[0].equalsIgnoreCase("on") && player.getAllowFlight()) {
+							sender.sendMessage(Messages.KBP_Main + "You already have flying enabled!"); //test
+						}
+						
 						/* Testing fly already enabled message.
 						 * if (playersFlying.contains(player.getUniqueId())) {
 							sender.sendMessage("Fly already enabled!");
@@ -60,7 +65,11 @@ public class FlyCommand implements CommandExecutor {
 							//Disable flying.
 							player.setAllowFlight(false);
 						
-						}						
+						}	
+						else if (args[0].equalsIgnoreCase("off") && !player.getAllowFlight()) {
+							sender.sendMessage(Messages.KBP_Main + "You already have flying disabled!");
+						}
+					}
 				
 				} else {
 					sender.sendMessage(Messages.NoPermissionError());
