@@ -25,6 +25,7 @@ import me.Kelson.commands.LocationCommand;
 import me.Kelson.commands.NightVisionCommand;
 import me.Kelson.commands.PlayerInfoCommand;
 import me.Kelson.commands.SetKMotdCommand;
+import me.Kelson.commands.SpecialStickCommands;
 import me.Kelson.util.Events;
 import me.Kelson.util.LightningRodEvent;
 import me.Kelson.util.LocalChatEvent;
@@ -100,6 +101,7 @@ public class Main extends JavaPlugin implements Listener{
 		this.getCommand("lightningstick").setExecutor(new LightningStickCommand(this));
 		this.getCommand("itemrename").setExecutor(new ItemRenameCommand(this));
 		this.getCommand("flyspeed").setExecutor(new FlySpeedCommand(this));
+		//this.getCommand("stick").setExecutor(new SpecialStickCommands(this));
 	}
 
 	private void RegisterEvents(){

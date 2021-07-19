@@ -6,6 +6,7 @@ description: This is the custom plugin for the kelsoncraft server!
 author: kelson8
 #softdepend: [TagAPI, SQLibrary]
 #load: Startup
+api-version: 1.16
 
 commands:
   kelson-help:
@@ -101,7 +102,6 @@ commands:
     description: Changes your flying speed
     aliases: [fs]
 
-
 permissions:
    kelson.*:
      description: Gives all permissions using Kelsons Plugin.
@@ -135,6 +135,7 @@ permissions:
        kelson.lightning_rod: true
        kelson.lightning_rod.self: true
        kelson.flyspeed: true
+       kelson.place.bedrock: true
        
    kelson.default.*:
      description: Gives the default permissions using Kelsons Plugin.
