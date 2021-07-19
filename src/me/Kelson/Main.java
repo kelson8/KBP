@@ -36,6 +36,12 @@ public class Main extends JavaPlugin implements Listener{
 
 	public Main(){
 	}
+	
+	/*
+	 * Part of this plugin has been inspired by the IDP source code 
+	 * from the old Innectis server. 
+	 * https://github.com/MisterVector/Innectis-Dedicated-Plugin/
+	 */
 
 	private void dataFolderCreateCheck() {
 		if(!(getDataFolder().exists())){

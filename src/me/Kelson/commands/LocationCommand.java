@@ -30,7 +30,7 @@ public class LocationCommand implements CommandExecutor {
 			Player target = Bukkit.getServer().getPlayer(args[0]);
 			//if the targetplayer is offline then this says "<playername> is not online!"
 			if (target == null) {
-				sender.sendMessage(args[0] + " is not online!");
+				sender.sendMessage(Messages.KBP_Main() + args[0] + " is not online!");
 				return true;
 			}
 			Player targetPlayer = Bukkit.getServer().getPlayer(args[0]);
@@ -63,7 +63,7 @@ public class LocationCommand implements CommandExecutor {
 				  Player target = Bukkit.getServer().getPlayer(args[0]);
 				  //if the targetplayer is offline then this says "<playername> is not online!"
 				  if (target == null) {
-					  sender.sendMessage(args[0] + " is not online!");
+					  sender.sendMessage(Messages.KBP_errormsg() + args[0] + " is not online!");
 					  return true;
 				  }
 				  Player targetPlayer = player.getServer().getPlayer(args[0]);
@@ -76,7 +76,7 @@ public class LocationCommand implements CommandExecutor {
 						  + ChatColor.GREEN + "\nYaw: " + ChatColor.AQUA + loc1.getYaw() + ChatColor.GREEN + " (Rotation)"
 						  + ChatColor.GREEN + "\nPitch: " + ChatColor.AQUA + loc1.getPitch() + ChatColor.GREEN + " (Head angle)");
 			  } else {
-			  	sender.sendMessage(Messages.KBP_Main + ChatColor.RED + "Error: You do not have permission to use this on others!");
+			  	sender.sendMessage(Messages.KBP_Main() + ChatColor.RED + "Error: You do not have permission to use this on others!");
 			  }
 		  }
 	  }

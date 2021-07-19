@@ -17,7 +17,7 @@ public class SetKMotdCommand implements CommandExecutor{
 	}
 
 
-public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
+	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
 
 	        if(!(sender instanceof Player)){
 	                if (cmd.getName().equalsIgnoreCase("setkmotd")) {

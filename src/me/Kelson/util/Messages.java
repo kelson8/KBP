@@ -65,6 +65,9 @@ public class Messages{
 	public static String KBP_errormsg() {
 		return KBP_errormsg;
 	}
+	public static String KBP_Main() {
+		return KBP_Main;
+	}
 
 
 }

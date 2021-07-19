@@ -3,6 +3,8 @@ package me.Kelson.util;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
+import java.util.UUID;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -13,6 +15,7 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.player.PlayerToggleFlightEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffectType;
@@ -56,7 +59,8 @@ Main plugin;
 	@EventHandler
 	public void onFoodChange(FoodLevelChangeEvent event){
 
-		//If the player has permission or if the player is op it disables their hunger
+		//If the player has permission and they have night vision, no hunger works. 
+		// This is needed to be changed to something else later on.
 		
 		if ((event.getEntity().hasPermission("no.hunger"))
 				&& event.getEntity().hasPotionEffect(PotionEffectType.NIGHT_VISION)) {
@@ -70,8 +74,12 @@ Main plugin;
 	
 	
 	@EventHandler
-	//This code makes it to where the lightning stick won't break blocks.
+	public void flyListener(PlayerToggleFlightEvent e) {
+		}
 	
+	
+	@EventHandler
+	//This code makes it to where the lightning stick won't break blocks.
 	
 	public void onBlockBreak(BlockBreakEvent event) {
 		Player player = event.getPlayer();

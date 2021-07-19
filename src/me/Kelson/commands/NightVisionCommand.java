@@ -43,13 +43,16 @@ public class NightVisionCommand implements CommandExecutor {
                     targetPlayer.removePotionEffect(PotionEffectType.NIGHT_VISION);
                     targetPlayer.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, plugin.getConfig().getInt("NightVisionTime"), 1, 
                     		false, plugin.getConfig().getBoolean("nv_particles")));
+                    
                     sender.sendMessage(Messages.KBP_Main + "You have enabled night vision for " + targetPlayer.getName());
+                    
                     targetPlayer.sendMessage(Messages.KBP_Main + "Your night vision has been enabled by " + sender.getName());
                 }
                 if(args.length == 2 && args[0].equalsIgnoreCase("off")){
                 	Player targetPlayer = Bukkit.getPlayerExact(args[1]);
                 	
                     targetPlayer.removePotionEffect(PotionEffectType.NIGHT_VISION);
+                    
                     sender.sendMessage(Messages.KBP_Main + "You have disabled night vision for " + targetPlayer.getName());
                     targetPlayer.sendMessage(Messages.KBP_Main + "Your night vision has been disabled by " + sender.getName());
                 } 

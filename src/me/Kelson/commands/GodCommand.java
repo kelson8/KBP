@@ -67,9 +67,9 @@ public class GodCommand implements CommandExecutor {
     				return true;
     			}
     		
-
-    			if(args.length == 1 && !(args.length == 2)) {
-    				if (args[0].equalsIgnoreCase("on") && args.length < 2) {
+    			//&& !(args.length == 2)
+    			if(args.length == 1) {
+    				if (args[0].equalsIgnoreCase("on")) {
     					player.setHealth(20);
     					player.setFoodLevel(20);
     					player.setInvulnerable(true);
@@ -77,19 +77,21 @@ public class GodCommand implements CommandExecutor {
     					
     					return true;
     				} 
-    			}
-    				if (args[0].equalsIgnoreCase("off") && args.length < 2) {
+    			
+    				if (args[0].equalsIgnoreCase("off")) {
     					player.setInvulnerable(false);
     					player.sendMessage(Messages.KBP_Main + "You now have god mode disabled!"); 
     					    					
     					return true;
+    					}
                         
                     }
-        				//boolean targetPlGodMode = true;
-    				Player targetPlayer = Bukkit.getServer().getPlayerExact(args[1]); //Gives null pointer, try to fix
+
+        			//boolean targetPlGodMode = true;
     				//OfflinePlayer offlinePlayer = Bukkit.getServer().getOfflinePlayer(UUID.fromString(args[1]));
    
     				if(args.length == 2 && sender.hasPermission("kelson.god.others")){
+    					Player targetPlayer = Bukkit.getServer().getPlayerExact(args[1]);
     					if (targetPlayer == null) {
     						sender.sendMessage(Messages.KBP_Main + args[1] + " is not online!");    					
     						return true;
