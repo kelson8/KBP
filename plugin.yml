@@ -29,11 +29,6 @@ commands:
     permission: kelson.ipbans
     permission-message: You do not have permission to use this command!
 
-  kheal:
-    description: Heals the player heals another player if a name is specified.
-    permission: kelson.heal
-    permission-message: You do not have permission to use this command!
-
   kelson-reload: 
     description: This reloads the config.yml
     permission: kelson.reload
@@ -72,9 +67,7 @@ permissions:
        kelson.fly.others: true
        kelson.ipbans: true
        kelson.reload: true
-       kelson.isop: true
        kelson.nofire: true
-       kelson.heal: true
        kelson.nametag: true
        kelson.help: true
        kelson.serverinfo: true

@@ -12,7 +12,6 @@ import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import me.Kelson.commands.FlyCommand;
-import me.Kelson.commands.KHealCommand;
 import me.Kelson.commands.LightningCommand;
 import me.Kelson.commands.LightningStickCommand;
 import me.Kelson.commands.LocationCommand;
@@ -78,17 +77,11 @@ public class Main extends JavaPlugin implements Listener{
 
 	private void RegisterCommands(){
 		this.getCommand("fly").setExecutor(new FlyCommand(this));
-		
-		this.getCommand("kheal").setExecutor(new KHealCommand(this));
-		
 		this.getCommand("location").setExecutor(new LocationCommand(this));
 		this.getCommand("kelson-reload").setExecutor(new me.Kelson.util.KelsonReloadCommand(this));
-
 		this.getCommand("playerinfo").setExecutor(new PlayerInfoCommand(this));
 		this.getCommand("nightvision").setExecutor(new NightVisionCommand(this));
-		
 		this.getCommand("lightning").setExecutor(new LightningCommand(this));
-		
 		this.getCommand("lightningstick").setExecutor(new LightningStickCommand(this));
 	}
 
