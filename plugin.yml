@@ -1,10 +1,9 @@
-name: KBP
+name: KBP-mini
 #Old name Kelsons-Plugin
 main: me.Kelson.Main
-version: 1.0.4_01
+version: 1.0.4_10
 description: This is the custom plugin for the kelsoncraft server!
 author: kelson8
-#softdepend: [TagAPI, SQLibrary]
 #load: Startup
 api-version: 1.16
 
@@ -30,40 +29,15 @@ commands:
     permission: kelson.ipbans
     permission-message: You do not have permission to use this command!
 
-  enablewhitelist:
-    description: Enables the whitelist
-    permission: kelson.enablewhitelist
-    permission-message: You do not have permission to use this command! 
-
-  disablewhitelist:
-    description: Disables the whitelist
-    permission: kelson.disablewhitelist
-    permission-message: You do not have permission to use this command!
-
   kheal:
     description: Heals the player heals another player if a name is specified.
     permission: kelson.heal
-    permission-message: You do not have permission to use this command!
-
-  kmotd:
-    description: Shows the motd to the players from my plugin
-    permission: kelson.kmotd
-    permission-message: You do not have permission to use this command!
-
-  setkmotd:
-    description: Sets the message for /kmotd
-    permisson: kelson.setkmotd
     permission-message: You do not have permission to use this command!
 
   kelson-reload: 
     description: This reloads the config.yml
     permission: kelson.reload
     permission-message: You do not have permission to use this command!
-   
-  test:
-   description: Test
-   permission: kelson.test
-   permission-message: You do not have permission to use that command!
   
   serverinfo:
    description: Shows the server info to the player
@@ -80,27 +54,14 @@ commands:
     description: Strikes lightning at the player.
     aliases: [smite] # [smite, lightning, ....]
 
-  god:
-    description: Gives the player god mode.
-
   nightvision:
     description: Enables/disables nightvision
     aliases: [nv]
-
-  test1:
-    description: Testing
     
   lightningstick:
     description: Gives player a lightning rod
     aliases: [ls, lightningrod]
-    
-  itemrename:
-    description: Renames item in hand, color codes with with symbol &
-    aliases: [ir]
-    
-  flyspeed:
-    description: Changes your flying speed
-    aliases: [fs]
+ 
 
 permissions:
    kelson.*:
@@ -109,17 +70,13 @@ permissions:
      children:
        kelson.fly: true
        kelson.fly.others: true
-       kelson.enablewhitelist: true
        kelson.ipbans: true
        kelson.reload: true
        kelson.isop: true
        kelson.nofire: true
        kelson.heal: true
        kelson.nametag: true
-       kelson.kmotd: true
        kelson.help: true
-       kelson.configtest: true
-       kelson.test: true
        kelson.serverinfo: true
        kelson.location.others: true
        kelson.nohunger: true
@@ -127,14 +84,10 @@ permissions:
        kelson.smite.others: true
        kelson.destory: true
        kelson.playerinfo.others: true
-       kelson.god: true
-       kelson.god.others: true
        kelson.nightvision: true
        kelson.nightvision.others: true
-       kelson.testcommands: true
        kelson.lightning_rod: true
        kelson.lightning_rod.self: true
-       kelson.flyspeed: true
        kelson.place.bedrock: true
        
    kelson.default.*:
@@ -142,6 +95,5 @@ permissions:
      default: true
      children:
        kelson.location: true
-       kelson.kmotd: true
        kelson.playerinfo: true
      

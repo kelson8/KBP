@@ -25,7 +25,8 @@ public class FlyCommand implements CommandExecutor {
 		 * playersFlying.add(player.getUniqueId());
 		*/
 		
-		//Modified fly command to put player on the ground whenever it is turned off so that they don't die. Commit changes later.
+		 // Custom fly command for the KelsonCraft server. 
+		 
 		
 		
 		if (sender instanceof Player) {

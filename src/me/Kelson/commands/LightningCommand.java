@@ -39,7 +39,7 @@ public class LightningCommand implements CommandExecutor {
     			World world = target.getWorld();
     			//world.strikeLightning(target.getLocation());
     			//Too annoying, was disabled. target.sendMessage(Main.main + "Oh no, someone has struck you with lightning");
-    			for (int i=0; i<15; i++) {
+    			for (int i=0; i<3; i++) {
     			world.strikeLightning(target.getTargetBlock(null, 600).getLocation());
     			}
     		}
@@ -49,7 +49,7 @@ public class LightningCommand implements CommandExecutor {
         World world = player.getWorld();
         if(args.length == 0 && cmd.getName().equalsIgnoreCase("lightning") && sender.hasPermission("kelson.smite")) {
             
-        	for (int i=0; i<50; i++) {
+        	for (int i=0; i<3; i++) {
         		world.strikeLightning(player.getTargetBlock(null, 600).getLocation());
         	}
         	

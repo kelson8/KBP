@@ -11,21 +11,13 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import me.Kelson.commands.DisablewhitelistCommand;
-import me.Kelson.commands.EnablewhitelistCommand;
 import me.Kelson.commands.FlyCommand;
-import me.Kelson.commands.FlySpeedCommand;
-import me.Kelson.commands.GodCommand;
-import me.Kelson.commands.ItemRenameCommand;
 import me.Kelson.commands.KHealCommand;
-import me.Kelson.commands.KMotdCommand;
 import me.Kelson.commands.LightningCommand;
 import me.Kelson.commands.LightningStickCommand;
 import me.Kelson.commands.LocationCommand;
 import me.Kelson.commands.NightVisionCommand;
 import me.Kelson.commands.PlayerInfoCommand;
-import me.Kelson.commands.SetKMotdCommand;
-import me.Kelson.commands.SpecialStickCommands;
 import me.Kelson.util.Events;
 import me.Kelson.util.LightningRodEvent;
 import me.Kelson.util.LocalChatEvent;
@@ -85,23 +77,19 @@ public class Main extends JavaPlugin implements Listener{
 	private String pluginVersion = pdfFile.getVersion();
 
 	private void RegisterCommands(){
-		this.getCommand("disablewhitelist").setExecutor(new DisablewhitelistCommand(this));
-		this.getCommand("enablewhitelist").setExecutor(new EnablewhitelistCommand(this));
 		this.getCommand("fly").setExecutor(new FlyCommand(this));
+		
 		this.getCommand("kheal").setExecutor(new KHealCommand(this));
-		this.getCommand("test").setExecutor(new TestCommands(this));
+		
 		this.getCommand("location").setExecutor(new LocationCommand(this));
 		this.getCommand("kelson-reload").setExecutor(new me.Kelson.util.KelsonReloadCommand(this));
-		this.getCommand("kmotd").setExecutor(new KMotdCommand(this));
-		this.getCommand("setkmotd").setExecutor(new SetKMotdCommand(this));
+
 		this.getCommand("playerinfo").setExecutor(new PlayerInfoCommand(this));
-		this.getCommand("god").setExecutor(new GodCommand(this));
 		this.getCommand("nightvision").setExecutor(new NightVisionCommand(this));
+		
 		this.getCommand("lightning").setExecutor(new LightningCommand(this));
+		
 		this.getCommand("lightningstick").setExecutor(new LightningStickCommand(this));
-		this.getCommand("itemrename").setExecutor(new ItemRenameCommand(this));
-		this.getCommand("flyspeed").setExecutor(new FlySpeedCommand(this));
-		//this.getCommand("stick").setExecutor(new SpecialStickCommands(this));
 	}
 
 	private void RegisterEvents(){
