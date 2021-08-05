@@ -1,18 +1,13 @@
 name: KBP-mini
 #Old name Kelsons-Plugin
-main: me.Kelson.Main
-version: 1.0.4_10
+main: net.Kelsoncraft.KBP_mini.KbpMain
+version: 1.0.5
 description: This is the custom plugin for the kelsoncraft server!
 author: kelson8
 #load: Startup
 api-version: 1.16
 
 commands:
-  kelson-help:
-    description: This is the help for my plugin 
-    permission: kelson.help
-    permission-message: You do not have permission to use this command!
-
   fly:
     description: This is the fly command usage /fly [player].
     permission: kelson.fly

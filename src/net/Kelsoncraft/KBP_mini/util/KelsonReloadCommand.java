@@ -1,15 +1,15 @@
-package me.Kelson.util;
-import me.Kelson.Main;
-
+package net.Kelsoncraft.KBP_mini.util;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+
+import net.Kelsoncraft.KBP_mini.KbpMain;
 public class KelsonReloadCommand implements CommandExecutor{
 	
-	Main plugin;
-			public KelsonReloadCommand(Main passedPlugin){
+	KbpMain plugin;
+			public KelsonReloadCommand(KbpMain passedPlugin){
 				this.plugin = passedPlugin;
 			}
 

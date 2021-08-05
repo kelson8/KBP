@@ -1,4 +1,4 @@
-package me.Kelson.commands;
+package net.Kelsoncraft.KBP_mini.commands;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -7,15 +7,15 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import me.Kelson.Main;
-import me.Kelson.util.Messages;
+import net.Kelsoncraft.KBP_mini.KbpMain;
+import net.Kelsoncraft.KBP_mini.util.Messages;
 
 public class PlayerInfoCommand implements CommandExecutor {
 
 
-    Main plugin;
+    KbpMain plugin;
 
-    public PlayerInfoCommand(Main passedPlugin) {
+    public PlayerInfoCommand(KbpMain passedPlugin) {
         this.plugin = passedPlugin;
     }
     public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {

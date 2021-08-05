@@ -1,4 +1,4 @@
-package me.Kelson.util;
+package net.Kelsoncraft.KBP_mini.util;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,13 +11,13 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
-import me.Kelson.Main;
+import net.Kelsoncraft.KBP_mini.KbpMain;
 
 public class LocalChatEvent implements Listener{
 	
-	Main plugin;
+	KbpMain plugin;
 	
-	public LocalChatEvent(Main passedPlugin) {
+	public LocalChatEvent(KbpMain passedPlugin) {
 		this.plugin = passedPlugin;
 	}
 	public LocalChatEvent() {

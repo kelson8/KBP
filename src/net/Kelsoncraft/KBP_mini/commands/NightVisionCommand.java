@@ -1,7 +1,8 @@
-package me.Kelson.commands;
+package net.Kelsoncraft.KBP_mini.commands;
 
-import me.Kelson.Main;
-import me.Kelson.util.Messages;
+import net.Kelsoncraft.KBP_mini.KbpMain;
+import net.Kelsoncraft.KBP_mini.util.Messages;
+
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -11,9 +12,9 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 public class NightVisionCommand implements CommandExecutor {
-    Main plugin;
+    KbpMain plugin;
 
-    public NightVisionCommand(Main passedPlugin) {
+    public NightVisionCommand(KbpMain passedPlugin) {
         this.plugin = passedPlugin;
     }
 

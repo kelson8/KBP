@@ -1,4 +1,4 @@
-package me.Kelson;
+package net.Kelsoncraft.KBP_mini;
 
 import java.io.IOException;
 import java.util.logging.Level;
@@ -11,24 +11,24 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import me.Kelson.commands.FlyCommand;
-import me.Kelson.commands.LightningCommand;
-import me.Kelson.commands.LightningStickCommand;
-import me.Kelson.commands.LocationCommand;
-import me.Kelson.commands.NightVisionCommand;
-import me.Kelson.commands.PlayerInfoCommand;
-import me.Kelson.util.Events;
-import me.Kelson.util.LightningRodEvent;
-import me.Kelson.util.LocalChatEvent;
-import me.Kelson.util.Messages;
+import net.Kelsoncraft.KBP_mini.commands.FlyCommand;
+import net.Kelsoncraft.KBP_mini.commands.LightningCommand;
+import net.Kelsoncraft.KBP_mini.commands.LightningStickCommand;
+import net.Kelsoncraft.KBP_mini.commands.LocationCommand;
+import net.Kelsoncraft.KBP_mini.commands.NightVisionCommand;
+import net.Kelsoncraft.KBP_mini.commands.PlayerInfoCommand;
+import net.Kelsoncraft.KBP_mini.util.Events;
+import net.Kelsoncraft.KBP_mini.util.LightningRodEvent;
+import net.Kelsoncraft.KBP_mini.util.LocalChatEvent;
+import net.Kelsoncraft.KBP_mini.util.Messages;
 
-public class Main extends JavaPlugin implements Listener{
+public class KbpMain extends JavaPlugin implements Listener{
 	//The config file stuff can be in other classes by typing plugin.getConfig or just plugin.
 	public final Logger logger = Logger.getLogger("Minecraft.KBP");
-	public static Main plugin;
-	public static Main instance;
+	public static KbpMain plugin;
+	public static KbpMain instance;
 
-	public Main(){
+	public KbpMain(){
 	}
 	
 	/*
@@ -67,7 +67,7 @@ public class Main extends JavaPlugin implements Listener{
 
 	}
 	
-	public static Main getInstance(){
+	public static KbpMain getInstance(){
 		return instance;
 	}
 	
@@ -78,7 +78,7 @@ public class Main extends JavaPlugin implements Listener{
 	private void RegisterCommands(){
 		this.getCommand("fly").setExecutor(new FlyCommand(this));
 		this.getCommand("location").setExecutor(new LocationCommand(this));
-		this.getCommand("kelson-reload").setExecutor(new me.Kelson.util.KelsonReloadCommand(this));
+		this.getCommand("kelson-reload").setExecutor(new net.Kelsoncraft.KBP_mini.util.KelsonReloadCommand(this));
 		this.getCommand("playerinfo").setExecutor(new PlayerInfoCommand(this));
 		this.getCommand("nightvision").setExecutor(new NightVisionCommand(this));
 		this.getCommand("lightning").setExecutor(new LightningCommand(this));

@@ -1,4 +1,4 @@
-package me.Kelson.util;
+package net.Kelsoncraft.KBP_mini.util;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,13 +21,13 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.potion.PotionEffectType;
 
-import me.Kelson.Main;
+import net.Kelsoncraft.KBP_mini.KbpMain;
 
 @SuppressWarnings("unused")
 public class Events implements Listener{
-Main plugin;
+KbpMain plugin;
 	
-	public Events(Main passedPlugin) {
+	public Events(KbpMain passedPlugin) {
 		this.plugin = passedPlugin;
 	}
 	public Events(){

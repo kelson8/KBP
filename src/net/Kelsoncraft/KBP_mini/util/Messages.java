@@ -1,10 +1,11 @@
-package me.Kelson.util;
+package net.Kelsoncraft.KBP_mini.util;
 
-import me.Kelson.Main;
 import org.bukkit.ChatColor;
 
+import net.Kelsoncraft.KBP_mini.KbpMain;
+
 public class Messages{
-    static Main plugin;
+    static KbpMain plugin;
 
     public Messages() {
     	
