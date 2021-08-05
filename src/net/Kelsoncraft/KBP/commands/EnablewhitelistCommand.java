@@ -1,17 +1,17 @@
-package me.Kelson.commands;
+package net.Kelsoncraft.KBP.commands;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-import me.Kelson.Main;
-import me.Kelson.util.Messages;
+import net.Kelsoncraft.KBP.KbpMain;
+import net.Kelsoncraft.KBP.util.Messages;
 
 public class EnablewhitelistCommand implements CommandExecutor {
-		Main plugin;
+		KbpMain plugin;
 		
-		public EnablewhitelistCommand(Main passedPlugin){
+		public EnablewhitelistCommand(KbpMain passedPlugin){
 			this.plugin = passedPlugin;
 		}
 

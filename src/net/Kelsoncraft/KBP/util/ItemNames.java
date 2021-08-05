@@ -1,4 +1,4 @@
-package me.Kelson.util;
+package net.Kelsoncraft.KBP.util;
 
 import java.util.HashMap;
 import java.util.Map;

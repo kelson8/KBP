@@ -1,33 +1,30 @@
-package me.Kelson.util;
+package net.Kelsoncraft.KBP.util;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
+import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
-import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerToggleFlightEvent;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.PlayerInventory;
-import org.bukkit.potion.PotionEffectType;
 
-import me.Kelson.Main;
+import net.Kelsoncraft.KBP.KbpMain;
 
 @SuppressWarnings("unused")
 public class Events implements Listener{
-Main plugin;
+KbpMain plugin;
 	
-	public Events(Main passedPlugin) {
+	public Events(KbpMain passedPlugin) {
 		this.plugin = passedPlugin;
 	}
 	public Events(){
@@ -60,7 +57,7 @@ Main plugin;
 
 	}
 	*/
-
+	
 	@EventHandler
 	public void godModeEnable(FoodLevelChangeEvent event){
 

@@ -1,6 +1,6 @@
 name: KBP
 #Old name Kelsons-Plugin
-main: me.Kelson.Main
+main: net.Kelsoncraft.KBP.KbpMain
 version: 1.0.4_01
 description: This is the custom plugin for the kelsoncraft server!
 author: kelson8
@@ -9,11 +9,6 @@ author: kelson8
 api-version: 1.16
 
 commands:
-  kelson-help:
-    description: This is the help for my plugin 
-    permission: kelson.help
-    permission-message: You do not have permission to use this command!
-
   fly:
     description: This is the fly command usage /fly [player].
     permission: kelson.fly
@@ -101,6 +96,9 @@ commands:
   flyspeed:
     description: Changes your flying speed
     aliases: [fs]
+    
+  inv_test:
+    description: Testing creating an inventory.
 
 permissions:
    kelson.*:
@@ -136,6 +134,7 @@ permissions:
        kelson.lightning_rod.self: true
        kelson.flyspeed: true
        kelson.place.bedrock: true
+       kelson.inv_test: true
        
    kelson.default.*:
      description: Gives the default permissions using Kelsons Plugin.

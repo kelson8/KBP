@@ -1,18 +1,18 @@
-package me.Kelson.commands;
+package net.Kelsoncraft.KBP.commands;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import me.Kelson.Main;
-import me.Kelson.util.Messages;
+import net.Kelsoncraft.KBP.KbpMain;
+import net.Kelsoncraft.KBP.util.Messages;
 
 public class SetKMotdCommand implements CommandExecutor{
 
-	Main plugin;
+	KbpMain plugin;
 	
-	public SetKMotdCommand(Main passedPlugin){
+	public SetKMotdCommand(KbpMain passedPlugin){
 		this.plugin = passedPlugin;
 	}
 

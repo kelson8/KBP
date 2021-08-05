@@ -1,4 +1,4 @@
-package me.Kelson.commands;
+package net.Kelsoncraft.KBP.commands;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -9,13 +9,13 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
-import me.Kelson.Main;
+import net.Kelsoncraft.KBP.KbpMain;
 
 public class KMotdCommand implements CommandExecutor, Listener
 {
-	Main plugin;
+	KbpMain plugin;
 	
-	public KMotdCommand(Main passedPlugin){
+	public KMotdCommand(KbpMain passedPlugin){
 		this.plugin = passedPlugin;
 	}
 

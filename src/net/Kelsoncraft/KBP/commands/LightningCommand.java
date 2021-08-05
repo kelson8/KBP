@@ -1,4 +1,4 @@
-package me.Kelson.commands;
+package net.Kelsoncraft.KBP.commands;
 
 import org.bukkit.Bukkit;
 
@@ -8,14 +8,14 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import me.Kelson.Main;
-import me.Kelson.util.Messages;
+import net.Kelsoncraft.KBP.KbpMain;
+import net.Kelsoncraft.KBP.util.Messages;
 
 public class LightningCommand implements CommandExecutor {
 
-    Main plugin;
+    KbpMain plugin;
 
-    public LightningCommand(Main passedPlugin) {
+    public LightningCommand(KbpMain passedPlugin) {
         this.plugin = passedPlugin;
     }
 

@@ -1,4 +1,4 @@
-package me.Kelson.commands;
+package net.Kelsoncraft.KBP.commands;
 
 import java.util.Arrays;
 
@@ -13,13 +13,13 @@ import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.w3c.dom.events.Event;
 
-import me.Kelson.Main;
-import me.Kelson.util.Messages;
+import net.Kelsoncraft.KBP.KbpMain;
+import net.Kelsoncraft.KBP.util.Messages;
 
 public class LightningStickCommand implements CommandExecutor{
-    Main plugin;
+    KbpMain plugin;
 
-    public LightningStickCommand(Main passedPlugin) {
+    public LightningStickCommand(KbpMain passedPlugin) {
         this.plugin = passedPlugin;
     }
 

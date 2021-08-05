@@ -1,4 +1,4 @@
-package me.Kelson.util;
+package net.Kelsoncraft.KBP.util;
 
 import java.util.ArrayList;
 
@@ -8,13 +8,13 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
 
-import me.Kelson.Main;
+import net.Kelsoncraft.KBP.KbpMain;
 
 public class LightningRodEvent implements Listener{
 
-    Main plugin;
+    KbpMain plugin;
 	
-	public LightningRodEvent(Main passedPlugin) {
+	public LightningRodEvent(KbpMain passedPlugin) {
 		this.plugin = passedPlugin;
 	}
 	

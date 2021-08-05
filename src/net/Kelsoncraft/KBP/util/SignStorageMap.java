@@ -1,7 +1,8 @@
-package me.Kelson.util;
+package net.Kelsoncraft.KBP.util;
 
-import me.Kelson.Main;
 import org.bukkit.block.Sign;
+
+import net.Kelsoncraft.KBP.KbpMain;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -10,9 +11,9 @@ import java.io.PrintWriter;
 import java.util.HashMap;
 
 public class SignStorageMap {
-		Main plugin;
+		KbpMain plugin;
 		
-		public SignStorageMap(Main passedPlugin){
+		public SignStorageMap(KbpMain passedPlugin){
 			this.plugin = passedPlugin;
 		}
 
