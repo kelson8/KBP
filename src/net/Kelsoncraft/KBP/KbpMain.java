@@ -19,13 +19,13 @@ import net.Kelsoncraft.KBP.commands.GodCommand;
 import net.Kelsoncraft.KBP.commands.ItemRenameCommand;
 import net.Kelsoncraft.KBP.commands.KHealCommand;
 import net.Kelsoncraft.KBP.commands.KMotdCommand;
+import net.Kelsoncraft.KBP.commands.KbpCommands;
 import net.Kelsoncraft.KBP.commands.LightningCommand;
 import net.Kelsoncraft.KBP.commands.LightningStickCommand;
 import net.Kelsoncraft.KBP.commands.LocationCommand;
 import net.Kelsoncraft.KBP.commands.NightVisionCommand;
 import net.Kelsoncraft.KBP.commands.PlayerInfoCommand;
 import net.Kelsoncraft.KBP.commands.SetKMotdCommand;
-import net.Kelsoncraft.KBP.commands.SpecialStickCommands;
 import net.Kelsoncraft.KBP.util.Events;
 import net.Kelsoncraft.KBP.util.LightningRodEvent;
 import net.Kelsoncraft.KBP.util.LocalChatEvent;
@@ -35,10 +35,11 @@ public class KbpMain extends JavaPlugin implements Listener{
 	//The config file stuff can be in other classes by typing plugin.getConfig or just plugin.
 	public final Logger logger = Logger.getLogger("Minecraft.KBP");
 	public static KbpMain plugin;
-	public static KbpMain instance;
+	private static KbpMain instance;
 
+	/*
 	public KbpMain(){
-	}
+	}*/
 	
 	/*
 	 * Part of this plugin has been inspired by the IDP source code 
@@ -90,7 +91,6 @@ public class KbpMain extends JavaPlugin implements Listener{
 		this.getCommand("fly").setExecutor(new FlyCommand(this)); // keep in mini version
 		this.getCommand("kheal").setExecutor(new KHealCommand(this));
 		this.getCommand("location").setExecutor(new LocationCommand(this));
-		this.getCommand("kelson-reload").setExecutor(new net.Kelsoncraft.KBP.util.KelsonReloadCommand(this));
 		this.getCommand("kmotd").setExecutor(new KMotdCommand(this)); //remove for mini version
 		this.getCommand("setkmotd").setExecutor(new SetKMotdCommand(this)); //remove for mini version
 		this.getCommand("playerinfo").setExecutor(new PlayerInfoCommand(this));
@@ -100,15 +100,16 @@ public class KbpMain extends JavaPlugin implements Listener{
 		this.getCommand("lightningstick").setExecutor(new LightningStickCommand(this));
 		this.getCommand("itemrename").setExecutor(new ItemRenameCommand(this));
 		this.getCommand("flyspeed").setExecutor(new FlySpeedCommand(this)); //remove for mini version
+		this.getCommand("kbp").setExecutor(new KbpCommands(this));
 		//this.getCommand("stick").setExecutor(new SpecialStickCommands(this)); //temporarily remove this command, it needs worked on.
 
 	}
 
 	private void RegisterEvents(){
 		Bukkit.getServer().getPluginManager().registerEvents(this, this);
-		Bukkit.getServer().getPluginManager().registerEvents(new Events(), this);
-		Bukkit.getServer().getPluginManager().registerEvents(new LightningRodEvent(), this);
-		Bukkit.getServer().getPluginManager().registerEvents(new LocalChatEvent(), this);
+		Bukkit.getServer().getPluginManager().registerEvents(new Events(this), this);
+		Bukkit.getServer().getPluginManager().registerEvents(new LightningRodEvent(this), this);
+		Bukkit.getServer().getPluginManager().registerEvents(new LocalChatEvent(this), this);
 	}
 
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {

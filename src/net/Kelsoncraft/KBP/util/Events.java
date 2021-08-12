@@ -12,15 +12,12 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
-import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerToggleFlightEvent;
-import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 import net.Kelsoncraft.KBP.KbpMain;
 
-@SuppressWarnings("unused")
 public class Events implements Listener{
 KbpMain plugin;
 	
@@ -30,7 +27,7 @@ KbpMain plugin;
 	public Events(){
 		//This is what goes in the onEnable() in the main class don't remove it!
 	}
-
+	
 	/*
 	@EventHandler
 	public void onPlayerInteractBlock(PlayerInteractEvent event){
@@ -109,14 +106,14 @@ KbpMain plugin;
 		Player player = event.getPlayer();
 		
 		ArrayList<String> lore = new ArrayList<String>();
-		lore.add("Â§4Â§lPosiden's");
-		lore.add("Â§4Â§lFury");
+		lore.add("§4§lPosiden's");
+		lore.add("§4§lFury");
 		
 		if(player.getInventory().getItemInMainHand().getType() == Material.STICK
-				  && player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals("Â§bÂ§lLightning Â§bÂ§lRod")
+				  && player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals("§b§lLightning §b§lRod")
 			      && player.getInventory().getItemInMainHand().getItemMeta().getLore().equals(lore)) {
 				  //&& player.hasPermission("kelson.lightning_rod")) {
-		//if(meta.getDisplayName().equals("Â§bÂ§lLightning Â§bÂ§lRod") && meta.getLore().equals(Arrays.asList("Â§bÂ§lPosiden's", "Â§bÂ§lFury"))) {
+		//if(meta.getDisplayName().equals("§b§lLightning §b§lRod") && meta.getLore().equals(Arrays.asList("§b§lPosiden's", "§b§lFury"))) {
 			event.setCancelled(true);
 		} else {
 			event.setCancelled(false);

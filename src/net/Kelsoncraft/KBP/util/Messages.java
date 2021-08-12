@@ -11,7 +11,8 @@ public class Messages{
     	
     }
     
-	public static String KBP_Main = ChatColor.GOLD + "[Kelsons-Plugin] " + ChatColor.GREEN;
+	//public static String KBP_Main = ChatColor.GOLD + "[Kelsons-Plugin] " + ChatColor.GREEN;
+    public static String KBP_Main = ChatColor.GOLD + "[KBP] " + ChatColor.GREEN;
 	private static String KBP_errormsg = KBP_Main + ChatColor.DARK_RED + "Error: " + ChatColor.GREEN;
 	
 	//private static String ServerRules = "";

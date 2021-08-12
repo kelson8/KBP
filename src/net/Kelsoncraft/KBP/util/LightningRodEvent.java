@@ -3,6 +3,7 @@ package net.Kelsoncraft.KBP.util;
 import java.util.ArrayList;
 
 import org.bukkit.Material;
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -10,7 +11,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 
 import net.Kelsoncraft.KBP.KbpMain;
 
-public class LightningRodEvent implements Listener{
+public class LightningRodEvent implements Listener {
 
     KbpMain plugin;
 	
@@ -22,19 +23,22 @@ public class LightningRodEvent implements Listener{
 		
 	}
 	
+	
 	@EventHandler
 	public void LightningRodCheck(PlayerInteractEvent event) {
+		try {
 		Player player = event.getPlayer();
+		ConsoleCommandSender cns = this.plugin.getServer().getConsoleSender();
 		
 		if(player.getInventory().getItemInMainHand() == null){
 			event.setCancelled(true);
 		}
 		ArrayList<String> lore = new ArrayList<String>();
-		lore.add("Â§4Â§lPosiden's");
-		lore.add("Â§4Â§lFury");
+		lore.add("§4§lPosiden's");
+		lore.add("§4§lFury");
 		
 		if(player.getInventory().getItemInMainHand().getType() == (Material.STICK) && 
-				player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals("Â§bÂ§lLightning Â§bÂ§lRod")
+				player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals("§b§lLightning §b§lRod")
 			      && player.getInventory().getItemInMainHand().getItemMeta().getLore().equals(lore)
 				&& player.hasPermission("kelson.lightning_rod")) {
 			
@@ -42,18 +46,19 @@ public class LightningRodEvent implements Listener{
 			//Bukkit.broadcastMessage(ChatColor.RED + "DEATH has been struck upon thee. I BLAME: " + player.getName());
 		
 			//Main instance = Main.getInstance();
+			
+			cns.sendMessage(player.getName() + " Has struck lightning!");
 			for (int i=0; i<5 ; i++) { // Change int i to however many lightning strikes i want, cannot get it to work with config for now.
 				// Loops the code below as many times as i is less then number above
 				
 				player.getWorld().strikeLightning(player.getTargetBlock(null, 50).getLocation());
 				
 				}
-			
-			
-			//int lstrike_int = plugin.getConfig().getInt("lightning_strikes"); //This code gives null pointer, try to fix.
-			//for (int i=0; i < lstrike_int; i++) {
-		}		
+		}
+	} catch (NullPointerException e){
+		e.printStackTrace();
 	}
 	
-	
+	}
+
 }
