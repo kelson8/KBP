@@ -17,7 +17,7 @@ public class LocalChatEvent implements Listener
 {
     KbpMain plugin;
     
-    public LocalChatEvent(final KbpMain plugin) {
+    public LocalChatEvent(KbpMain plugin) {
         this.plugin = plugin;
     }
     
@@ -25,11 +25,11 @@ public class LocalChatEvent implements Listener
     }
     
     @EventHandler
-    public void onPlayerChat(final AsyncPlayerChatEvent event) {
-        final Player player = event.getPlayer();
-        final String localChatFormat = ChatColor.GOLD + "[LocalChat] " + ChatColor.AQUA + player.getName() + ": " + ChatColor.GREEN;
-        final String message = event.getMessage();
-        final String messageColor = ChatColor.translateAlternateColorCodes('&', message).replaceFirst("@", "");
+    public void onPlayerChat(AsyncPlayerChatEvent event) {
+        Player player = event.getPlayer();
+        String localChatFormat = ChatColor.GOLD + "[LocalChat] " + ChatColor.AQUA + player.getName() + ": " + ChatColor.GREEN;
+        String message = event.getMessage();
+        String messageColor = ChatColor.translateAlternateColorCodes('&', message).replaceFirst("@", "");
         
         if (message.length() > 1 && message.startsWith("@")) {
             if (player.hasPermission("kelson.localchat.color")) {
@@ -39,12 +39,12 @@ public class LocalChatEvent implements Listener
                 event.setFormat(localChatFormat + event.getMessage().replaceFirst("@", ""));
             }
             
-            final Location playerLoc = event.getPlayer().getLocation();
+            Location playerLoc = event.getPlayer().getLocation();
             
-            final List<Player> recipients = new ArrayList<Player>();
+            List<Player> recipients = new ArrayList<Player>();
             
-            for (final Player recipient : Bukkit.getServer().getOnlinePlayers()) {
-                final Location recipientLoc = recipient.getLocation();
+            for (Player recipient : Bukkit.getServer().getOnlinePlayers()) {
+                Location recipientLoc = recipient.getLocation();
                 
                 if (recipientLoc.getWorld().equals(playerLoc.getWorld()) && recipient.getLocation().distance(playerLoc) <= 50.0 
                 		&& !recipient.getName().equals(player.getName()) 
