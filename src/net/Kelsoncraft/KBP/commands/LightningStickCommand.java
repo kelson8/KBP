@@ -11,10 +11,15 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.w3c.dom.events.Event;
 
 import net.Kelsoncraft.KBP.KbpMain;
 import net.Kelsoncraft.KBP.util.Messages;
+
+/**
+ * 
+ * @author kelson8
+ *
+ */
 
 public class LightningStickCommand implements CommandExecutor{
     KbpMain plugin;
@@ -23,7 +28,8 @@ public class LightningStickCommand implements CommandExecutor{
         this.plugin = passedPlugin;
     }
 
-    public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
+    @SuppressWarnings("deprecation")
+	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
     	
     	if(!(sender instanceof Player)) {
     		if(cmd.getName().equalsIgnoreCase("lightningstick") && args.length == 0) {
@@ -45,8 +51,8 @@ public class LightningStickCommand implements CommandExecutor{
     			targetPlayer.sendMessage(Messages.KBP_Main + "You have been given a lightning stick from console.");
     			sender.sendMessage(Messages.KBP_Main + "You have given a lightning stick to " + targetPlayer.getName() + "!");
     			
-    			meta.setDisplayName("Â§bÂ§lLightning Â§bÂ§lRod");
-    			meta.setLore(Arrays.asList("Â§4Â§lPosiden's", "Â§4Â§lFury"));
+    			meta.setDisplayName("§b§lLightning §b§lRod");
+    			meta.setLore(Arrays.asList("§4§lPosiden's", "§4§lFury"));
     			item.setItemMeta(meta);
     			
     			targetPlayerInv.addItem(item);
@@ -65,9 +71,9 @@ public class LightningStickCommand implements CommandExecutor{
     			ItemStack item = new ItemStack(Material.STICK);
     			ItemMeta meta = item.getItemMeta();
     			
-    			meta.setDisplayName("Â§bÂ§lLightning Â§bÂ§lRod");
+    			meta.setDisplayName("§b§lLightning §b§lRod");
     			
-    			meta.setLore(Arrays.asList("Â§4Â§lPosiden's", "Â§4Â§lFury"));
+    			meta.setLore(Arrays.asList("§4§lPosiden's", "§4§lFury"));
     			item.setItemMeta(meta);
     			
     			playerInv.addItem(item);
@@ -91,8 +97,8 @@ public class LightningStickCommand implements CommandExecutor{
         			targetPlayer.sendMessage(Messages.KBP_Main + sender.getName() + " has given you a lightning stick!");
         			sender.sendMessage(Messages.KBP_Main + "You have given a lightning stick to " + targetPlayer.getName() + "!");
         			
-        			meta.setDisplayName("Â§bÂ§lLightning Â§bÂ§lRod");
-        			meta.setLore(Arrays.asList("Â§4Â§lPosiden's", "Â§4Â§lFury"));
+        			meta.setDisplayName("§b§lLightning §b§lRod");
+        			meta.setLore(Arrays.asList("§4§lPosiden's", "§4§lFury"));
         			item.setItemMeta(meta);
 
         			targetPlayerInv.addItem(item);

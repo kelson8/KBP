@@ -25,16 +25,6 @@ commands:
     permission: kelson.ipbans
     permission-message: You do not have permission to use this command!
 
-  enablewhitelist:
-    description: Enables the whitelist
-    permission: kelson.enablewhitelist
-    permission-message: You do not have permission to use this command! 
-
-  disablewhitelist:
-    description: Disables the whitelist
-    permission: kelson.disablewhitelist
-    permission-message: You do not have permission to use this command!
-
   kheal:
     description: Heals the player heals another player if a name is specified.
     permission: kelson.heal
@@ -99,6 +89,16 @@ commands:
     
   inv_test:
     description: Testing creating an inventory.
+    
+  kbp:
+    description: Reload command and version command.
+    
+  enderchest:
+    description: Opens an ender chest for you.
+    aliases: [ec]
+    
+  test1:
+    description: test.
 
 permissions:
    kelson.*:
@@ -135,6 +135,8 @@ permissions:
        kelson.flyspeed: true
        kelson.place.bedrock: true
        kelson.inv_test: true
+       kelson.enderchest.others: true
+       kelson.enderchest: true
        
    kelson.default.*:
      description: Gives the default permissions using Kelsons Plugin.

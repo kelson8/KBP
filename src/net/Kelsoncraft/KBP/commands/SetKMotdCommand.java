@@ -16,7 +16,6 @@ public class SetKMotdCommand implements CommandExecutor{
 		this.plugin = passedPlugin;
 	}
 
-
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
 
 	        if(!(sender instanceof Player)){
@@ -26,38 +25,40 @@ public class SetKMotdCommand implements CommandExecutor{
                 return true;
 	      }
 
-        StringBuilder str = new StringBuilder();
-        for (int i = 0; i < args.length; i++) {
-                str.append(args[i] + " ");
-        }
-        String motd = str.toString();
-        plugin.getConfig().set("motd", motd);
-        plugin.saveConfig();
-        sender.sendMessage(ChatColor.GREEN + "MOTD set to: " + motd);
+	                   StringBuilder str = new StringBuilder();
+	                   for (int i = 0; i < args.length; i++) {
+	                	   str.append(args[i] + " ");
+	                   }
+	                   
+	                   String motd = str.toString();
+	                   plugin.getConfig().set("motd", motd);
+	                   plugin.saveConfig();
+	                   sender.sendMessage(ChatColor.GREEN + "MOTD set to: " + motd);
 	                }
 	        }
 
 	        if(sender instanceof Player){
-	        if (cmd.getName().equalsIgnoreCase("setkmotd") && sender.hasPermission("kelson.setkmotd")) {
+	        	if (cmd.getName().equalsIgnoreCase("setkmotd") && sender.hasPermission("kelson.setkmotd")) {
 
-	            if (args.length == 0) {
-	              sender.sendMessage(ChatColor.RED + "Please specify a message!");
-                  return true;
-        }
+	        		if (args.length == 0) {
+	        			sender.sendMessage(ChatColor.RED + "Please specify a message!");
+	        			return true;
+	        		}
 
-	            StringBuilder str = new StringBuilder();
-	            for (int i = 0; i < args.length; i++) {
-	                    str.append(args[i] + " ");
-        }
-	            String motd = str.toString();
-	            plugin.getConfig().set("motd", motd);
-	            plugin.saveConfig();
-	            sender.sendMessage(ChatColor.GREEN + "MOTD set to: " + motd);
-	       }
-	    }
+	        		StringBuilder str = new StringBuilder();
+	        		for (int i = 0; i < args.length; i++) {
+	        			str.append(args[i] + " ");
+	        		}
+	        		
+	        		String motd = str.toString();
+	        		plugin.getConfig().set("motd", motd);
+	        		plugin.saveConfig();
+	        		sender.sendMessage(ChatColor.GREEN + "MOTD set to: " + motd);
+	        	}
+	        }
 	        if (!sender.hasPermission("kelson.setmotd")){
-	    	sender.sendMessage(Messages.NoPermissionError());
-	    }
+	        	sender.sendMessage(Messages.NoPermissionError());
+	        }
 	     return false;
 	}
 

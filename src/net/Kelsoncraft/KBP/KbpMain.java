@@ -11,8 +11,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import net.Kelsoncraft.KBP.commands.DisablewhitelistCommand;
-import net.Kelsoncraft.KBP.commands.EnablewhitelistCommand;
+import net.Kelsoncraft.KBP.commands.EnderChestCommand;
 import net.Kelsoncraft.KBP.commands.FlyCommand;
 import net.Kelsoncraft.KBP.commands.FlySpeedCommand;
 import net.Kelsoncraft.KBP.commands.GodCommand;
@@ -26,22 +25,23 @@ import net.Kelsoncraft.KBP.commands.LocationCommand;
 import net.Kelsoncraft.KBP.commands.NightVisionCommand;
 import net.Kelsoncraft.KBP.commands.PlayerInfoCommand;
 import net.Kelsoncraft.KBP.commands.SetKMotdCommand;
+import net.Kelsoncraft.KBP.commands.InvTestCommands;
 import net.Kelsoncraft.KBP.util.Events;
 import net.Kelsoncraft.KBP.util.LightningRodEvent;
 import net.Kelsoncraft.KBP.util.LocalChatEvent;
 import net.Kelsoncraft.KBP.util.Messages;
 
-public class KbpMain extends JavaPlugin implements Listener{
-	//The config file stuff can be in other classes by typing plugin.getConfig or just plugin.
-	public final Logger logger = Logger.getLogger("Minecraft.KBP");
-	public static KbpMain plugin;
-	private static KbpMain instance;
+/**
+ * 
+ * @author kelson8
+ *
+ */
 
-	/*
-	public KbpMain(){
-	}*/
+public class KbpMain extends JavaPlugin implements Listener{
+	public final Logger logger = Logger.getLogger("Minecraft.KBP");
+	//public static KbpMain plugin;
 	
-	/*
+	/* 
 	 * Part of this plugin has been inspired by the IDP source code 
 	 * from the old Innectis server. 
 	 * https://github.com/MisterVector/Innectis-Dedicated-Plugin/
@@ -63,8 +63,8 @@ public class KbpMain extends JavaPlugin implements Listener{
 	@Override
 	public void onDisable() {
 		this.logger.info(pluginName + " v" + pluginVersion + " Has Been Disabled!");
-
 	}
+	
 	@Override
 	public void onEnable() {
 		
@@ -74,20 +74,13 @@ public class KbpMain extends JavaPlugin implements Listener{
 		RegisterEvents();
 		getConfig().options().copyDefaults(true);
 		saveConfig();
-
-	}
-	
-	public static KbpMain getInstance(){
-		return instance;
 	}
 	
 	private PluginDescriptionFile pdfFile = this.getDescription();
 	private String pluginName = pdfFile.getName();
 	private String pluginVersion = pdfFile.getVersion();
 
-	private void RegisterCommands(){
-		this.getCommand("disablewhitelist").setExecutor(new DisablewhitelistCommand(this)); //remove for mini version
-		this.getCommand("enablewhitelist").setExecutor(new EnablewhitelistCommand(this)); //remove for mini version
+	private void RegisterCommands() {
 		this.getCommand("fly").setExecutor(new FlyCommand(this)); // keep in mini version
 		this.getCommand("kheal").setExecutor(new KHealCommand(this));
 		this.getCommand("location").setExecutor(new LocationCommand(this));
@@ -101,6 +94,9 @@ public class KbpMain extends JavaPlugin implements Listener{
 		this.getCommand("itemrename").setExecutor(new ItemRenameCommand(this));
 		this.getCommand("flyspeed").setExecutor(new FlySpeedCommand(this)); //remove for mini version
 		this.getCommand("kbp").setExecutor(new KbpCommands(this));
+		this.getCommand("enderchest").setExecutor(new EnderChestCommand(this));
+		this.getCommand("inv_test").setExecutor(new InvTestCommands(this));
+		this.getCommand("test1").setExecutor(new InvTestCommands(this));
 		//this.getCommand("stick").setExecutor(new SpecialStickCommands(this)); //temporarily remove this command, it needs worked on.
 
 	}

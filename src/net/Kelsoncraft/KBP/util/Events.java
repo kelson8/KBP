@@ -1,10 +1,8 @@
 package net.Kelsoncraft.KBP.util;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import org.bukkit.GameMode;
-import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -12,48 +10,45 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
+import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.event.player.PlayerItemHeldEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerToggleFlightEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.potion.PotionEffectType;
 
 import net.Kelsoncraft.KBP.KbpMain;
 
+@SuppressWarnings("deprecation") //Why is almost everything deprecated in the latest 1.16.5 paper verisons?
 public class Events implements Listener{
 KbpMain plugin;
 	
 	public Events(KbpMain passedPlugin) {
 		this.plugin = passedPlugin;
 	}
+	
 	public Events(){
 		//This is what goes in the onEnable() in the main class don't remove it!
 	}
 	
-	/*
+	//Test this later.
+    @EventHandler
+    public void onPlayerJoin(PlayerJoinEvent event) {
+            Player player = event.getPlayer();
+            player.sendMessage(plugin.getConfig().getString("motd"));
+    }
+	
 	@EventHandler
-	public void onPlayerInteractBlock(PlayerInteractEvent event){
-		Player player = event.getPlayer();
-		// Possibly test this for something later.. Bukkit.getOfflinePlayers();
-
-		//TODO possibly hook into vault and use that to give/remove a players permission on command, ex: /destroy <on/off> [player]
-		// Also add it for the hunger one, /nohunger <on/off>, on will give the permission and off will remove it
-
-		// Chaos mode begins..
+	public void onClick(InventoryClickEvent event) {
 		
-		
-		if(player.getInventory().getItemInMainHand().getType() == Material.BARRIER && player.hasPermission("kelson.destroy")) {
-			//player.getWorld().strikeLightning(player.getTargetBlock(null, 50).getLocation());
-			//for (int i=0; i<3; i++) {
-			player.getWorld().createExplosion(player.getTargetBlock(null, 50).getLocation(), 100);
-			//}
-		}
-		if(player.getInventory().getItemInMainHand().getType() == Material.BEDROCK && player.hasPermission("kelson.destroy")){
-
-			player.getWorld().strikeLightning(player.getTargetBlock(null, 50).getLocation());
-
-		}
-
 	}
-	*/
+	
+	//Test this event later.
+	@EventHandler
+	public void holdItem(PlayerItemHeldEvent event) {
+		
+	}
 	
 	@EventHandler
 	public void godModeEnable(FoodLevelChangeEvent event){
@@ -73,13 +68,13 @@ KbpMain plugin;
 	@EventHandler
 	public void onFoodChange(FoodLevelChangeEvent e) {
 		
-		if(e.getEntity().hasPermission("kelson.no.hunger")) {
+		if(e.getEntity().hasPermission("kelson.no.hunger") && e.getEntity().hasPotionEffect(PotionEffectType.NIGHT_VISION)) {
+
 			e.setCancelled(true);
 		} else {
 			e.setCancelled(false);
 		}
 	}
-	
 	
 	@EventHandler
 	public void flyListener(PlayerToggleFlightEvent e) {
@@ -95,9 +90,15 @@ KbpMain plugin;
 			e.setCancelled(true);
 		}
 		*/
+		Player player = e.getPlayer();
+		if(player.getAllowFlight() && player.getWorld().getName().equals("survival") && !player.hasPermission("kelson.fly.survival")) {
+			e.setCancelled(true);
+			
+		} else {
+			e.setCancelled(false);
+		}
 		
 	}
-	
 	
 	@EventHandler
 	//This code makes it to where the lightning stick won't break blocks.
@@ -130,6 +131,7 @@ KbpMain plugin;
 			if(inv.getType() == Material.BEDROCK && !player.hasPermission("kelson.place.bedrock") && player.getGameMode().equals(GameMode.SURVIVAL)) {
 				e.setCancelled(true);
 				player.sendMessage(Messages.KBP_errormsg() + "You cannot place bedrock in survival!");
+				//plugin.logger.log(Level.WARNING, player.getName() + " Has somehow obtained bedrock in " + player.getGameMode().toString());
 			} else {
 				e.setCancelled(false);
 			}
@@ -146,7 +148,5 @@ KbpMain plugin;
 			event.setCancelled(true);
 		}
 	}
-	
-	public final HashMap<Location, String> signs = new HashMap<Location, String>(); //? I have no idea what this does.
 
 }

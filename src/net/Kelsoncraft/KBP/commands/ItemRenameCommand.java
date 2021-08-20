@@ -9,9 +9,11 @@ import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.jetbrains.annotations.NotNull;
 
 import net.Kelsoncraft.KBP.KbpMain;
 import net.Kelsoncraft.KBP.util.Messages;
+import net.md_5.bungee.api.chat.hover.content.Item;
 
 public class ItemRenameCommand implements CommandExecutor{
 
@@ -21,6 +23,7 @@ public class ItemRenameCommand implements CommandExecutor{
 		this.plugin = passedPlugin;
 	}
 	
+	@SuppressWarnings("deprecation")
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String CommandLabel, String[] args) {
 		
@@ -30,9 +33,9 @@ public class ItemRenameCommand implements CommandExecutor{
 			
 		Player player = (Player) sender;
 		if(cmd.getName().equalsIgnoreCase("itemrename") && sender.hasPermission("kelson.rename")) {
-			sender.sendMessage(Messages.KBP_Main + "Not implemented yet!");
-			/*
-			 * Failure, doesn't work at all.
+			//sender.sendMessage(Messages.KBP_Main + "Not implemented yet!");
+			
+			 //Failure, doesn't work at all.
 			if (args.length == 0) {
 				sender.sendMessage(Messages.KBP_errormsg() + "Invalid usage, /itemrename <name>");
 				return true;
@@ -41,18 +44,20 @@ public class ItemRenameCommand implements CommandExecutor{
 			if (args.length == 1){// && args[0].equals(player.getInventory().getItemInMainHand().getType().toString())) {
 				PlayerInventory playerinv = player.getInventory();
 				ItemMeta meta = playerinv.getItemInMainHand().getItemMeta();
-				InventoryType item1 = playerinv.getType();
+				ItemStack item = player.getInventory().getItemInMainHand();
+				InventoryType invtype = playerinv.getType();
 				
 				
+				//player.getInventory().getItemInMainHand().setItemMeta(meta);
 				
 				meta.setDisplayName(args[0]);
 				return true;
-			}
+				}
 			
 				
 			if(player.getInventory().getItemInMainHand().getType() == Material.AIR) {
 				sender.sendMessage(Messages.KBP_errormsg() + "You cannot use this command on air!");
-			}*/
+			}
 		
 			
 			//sender.sendMessage(Messages.KBP_Main + "Not implemented yet!");

@@ -16,6 +16,7 @@ public class KbpCommands implements CommandExecutor {
 		this.plugin = passedPlugin;
 	}
 
+		@SuppressWarnings("deprecation")
 		public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
 		if(cmd.getName().equalsIgnoreCase("kbp")) {
 			if(args.length == 0) {
