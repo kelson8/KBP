@@ -1,39 +1,31 @@
 package net.Kelsoncraft.KBP_mini.util;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
-import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
-import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
-import org.bukkit.event.player.AsyncPlayerChatEvent;
-import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.event.player.PlayerToggleFlightEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.potion.PotionEffectType;
 
 import net.Kelsoncraft.KBP_mini.KbpMain;
 
-@SuppressWarnings("unused")
-public class Events implements Listener{
+public class Events implements Listener {
 KbpMain plugin;
 	
 	public Events(KbpMain passedPlugin) {
 		this.plugin = passedPlugin;
 	}
+	
 	public Events(){
 		//This is what goes in the onEnable() in the main class don't remove it!
 	}
-
+	
 	@EventHandler
 	public void godModeEnable(FoodLevelChangeEvent event){
 
@@ -52,13 +44,14 @@ KbpMain plugin;
 	@EventHandler
 	public void onFoodChange(FoodLevelChangeEvent e) {
 		
-		if(e.getEntity().hasPermission("kelson.no.hunger")) {
+		if(e.getEntity().hasPermission("kelson.no.hunger") && e.getEntity().hasPotionEffect(PotionEffectType.NIGHT_VISION)) {
+
 			e.setCancelled(true);
 		} else {
 			e.setCancelled(false);
 		}
 	}
-
+	
 	@EventHandler
 	//This code makes it to where the lightning stick won't break blocks.
 	
@@ -79,7 +72,7 @@ KbpMain plugin;
 			event.setCancelled(false);
 			}
 		}
-
+	
 	@EventHandler
 	public void onBlockPlace(BlockPlaceEvent e) {
 		Player player = e.getPlayer();
@@ -90,23 +83,11 @@ KbpMain plugin;
 			if(inv.getType() == Material.BEDROCK && !player.hasPermission("kelson.place.bedrock") && player.getGameMode().equals(GameMode.SURVIVAL)) {
 				e.setCancelled(true);
 				player.sendMessage(Messages.KBP_errormsg() + "You cannot place bedrock in survival!");
+				//plugin.logger.log(Level.WARNING, player.getName() + " Has somehow obtained bedrock in " + player.getGameMode().toString());
 			} else {
 				e.setCancelled(false);
 			}
 		}
 		
 	}
-
-	@EventHandler
-	public void onPlayerChat1(AsyncPlayerChatEvent event) {
-		Player player = event.getPlayer();
-
-		if(event.getMessage().contains(".help") && player.hasPermission("kelson.secret.commands.help")){
-			player.sendMessage("Secret command usage: .help");
-			event.setCancelled(true);
-		}
-	}
-	
-	public final HashMap<Location, String> signs = new HashMap<Location, String>(); //? I have no idea what this does.
-
 }

@@ -12,6 +12,7 @@ import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import net.Kelsoncraft.KBP_mini.commands.FlyCommand;
+import net.Kelsoncraft.KBP_mini.commands.KbpCommands;
 import net.Kelsoncraft.KBP_mini.commands.LightningCommand;
 import net.Kelsoncraft.KBP_mini.commands.LightningStickCommand;
 import net.Kelsoncraft.KBP_mini.commands.LocationCommand;
@@ -22,14 +23,13 @@ import net.Kelsoncraft.KBP_mini.util.LightningRodEvent;
 import net.Kelsoncraft.KBP_mini.util.LocalChatEvent;
 import net.Kelsoncraft.KBP_mini.util.Messages;
 
-public class KbpMain extends JavaPlugin implements Listener{
-	//The config file stuff can be in other classes by typing plugin.getConfig or just plugin.
-	public final Logger logger = Logger.getLogger("Minecraft.KBP");
-	public static KbpMain plugin;
-	public static KbpMain instance;
+/**
+ * @author kelson8
+ */
 
-	public KbpMain(){
-	}
+public class KbpMain extends JavaPlugin implements Listener{
+	public final Logger logger = Logger.getLogger("Minecraft.KBP");
+	//public static KbpMain plugin;
 	
 	/*
 	 * Part of this plugin has been inspired by the IDP source code 
@@ -67,10 +67,6 @@ public class KbpMain extends JavaPlugin implements Listener{
 
 	}
 	
-	public static KbpMain getInstance(){
-		return instance;
-	}
-	
 	private PluginDescriptionFile pdfFile = this.getDescription();
 	private String pluginName = pdfFile.getName();
 	private String pluginVersion = pdfFile.getVersion();
@@ -78,18 +74,18 @@ public class KbpMain extends JavaPlugin implements Listener{
 	private void RegisterCommands(){
 		this.getCommand("fly").setExecutor(new FlyCommand(this));
 		this.getCommand("location").setExecutor(new LocationCommand(this));
-		this.getCommand("kelson-reload").setExecutor(new net.Kelsoncraft.KBP_mini.util.KelsonReloadCommand(this));
 		this.getCommand("playerinfo").setExecutor(new PlayerInfoCommand(this));
 		this.getCommand("nightvision").setExecutor(new NightVisionCommand(this));
 		this.getCommand("lightning").setExecutor(new LightningCommand(this));
 		this.getCommand("lightningstick").setExecutor(new LightningStickCommand(this));
+		this.getCommand("kbp").setExecutor(new KbpCommands(this));
 	}
 
 	private void RegisterEvents(){
 		Bukkit.getServer().getPluginManager().registerEvents(this, this);
-		Bukkit.getServer().getPluginManager().registerEvents(new Events(), this);
-		Bukkit.getServer().getPluginManager().registerEvents(new LightningRodEvent(), this);
-		Bukkit.getServer().getPluginManager().registerEvents(new LocalChatEvent(), this);
+		Bukkit.getServer().getPluginManager().registerEvents(new Events(this), this);
+		Bukkit.getServer().getPluginManager().registerEvents(new LightningRodEvent(this), this);
+		Bukkit.getServer().getPluginManager().registerEvents(new LocalChatEvent(this), this);
 	}
 
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {

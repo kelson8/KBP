@@ -13,57 +13,51 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 
 import net.Kelsoncraft.KBP_mini.KbpMain;
 
-public class LocalChatEvent implements Listener{
-	
-	KbpMain plugin;
-	
-	public LocalChatEvent(KbpMain passedPlugin) {
-		this.plugin = passedPlugin;
-	}
-	public LocalChatEvent() {
-		
-	}
-	
-	@EventHandler
-	public void onPlayerChat(AsyncPlayerChatEvent event) {
-	    /*if(plugin.getConfig().getString("localchat") == null) {
-			event.setCancelled(true);
-		}*/ //This should check if the localchat string in the config is null, not working right now.
-
-		
-		Player player = event.getPlayer();
-		String message = event.getMessage();
-		//This is the localchat in this plugin
-	    if(message.length() > 1 && message.startsWith("@")){
-	    	
-	    //TODO make this below work with a value from config
-		//if (message.length() > 1 && message.startsWith(plugin.getConfig().getString("localchat").toString())) {
-	    	
-	      event.setFormat(ChatColor.GOLD + "[LocalChat] " + ChatColor.AQUA + player.getName() + ": " + ChatColor.GREEN + event.getMessage()
-	    		  .replace("@", ""));
-	      event.getRecipients().clear();
-	      
-	      Location playerLoc = event.getPlayer().getLocation(); 
-	      
-	      List<Player> recipients = new ArrayList<Player>();
-	      
-	      for(Player recipient : Bukkit.getServer().getOnlinePlayers()) {
-	    	  Location recipientLoc = recipient.getLocation();
-	    	  
-	        if(recipientLoc.getWorld().equals(playerLoc.getWorld()) 
-	        		&& recipient.getLocation().distance(playerLoc) <= 50
-	        		&& recipient.getWorld() == player.getWorld()) {
-
-	        	recipients.add(recipient);
-                event.getRecipients().addAll(recipients);
-                event.setMessage(message);
+public class LocalChatEvent implements Listener {
+    KbpMain plugin;
+    
+    public LocalChatEvent(KbpMain plugin) {
+        this.plugin = plugin;
+    }
+    
+    public LocalChatEvent() {
+    }
+    
+    @EventHandler
+    public void onPlayerChat(AsyncPlayerChatEvent event) {
+        Player player = event.getPlayer();
+        String localChatFormat = ChatColor.GOLD + "[LocalChat] " + ChatColor.AQUA + player.getName() + ": " + ChatColor.GREEN;
+        String message = event.getMessage();
+        String messageColor = ChatColor.translateAlternateColorCodes('&', message).replaceFirst("@", "");
+        
+        if (message.length() > 1 && message.startsWith("@")) {
+            if (player.hasPermission("kelson.localchat.color")) {
+                event.setFormat(localChatFormat + messageColor);
                 
-	        } else { //Runs when no one else is nearby.
-	        	event.getPlayer().sendMessage(Messages.KBP_errormsg() + "No one was around!");
-                event.setCancelled(true);	
+            } else {
+                event.setFormat(localChatFormat + event.getMessage().replaceFirst("@", ""));
+            }
+            
+            Location playerLoc = event.getPlayer().getLocation();
+            
+            List<Player> recipients = new ArrayList<Player>();
+            
+            for (Player recipient : Bukkit.getServer().getOnlinePlayers()) {
+                Location recipientLoc = recipient.getLocation();
+                
+                if (recipientLoc.getWorld().equals(playerLoc.getWorld()) && recipient.getLocation().distance(playerLoc) <= 50.0 
+                		&& !recipient.getName().equals(player.getName()) 
+                		&& recipient.getWorld() == player.getWorld()) {
+                    
+                	recipients.add(recipient);
+                    event.getRecipients().addAll(recipients);
+                    event.setMessage(message);
+                    
+                } else {
+                    event.getPlayer().sendMessage(Messages.KBP_errormsg() + "No one was around!");
+                    event.setCancelled(true);
                 }
-
-	    	}
-	    }
-	}
+            }
+        }
+    }
 }

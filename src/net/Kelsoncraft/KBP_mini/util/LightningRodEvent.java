@@ -10,7 +10,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 
 import net.Kelsoncraft.KBP_mini.KbpMain;
 
-public class LightningRodEvent implements Listener{
+public class LightningRodEvent implements Listener {
 
     KbpMain plugin;
 	
@@ -22,9 +22,12 @@ public class LightningRodEvent implements Listener{
 		
 	}
 	
+	
 	@EventHandler
 	public void LightningRodCheck(PlayerInteractEvent event) {
+		try {
 		Player player = event.getPlayer();
+		//ConsoleCommandSender cns = this.plugin.getServer().getConsoleSender();
 		
 		if(player.getInventory().getItemInMainHand() == null){
 			event.setCancelled(true);
@@ -38,22 +41,22 @@ public class LightningRodEvent implements Listener{
 			      && player.getInventory().getItemInMainHand().getItemMeta().getLore().equals(lore)
 				&& player.hasPermission("kelson.lightning_rod")) {
 			
+			
 			//TODO set message below where it randomly runs when the lightning stick is being used.
 			//Bukkit.broadcastMessage(ChatColor.RED + "DEATH has been struck upon thee. I BLAME: " + player.getName());
-		
-			//Main instance = Main.getInstance();
-			for (int i=0; i<5 ; i++) { // Change int i to however many lightning strikes i want, cannot get it to work with config for now.
-				// Loops the code below as many times as i is less then number above
+			
+			//cns.sendMessage(player.getName() + " Has struck lightning!");
+			
+			for (int i=0; i<plugin.getConfig().getInt("lightning_strikes"); i++) {
 				
 				player.getWorld().strikeLightning(player.getTargetBlock(null, 50).getLocation());
 				
 				}
-			
-			
-			//int lstrike_int = plugin.getConfig().getInt("lightning_strikes"); //This code gives null pointer, try to fix.
-			//for (int i=0; i < lstrike_int; i++) {
-		}		
+		}
+	} catch (NullPointerException e){
+		e.printStackTrace();
 	}
 	
-	
+	}
+
 }

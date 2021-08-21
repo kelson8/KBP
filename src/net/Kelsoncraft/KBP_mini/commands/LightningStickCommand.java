@@ -11,10 +11,15 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.w3c.dom.events.Event;
 
 import net.Kelsoncraft.KBP_mini.KbpMain;
 import net.Kelsoncraft.KBP_mini.util.Messages;
+
+/**
+ * 
+ * @author kelson8
+ *
+ */
 
 public class LightningStickCommand implements CommandExecutor{
     KbpMain plugin;
