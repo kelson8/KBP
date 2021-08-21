@@ -33,11 +33,11 @@ public class LightningRodEvent implements Listener {
 			event.setCancelled(true);
 		}
 		ArrayList<String> lore = new ArrayList<String>();
-		lore.add("§4§lPosiden's");
-		lore.add("§4§lFury");
+		lore.add("Â§4Â§lPosiden's");
+		lore.add("Â§4Â§lFury");
 		
 		if(player.getInventory().getItemInMainHand().getType() == (Material.STICK) && 
-				player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals("§b§lLightning §b§lRod")
+				player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals("Â§bÂ§lLightning Â§bÂ§lRod")
 			      && player.getInventory().getItemInMainHand().getItemMeta().getLore().equals(lore)
 				&& player.hasPermission("kelson.lightning_rod")) {
 			

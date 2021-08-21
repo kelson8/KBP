@@ -14,9 +14,6 @@ commands:
     permission: kelson.fly
     permission-message: You do not have permission to use this command!
 
-  showxp:
-    description: Shows the amount of xp the player has.
-
   location:
     description: Shows the location of the world your in.
 
@@ -102,7 +99,7 @@ commands:
 
 permissions:
    kelson.*:
-     description: Gives all permissions using Kelsons Plugin.
+     description: Gives all permissions using KBP.
      default: op
      children:
        kelson.fly: true
@@ -139,7 +136,7 @@ permissions:
        kelson.enderchest: true
        
    kelson.default.*:
-     description: Gives the default permissions using Kelsons Plugin.
+     description: Gives the default permissions using KBP.
      default: true
      children:
        kelson.location: true

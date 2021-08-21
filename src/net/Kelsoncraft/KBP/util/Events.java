@@ -90,14 +90,6 @@ KbpMain plugin;
 			e.setCancelled(true);
 		}
 		*/
-		Player player = e.getPlayer();
-		if(player.getAllowFlight() && player.getWorld().getName().equals("survival") && !player.hasPermission("kelson.fly.survival")) {
-			e.setCancelled(true);
-			
-		} else {
-			e.setCancelled(false);
-		}
-		
 	}
 	
 	@EventHandler
@@ -107,14 +99,14 @@ KbpMain plugin;
 		Player player = event.getPlayer();
 		
 		ArrayList<String> lore = new ArrayList<String>();
-		lore.add("§4§lPosiden's");
-		lore.add("§4§lFury");
+		lore.add("Â§4Â§lPosiden's");
+		lore.add("Â§4Â§lFury");
 		
 		if(player.getInventory().getItemInMainHand().getType() == Material.STICK
-				  && player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals("§b§lLightning §b§lRod")
+				  && player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals("Â§bÂ§lLightning Â§bÂ§lRod")
 			      && player.getInventory().getItemInMainHand().getItemMeta().getLore().equals(lore)) {
 				  //&& player.hasPermission("kelson.lightning_rod")) {
-		//if(meta.getDisplayName().equals("§b§lLightning §b§lRod") && meta.getLore().equals(Arrays.asList("§b§lPosiden's", "§b§lFury"))) {
+		//if(meta.getDisplayName().equals("Â§bÂ§lLightning Â§bÂ§lRod") && meta.getLore().equals(Arrays.asListÂ§bÂ§lPosiden's", "Â§bÂ§lFury"))) {
 			event.setCancelled(true);
 		} else {
 			event.setCancelled(false);
