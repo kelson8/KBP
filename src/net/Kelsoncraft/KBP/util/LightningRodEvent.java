@@ -10,6 +10,11 @@ import org.bukkit.event.player.PlayerInteractEvent;
 
 import net.Kelsoncraft.KBP.KbpMain;
 
+/**
+ * @author kelson
+ *
+ */
+
 public class LightningRodEvent implements Listener {
 
     KbpMain plugin;
@@ -46,6 +51,12 @@ public class LightningRodEvent implements Listener {
 			//Bukkit.broadcastMessage(ChatColor.RED + "DEATH has been struck upon thee. I BLAME: " + player.getName());
 			
 			//cns.sendMessage(player.getName() + " Has struck lightning!");
+			if(plugin.getConfig().getBoolean("lightning_message") == true){
+				player.sendMessage("You have struck " + plugin.getConfig().getInt("lightning_strikes") + " lightning bolts!");
+				
+				//Useless line below, just for messing around with.
+				//Bukkit.broadcastMessage(Messages.KBP_Main() + ChatColor.RED + "HAHA anything in " + ChatColor.WHITE + player.getName() + ChatColor.RED "'s path will be struck down by thor himself!!");
+			}
 			
 			for (int i=0; i<plugin.getConfig().getInt("lightning_strikes"); i++) {
 				

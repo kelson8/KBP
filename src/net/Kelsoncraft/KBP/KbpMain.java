@@ -39,7 +39,7 @@ import net.Kelsoncraft.KBP.util.Messages;
 
 public class KbpMain extends JavaPlugin implements Listener{
 	public final Logger logger = Logger.getLogger("Minecraft.KBP");
-	//public static KbpMain plugin;
+	public static KbpMain plugin;
 	
 	/* 
 	 * Part of this plugin has been inspired by the IDP source code 
@@ -97,6 +97,7 @@ public class KbpMain extends JavaPlugin implements Listener{
 		this.getCommand("enderchest").setExecutor(new EnderChestCommand(this));
 		this.getCommand("inv_test").setExecutor(new InvTestCommands(this));
 		this.getCommand("test1").setExecutor(new InvTestCommands(this));
+		this.getCommand("ranklist").setExecutor(new InvTestCommands(this));
 		//this.getCommand("stick").setExecutor(new SpecialStickCommands(this)); //temporarily remove this command, it needs worked on.
 
 	}

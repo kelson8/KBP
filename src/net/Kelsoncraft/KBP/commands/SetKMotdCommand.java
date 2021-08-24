@@ -8,6 +8,11 @@ import org.bukkit.entity.Player;
 import net.Kelsoncraft.KBP.KbpMain;
 import net.Kelsoncraft.KBP.util.Messages;
 
+/**
+ * @author kelson8
+ *
+ */
+
 public class SetKMotdCommand implements CommandExecutor{
 
 	KbpMain plugin;

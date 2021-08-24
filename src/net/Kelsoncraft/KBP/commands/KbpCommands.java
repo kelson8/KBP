@@ -8,10 +8,15 @@ import org.bukkit.entity.Player;
 import net.Kelsoncraft.KBP.KbpMain;
 import net.Kelsoncraft.KBP.util.Messages;
 
+/**
+ * @author kelson8
+ *
+ */
+
 public class KbpCommands implements CommandExecutor {
-	
+
 	KbpMain plugin;
-	
+
 	public KbpCommands(KbpMain passedPlugin){
 		this.plugin = passedPlugin;
 	}
@@ -22,27 +27,39 @@ public class KbpCommands implements CommandExecutor {
 			if(args.length == 0) {
 			sender.sendMessage("Command usage: /kbp <reload>, /kbp <version>");
 			}
+
 			if(args.length == 1) {
 				if(args[0].equalsIgnoreCase("reload")) {
+
 					if(!(sender instanceof Player)) {
 						plugin.reloadConfig();
+						sender.sendMessage(Messages.KBP_Main() + "You have reloaded the KBP config.");
+
+						if(plugin.getConfig().getBoolean("config_message") == true) {
 						plugin.getServer().broadcastMessage(Messages.KBP_Main() + "Console has reloaded the KBP config.");
 						return true;
+						}
+						
 					}
 					if(sender instanceof Player) {
 						if(sender.hasPermission("kelson.reload")) {
 						
 							Player player = (Player) sender;
 							plugin.reloadConfig();
-							plugin.getServer().broadcastMessage(Messages.KBP_Main() + player.getName() + " has reloaded the KBP config.");
-							return true;
+							player.sendMessage(Messages.KBP_Main() + "You have reloaded the KBP config.");
+							
+							if(plugin.getConfig().getBoolean("config_message") == true) {
+								plugin.getServer().broadcastMessage(Messages.KBP_Main() + player.getName() + " has reloaded the KBP config.");
+								return true;
+							}
+							
+							
 						
 						} else {
 							sender.sendMessage(Messages.NoPermissionError());
 						}
 					}
 				}
-				
 					if(args[0].equalsIgnoreCase("version")) {
 						sender.sendMessage(Messages.KBP_Main() + "KBP Version: " + plugin.getDescription().getVersion());
 					}

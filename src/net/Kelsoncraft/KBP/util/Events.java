@@ -19,6 +19,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffectType;
 
 import net.Kelsoncraft.KBP.KbpMain;
+import net.md_5.bungee.api.ChatColor;
 
 @SuppressWarnings("deprecation") //Why is almost everything deprecated in the latest 1.16.5 paper verisons?
 public class Events implements Listener{
@@ -36,7 +37,9 @@ KbpMain plugin;
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
             Player player = event.getPlayer();
-            player.sendMessage(plugin.getConfig().getString("motd"));
+            player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("motd"))
+            		.replace("%w", player.getWorld().getName())
+            		.replace("%s", player.getName()));
     }
 	
 	@EventHandler
