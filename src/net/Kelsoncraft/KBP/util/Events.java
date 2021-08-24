@@ -2,6 +2,7 @@ package net.Kelsoncraft.KBP.util;
 
 import java.util.ArrayList;
 
+import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -19,7 +20,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffectType;
 
 import net.Kelsoncraft.KBP.KbpMain;
-import net.md_5.bungee.api.ChatColor;
+
 
 @SuppressWarnings("deprecation") //Why is almost everything deprecated in the latest 1.16.5 paper verisons?
 public class Events implements Listener{
