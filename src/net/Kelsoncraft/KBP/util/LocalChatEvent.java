@@ -39,16 +39,13 @@ public class LocalChatEvent implements Listener
                 event.setFormat(localChatFormat + event.getMessage().replaceFirst("@", ""));
             }
             
-            Location playerLoc = event.getPlayer().getLocation();
-            
             List<Player> recipients = new ArrayList<Player>();
             
             for (Player recipient : Bukkit.getServer().getOnlinePlayers()) {
+                Location playerLoc = event.getPlayer().getLocation();
                 Location recipientLoc = recipient.getLocation();
                 
-                if (recipientLoc.getWorld().equals(playerLoc.getWorld()) && recipient.getLocation().distance(playerLoc) <= 50.0 
-                		&& !recipient.getName().equals(player.getName()) 
-                		&& recipient.getWorld() == player.getWorld()) {
+                if (recipientLoc.getWorld().equals(playerLoc.getWorld()) && recipient.getLocation().distance(playerLoc) <= 50.0) {
                     
                 	recipients.add(recipient);
                     event.getRecipients().addAll(recipients);
