@@ -55,6 +55,7 @@ commands:
   playerinfo:
    description: Shows a players info
 
+  # This one isn't implemented yet.
   nohunger:
     description: This command turns your hunger off
     
@@ -75,7 +76,8 @@ commands:
   lightningstick:
     description: Gives player a lightning rod
     aliases: [ls, lightningrod]
-    
+
+  # This one isn't implemented yet.
   itemrename:
     description: Renames item in hand, color codes with with symbol &
     aliases: [ir]
@@ -83,7 +85,8 @@ commands:
   flyspeed:
     description: Changes your flying speed
     aliases: [fs]
-    
+
+  # This one isn't implemented yet.
   inv_test:
     description: Testing creating an inventory.
     
@@ -96,7 +99,8 @@ commands:
     
   test1:
     description: test.
-    
+
+  # This one isn't completed yet.
   ranklist:
     description: Shows a list of the ranks on the server.
 
@@ -110,8 +114,6 @@ permissions:
        kelson.enablewhitelist: true
        kelson.ipbans: true
        kelson.reload: true
-       kelson.isop: true
-       kelson.nofire: true
        kelson.heal: true
        kelson.nametag: true
        kelson.kmotd: true

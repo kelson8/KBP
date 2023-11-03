@@ -20,7 +20,8 @@ public class LocalChatEvent implements Listener
     public LocalChatEvent(KbpMain plugin) {
         this.plugin = plugin;
     }
-    
+
+    // Is this even doing anything? It says it's not used.
     public LocalChatEvent() {
     }
     
