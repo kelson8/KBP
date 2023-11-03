@@ -22,37 +22,34 @@ public class LocalChatEvent implements Listener {
     
     public LocalChatEvent() {
     }
-    
+
     @EventHandler
     public void onPlayerChat(AsyncPlayerChatEvent event) {
         Player player = event.getPlayer();
         String localChatFormat = ChatColor.GOLD + "[LocalChat] " + ChatColor.AQUA + player.getName() + ": " + ChatColor.GREEN;
         String message = event.getMessage();
         String messageColor = ChatColor.translateAlternateColorCodes('&', message).replaceFirst("@", "");
-        
+
         if (message.length() > 1 && message.startsWith("@")) {
             if (player.hasPermission("kelson.localchat.color")) {
                 event.setFormat(localChatFormat + messageColor);
-                
+
             } else {
                 event.setFormat(localChatFormat + event.getMessage().replaceFirst("@", ""));
             }
-            
-            Location playerLoc = event.getPlayer().getLocation();
-            
+
             List<Player> recipients = new ArrayList<Player>();
-            
+
             for (Player recipient : Bukkit.getServer().getOnlinePlayers()) {
+                Location playerLoc = event.getPlayer().getLocation();
                 Location recipientLoc = recipient.getLocation();
-                
-                if (recipientLoc.getWorld().equals(playerLoc.getWorld()) && recipient.getLocation().distance(playerLoc) <= 50.0 
-                		&& !recipient.getName().equals(player.getName()) 
-                		&& recipient.getWorld() == player.getWorld()) {
-                    
-                	recipients.add(recipient);
+
+                if (recipientLoc.getWorld().equals(playerLoc.getWorld()) && recipient.getLocation().distance(playerLoc) <= 50.0) {
+
+                    recipients.add(recipient);
                     event.getRecipients().addAll(recipients);
                     event.setMessage(message);
-                    
+
                 } else {
                     event.getPlayer().sendMessage(Messages.KBP_errormsg() + "No one was around!");
                     event.setCancelled(true);

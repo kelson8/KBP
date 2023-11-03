@@ -43,7 +43,7 @@ KbpMain plugin;
 	
 	@EventHandler
 	public void onFoodChange(FoodLevelChangeEvent e) {
-		
+		// Add command for this in the future.
 		if(e.getEntity().hasPermission("kelson.no.hunger") && e.getEntity().hasPotionEffect(PotionEffectType.NIGHT_VISION)) {
 
 			e.setCancelled(true);
