@@ -12,8 +12,11 @@ Anything in the [] is needed for the command, anything within <> is optional val
 
 * /enderchest - shows the players enderchest.
 * /fly [on/off] <`playername`> - Enables flying for the player or others.
+* /flyspeed [1-10] - Change your flying speed, target player part 
+not implemented yet.
 * /god [on/off] <`playername`> - Makes the player invincible.
 * /kheal <`playername`> - Heals the player or others.
+* /kbp [reload/version] - Reload the plugin config or show the version.
 * /kmotd - Shows the server motd from the config.yml.
 * /lightning <`playername`> - Strikes lightning at the block you are looking 
 at or at the specified player.
