@@ -12,6 +12,8 @@ import java.util.HashMap;
 
 public class SignStorageMap {
 		KbpMain plugin;
+
+		// I have no idea what the purpose of this class was.
 		
 		public SignStorageMap(KbpMain passedPlugin){
 			this.plugin = passedPlugin;
@@ -40,9 +42,9 @@ public class SignStorageMap {
 	        // Get the coordinates of Signs from somewhere and add them to signStorage.
 	        // This is more efficient than checking every block of every loaded chunk for signs.
 	    }
-	    public void logToFile(String message){
+	    public void logToFile(String message) {
 	    	
-	        try{
+	        try {
 	            File dataFolder = plugin.getDataFolder();
 	            if(!dataFolder.exists()){
 	            	
@@ -53,29 +55,21 @@ public class SignStorageMap {
 	            if (!saveTo.exists()){
 	                saveTo.createNewFile();
 	            }
-	 
-	 
+
 	            FileWriter fw = new FileWriter(saveTo, true);
-	 
 	            PrintWriter pw = new PrintWriter(fw);
-	 
+
 	            logToFile(plugin.getConfig().getString("warps"));
-	            
 	            logToFile(plugin.getConfig().getString("motd"));
-	            
 	            logToFile("\n N \n null");
 	            
 	            pw.println(message);
-	 
 	            pw.flush();
-	 
 	            pw.close();
-	 
-	        } 
+	        }
+
 	          catch (IOException e) {
-	 
 	            e.printStackTrace();
-	 
 	    }
 	  }
 }
