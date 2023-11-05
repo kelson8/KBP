@@ -96,13 +96,16 @@ commands:
   enderchest:
     description: Opens an ender chest for you.
     aliases: [ec]
-    
-  test1:
-    description: test.
 
   # This one isn't completed yet.
   ranklist:
     description: Shows a list of the ranks on the server.
+
+  configtest1:
+    description: Add player uuid to config.
+
+  configtest2:
+    description: List player names from config.
 
 permissions:
    kelson.*:

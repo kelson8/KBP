@@ -1,12 +1,17 @@
 package net.Kelsoncraft.KBP;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import net.Kelsoncraft.KBP.test.ConfigTest;
+import net.Kelsoncraft.KBP.util.*;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -26,10 +31,6 @@ import net.Kelsoncraft.KBP.commands.NightVisionCommand;
 import net.Kelsoncraft.KBP.commands.PlayerInfoCommand;
 import net.Kelsoncraft.KBP.commands.SetKMotdCommand;
 import net.Kelsoncraft.KBP.commands.InvTestCommands;
-import net.Kelsoncraft.KBP.util.Events;
-import net.Kelsoncraft.KBP.util.LightningRodEvent;
-import net.Kelsoncraft.KBP.util.LocalChatEvent;
-import net.Kelsoncraft.KBP.util.Messages;
 
 /**
  * 
@@ -46,6 +47,43 @@ public class KbpMain extends JavaPlugin implements Listener{
 	 * from the old Innectis server. 
 	 * https://github.com/MisterVector/Innectis-Dedicated-Plugin/
 	 */
+
+	//**** Custom config
+	private File customConfigFile;
+	private FileConfiguration customConfig;
+
+	public FileConfiguration getCustomConfig() {
+		return customConfig;
+	}
+
+	private void createCustomConfig() {
+		customConfigFile = new File(getDataFolder(), "customConfig.yml");
+		if (!customConfigFile.exists()) {
+			//logger.log(Level.INFO, "Copying customConfig.yml");
+			customConfigFile.getParentFile().mkdirs();
+			saveResource("customConfig.yml", false);
+		}
+
+		customConfig = new YamlConfiguration();
+		YamlConfiguration.loadConfiguration(customConfigFile);
+	}
+
+	public void reloadCustomConfig() {
+		// Set this if needed
+	}
+
+	public void saveCustomConfig() {
+		try {
+			customConfig.save(customConfigFile);
+		} catch (IOException e) {
+			System.out.println("Could not save file!");
+		}
+	}
+
+
+	 //**** End custom config
+
+
 
 	private void dataFolderCreateCheck() {
 		if(!(getDataFolder().exists())){
@@ -72,6 +110,10 @@ public class KbpMain extends JavaPlugin implements Listener{
 		this.logger.info(pluginName + " v" + pluginVersion +  " Has Been Enabled!");
 		RegisterCommands();
 		RegisterEvents();
+
+		//Custom config
+		createCustomConfig();
+		// Regular config
 		getConfig().options().copyDefaults(true);
 		saveConfig();
 	}
@@ -98,6 +140,10 @@ public class KbpMain extends JavaPlugin implements Listener{
 		this.getCommand("inv_test").setExecutor(new InvTestCommands(this));
 		this.getCommand("test1").setExecutor(new InvTestCommands(this));
 		this.getCommand("ranklist").setExecutor(new InvTestCommands(this));
+
+		// Temporary testing
+		this.getCommand("configtest1").setExecutor(new ConfigTest(this));
+		this.getCommand("configtest2").setExecutor(new ConfigTest(this));
 		//this.getCommand("stick").setExecutor(new SpecialStickCommands(this)); //temporarily remove this command, it needs worked on.
 
 	}
