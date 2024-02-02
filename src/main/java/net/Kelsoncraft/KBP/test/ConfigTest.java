@@ -23,6 +23,7 @@ public class ConfigTest implements CommandExecutor {
         this.plugin = passedPlugin;
     }
 
+    @Override
     public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
 
         // Will this store multiple uuids or just one and keep replacing it?
