@@ -28,6 +28,7 @@ public class LightningStickCommand implements CommandExecutor{
         this.plugin = passedPlugin;
     }
 
+
     @SuppressWarnings("deprecation")
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
     	
@@ -50,7 +51,8 @@ public class LightningStickCommand implements CommandExecutor{
     			
     			targetPlayer.sendMessage(Messages.KBP_Main + "You have been given a lightning stick from console.");
     			sender.sendMessage(Messages.KBP_Main + "You have given a lightning stick to " + targetPlayer.getName() + "!");
-    			
+
+				// Are these broken in 1.20? Lightning stick doesn't have the colors on it anymore and shows weird symbols
     			meta.setDisplayName("§b§lLightning §b§lRod");
     			meta.setLore(Arrays.asList("§4§lPosiden's", "§4§lFury"));
     			item.setItemMeta(meta);

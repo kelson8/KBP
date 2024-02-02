@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import net.Kelsoncraft.KBP.test.BossBarCommandTest;
+import net.Kelsoncraft.KBP.test.BossBarTest;
 import net.Kelsoncraft.KBP.test.ConfigTest;
 import net.Kelsoncraft.KBP.util.*;
 import org.bukkit.Bukkit;
@@ -12,7 +14,10 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -41,6 +46,8 @@ import net.Kelsoncraft.KBP.commands.InvTestCommands;
 public class KbpMain extends JavaPlugin implements Listener{
 	public final Logger logger = Logger.getLogger("Minecraft.KBP");
 	public static KbpMain plugin;
+
+	public BossBarTest bar;
 	
 	/* 
 	 * Part of this plugin has been inspired by the IDP source code 
@@ -105,6 +112,17 @@ public class KbpMain extends JavaPlugin implements Listener{
 	
 	@Override
 	public void onEnable() {
+
+		// Creates a basic boss bar, onJoinEvent will need commented out at the bottom for this to work.
+
+//		bar = new BossBarTest(this);
+//		bar.createBar();
+//
+//		if (!Bukkit.getOnlinePlayers().isEmpty()){
+//			for (Player online : Bukkit.getOnlinePlayers()){
+//				bar.addPlayer(online);
+//			}
+//		}
 		
 		dataFolderCreateCheck();
 		this.logger.info(pluginName + " v" + pluginVersion +  " Has Been Enabled!");
@@ -140,6 +158,7 @@ public class KbpMain extends JavaPlugin implements Listener{
 		this.getCommand("inv_test").setExecutor(new InvTestCommands(this));
 		this.getCommand("test1").setExecutor(new InvTestCommands(this));
 		this.getCommand("ranklist").setExecutor(new InvTestCommands(this));
+		this.getCommand("bossbar").setExecutor(new BossBarCommandTest(this));
 
 		// Temporary testing
 		this.getCommand("configtest1").setExecutor(new ConfigTest(this));
@@ -154,6 +173,13 @@ public class KbpMain extends JavaPlugin implements Listener{
 		Bukkit.getServer().getPluginManager().registerEvents(new LightningRodEvent(this), this);
 		Bukkit.getServer().getPluginManager().registerEvents(new LocalChatEvent(this), this);
 	}
+
+//	@EventHandler
+//	public void onJoin(PlayerJoinEvent e){
+//		if(!bar.getBar().getPlayers().contains(e.getPlayer())){
+//			bar.addPlayer(e.getPlayer());
+//		}
+//	}
 
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
 

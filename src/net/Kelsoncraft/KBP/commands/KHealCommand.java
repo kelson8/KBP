@@ -34,7 +34,7 @@ public class KHealCommand implements CommandExecutor{
 				   	return true;
 				   }
 					Player targetPlayer = Bukkit.getServer().getPlayer(args[0]);
-					targetPlayer.setFireTicks(0);
+                    targetPlayer.setFireTicks(0);
 					targetPlayer.setFoodLevel(20);
 					targetPlayer.setHealth(20.0);
 					sender.sendMessage(Messages.KBP_Main + "You have healed " + targetPlayer.getName() + "!");

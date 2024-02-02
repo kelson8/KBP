@@ -6,7 +6,7 @@ description: This is the custom plugin for the kelsoncraft server!
 author: kelson8
 #softdepend: [TagAPI, SQLibrary]
 #load: Startup
-api-version: 1.16
+api-version: 1.20
 
 commands:
   fly:
@@ -107,6 +107,11 @@ commands:
   configtest2:
     description: List player names from config.
 
+  bossbar:
+    description: Displays a bossbar.
+    permission: kelson.bossbar
+    #usage: "/Usage: <command> [on|off]"
+
 permissions:
    kelson.*:
      description: Gives all permissions using KBP.
@@ -142,6 +147,7 @@ permissions:
        kelson.inv_test: true
        kelson.enderchest.others: true
        kelson.enderchest: true
+       kelson.bossbar: true
        
    kelson.default.*:
      description: Gives the default permissions using KBP.

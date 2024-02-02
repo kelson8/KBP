@@ -23,32 +23,36 @@ public class ConfigTest implements CommandExecutor {
         this.plugin = passedPlugin;
     }
 
-    @Override
     public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
-
-
 
         // Will this store multiple uuids or just one and keep replacing it?
         // I'm going to have to test this and see if i got this right when i get home using tlauncher and an alt.
         // This is storing the uuid but returning null on a server restart, I wonder why.
 
+
         if (cmd.getName().equalsIgnoreCase("configtest1")) {
             if (sender instanceof Player) {
                 Player player = (Player) sender;
 
+                // This below didn't work.
+                //PlayerInfo playerinfo = new PlayerInfo(UUID playerUUID);
+
                 // I have no idea if the code below is the proper way to make an arraylist for players.
                 ArrayList<String> playerUuidList = new ArrayList<String>();
                 playerUuidList.add(player.getUniqueId().toString().replace("[", "").replace("]", ""));
+                playerUuidList.add(player.getName().replace("[", "").replace("]", ""));
+                //ArrayList<String> playerNameList = new ArrayList<String>();
+                //playerUuidList.add(player.getUniqueId().toString().replace("[", "").replace("]", ""));
+                //playerNameList.add(player.getName().replace("[", "").replace("]", ""));
 
 
                 //sender.sendMessage(playerList.toString());
 
                 sender.sendMessage(Messages.KBP_Main() + "Hello player %s".replace("%s", player.getName()));
-                sender.sendMessage(playerUuidList.toString().replace("[", "").replace("]", ""));
-                //sender.sendMessage(Messages.KBP_Main() + "Your uuid is %s".replace("%s", player.getUniqueId().toString()));
-                //sender.sendMessage(Messages.KBP_Main() + "Your uuid has been stored into the custom config!");
+                sender.sendMessage("Stored name and uuid: " + plugin.getCustomConfig().getString("player"));
 
-                // This is working to store the uuid
+                //sender.sendMessage(playerUuidList.toString().replace("[", "").replace("]", ""));
+
                 plugin.getCustomConfig().set("player", playerUuidList);
                 plugin.saveCustomConfig();
 

@@ -20,6 +20,8 @@ public class Messages{
 	private static String ServerForum = "https://kelsoncraft.net/phpbb/";
 	private static String ServerWebsite = "https://kelsoncraft.net";
 	private static String ServerOwner = "kelson8";
+
+	// private String ServerDiscord = "";
 	
 	private String ServerInfo = KBP_Main + "Hi, the owner of this server is " + ChatColor.AQUA + ServerOwner + "\n"
 			//+ ChatColor.GREEN + "The servers motd is " + ServerMotd + "\n"
