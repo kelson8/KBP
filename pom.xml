@@ -4,6 +4,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
+
+    <!-- This below helped me figure out how to set the build directory to output to my
+     server plugins folder. -->
+    <!-- https://www.spigotmc.org/threads/intellij-maven-issues.428295/ -->
   <groupId>net.kelsoncraft</groupId>
   <artifactId>KBP</artifactId>
   <version>1.0-SNAPSHOT</version>
@@ -18,25 +22,27 @@
 
   <build>
     <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.1</version>
-        <configuration>
-          <source>${java.version}</source>
-          <target>${java.version}</target>
-        </configuration>
-      </plugin>
+<!--&lt;!&ndash;          <source>${java.version}</source>&ndash;&gt;-->
+<!--&lt;!&ndash;          <target>${java.version}</target>&ndash;&gt;-->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-shade-plugin</artifactId>
         <version>3.2.4</version>
         <executions>
+
+            <!-- This fixed the shaded jar showing up in the directory with the main one. -->
+            <!-- https://stackoverflow.com/questions/50919125/maven-shade-plugin-remove-original -->
           <execution>
             <phase>package</phase>
             <goals>
               <goal>shade</goal>
             </goals>
+              <configuration>
+<!--                  <shadedClassifierName>-</shadedClassifierName>-->
+<!--                  <outputDirectory>C:\Users\kelson\Documents\minecraft\paper\1.20.2\custom_plugin\plugins</outputDirectory>-->
+                  <outputFile>C:\Users\kelson\Documents\minecraft\paper\1.20.2\custom_plugin\plugins\${project.artifactId}-${project.version}.jar</outputFile>
+                  <createDependencyReducedPom>false</createDependencyReducedPom>
+              </configuration>
           </execution>
         </executions>
       </plugin>
@@ -66,6 +72,12 @@
           <artifactId>spigot-api</artifactId>
           <version>1.20.4-R0.1-SNAPSHOT</version>
           <scope>provided</scope>
+      </dependency>
+      <dependency>
+          <groupId>org.jetbrains</groupId>
+          <artifactId>annotations</artifactId>
+          <version>RELEASE</version>
+          <scope>compile</scope>
       </dependency>
   </dependencies>
 </project>
