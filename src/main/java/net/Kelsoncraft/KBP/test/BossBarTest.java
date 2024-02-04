@@ -1,6 +1,8 @@
 package net.Kelsoncraft.KBP.test;
 
 import net.Kelsoncraft.KBP.KbpMain;
+import net.Kelsoncraft.KBP.util.ChatColorUtil;
+import net.Kelsoncraft.KBP.util.Messages;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.boss.BarColor;
@@ -28,7 +30,7 @@ public class BossBarTest {
     }
 
     public void createBar(){
-        bar = Bukkit.createBossBar(format("&b&lKelsonCraft Test"), BarColor.BLUE, BarStyle.SOLID);
+        bar = Bukkit.createBossBar(ChatColorUtil.format("&b&lKelsonCraft Test"), BarColor.BLUE, BarStyle.SOLID);
         bar.setVisible(true);
         cast();
     }
@@ -49,20 +51,20 @@ public class BossBarTest {
                         break;
                     case 0:
                         bar.setColor(BarColor.PINK);
-                        bar.setTitle(format("&d&lKelsonCraft Test #1"));
+                        bar.setTitle(ChatColorUtil.format("&d&lKelsonCraft Test #1"));
                         break;
                     case 1:
                         bar.setColor(BarColor.PURPLE);
-                        bar.setTitle(format("&d&lKelsonCraft Test #2"));
+                        bar.setTitle(ChatColorUtil.format("&d&lKelsonCraft Test #2"));
                         break;
                     case 2:
                         bar.setColor(BarColor.GREEN);
-                        bar.setTitle(format("&d&lKelsonCraft Test #3"));
+                        bar.setTitle(ChatColorUtil.format("&d&lKelsonCraft Test #3"));
                         break;
                     case 3:
                     default:
                         bar.setColor(BarColor.BLUE);
-                        bar.setTitle(format("&b&lKelsonCraft Test"));
+                        bar.setTitle(ChatColorUtil.format("&b&lKelsonCraft Test"));
                         count = -1;
                         break;
                 }
@@ -73,9 +75,5 @@ public class BossBarTest {
                 }
             }
         }, 0, 20);
-    }
-
-    private String format(String msg){
-        return ChatColor.translateAlternateColorCodes('&', msg);
     }
 }

@@ -3,6 +3,7 @@ package net.Kelsoncraft.KBP.commands;
 import java.util.Arrays;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -14,6 +15,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import net.Kelsoncraft.KBP.KbpMain;
 import net.Kelsoncraft.KBP.util.Messages;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * 
@@ -28,9 +30,12 @@ public class LightningStickCommand implements CommandExecutor{
         this.plugin = passedPlugin;
     }
 
+	private String format(String msg) {
+		return ChatColor.translateAlternateColorCodes('&', msg);
+	}
 
     @SuppressWarnings("deprecation")
-	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
+	public boolean onCommand (@NotNull CommandSender sender, @NotNull Command cmd, @NotNull String commandLabel, String[] args) {
     	
     	if(!(sender instanceof Player)) {
     		if(cmd.getName().equalsIgnoreCase("lightningstick") && args.length == 0) {
@@ -41,7 +46,7 @@ public class LightningStickCommand implements CommandExecutor{
     			Player targetPlayer = Bukkit.getServer().getPlayer(args[0]);
     			
     			if(targetPlayer == null) {
-    				sender.sendMessage(Messages.KBP_Main + args[1] + " is not online!");
+    				sender.sendMessage(Messages.KBP_Main + args[0] + " is not online!");
     				return true;
     			}
     			
@@ -53,8 +58,10 @@ public class LightningStickCommand implements CommandExecutor{
     			sender.sendMessage(Messages.KBP_Main + "You have given a lightning stick to " + targetPlayer.getName() + "!");
 
 				// Are these broken in 1.20? Lightning stick doesn't have the colors on it anymore and shows weird symbols
-    			meta.setDisplayName("§b§lLightning §b§lRod");
-    			meta.setLore(Arrays.asList("§4§lPosiden's", "§4§lFury"));
+
+				meta.setDisplayName(format("&bLightning Rod"));
+//				meta.setLore(Arrays.asList(format("&bPosiden's"), format("&bFury")));
+
     			item.setItemMeta(meta);
     			
     			targetPlayerInv.addItem(item);
@@ -72,14 +79,11 @@ public class LightningStickCommand implements CommandExecutor{
     			
     			ItemStack item = new ItemStack(Material.STICK);
     			ItemMeta meta = item.getItemMeta();
-    			
-    			meta.setDisplayName("§b§lLightning §b§lRod");
-    			
-    			meta.setLore(Arrays.asList("§4§lPosiden's", "§4§lFury"));
+
+				meta.setDisplayName(format("&bLightning Rod"));
+//				meta.setLore(Arrays.asList(format("&bPosiden's"), format("&bFury")));
     			item.setItemMeta(meta);
-    			
     			playerInv.addItem(item);
-    			
     			sender.sendMessage(Messages.KBP_Main + "You have given yourself a lightning rod!");
     			
     			return true;
@@ -89,7 +93,7 @@ public class LightningStickCommand implements CommandExecutor{
     				Player targetPlayer = Bukkit.getServer().getPlayer(args[0]);
     				
         			if(targetPlayer == null) {
-        				sender.sendMessage(Messages.KBP_Main + args[1] + " is not online!");
+        				sender.sendMessage(Messages.KBP_Main + args[0] + " is not online!");
         				return true;
         			}
         			ItemStack item = new ItemStack(Material.STICK);
@@ -98,9 +102,9 @@ public class LightningStickCommand implements CommandExecutor{
         			
         			targetPlayer.sendMessage(Messages.KBP_Main + sender.getName() + " has given you a lightning stick!");
         			sender.sendMessage(Messages.KBP_Main + "You have given a lightning stick to " + targetPlayer.getName() + "!");
-        			
-        			meta.setDisplayName("§b§lLightning §b§lRod");
-        			meta.setLore(Arrays.asList("§4§lPosiden's", "§4§lFury"));
+
+					meta.setDisplayName(format("&bLightning Rod"));
+					// meta.setLore(Arrays.asList(format("&bPosiden's"), format("&bFury")));
         			item.setItemMeta(meta);
 
         			targetPlayerInv.addItem(item);
@@ -117,11 +121,7 @@ public class LightningStickCommand implements CommandExecutor{
         		if(!(sender.hasPermission("kelson.lightning_rod"))) {
         			sender.sendMessage(Messages.NoPermissionError());
         			}
-    		
-    		
     	}
-    	
-    	
     	return false;
     }
 }
