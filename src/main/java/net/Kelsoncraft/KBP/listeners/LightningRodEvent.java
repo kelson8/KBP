@@ -1,4 +1,4 @@
-package net.Kelsoncraft.KBP.util;
+package net.Kelsoncraft.KBP.listeners;
 
 import java.util.ArrayList;
 

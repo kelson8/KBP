@@ -1,7 +1,8 @@
-package net.Kelsoncraft.KBP.util;
+package net.Kelsoncraft.KBP.listeners;
 
 import java.util.ArrayList;
 
+import net.Kelsoncraft.KBP.util.Messages;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.Material;

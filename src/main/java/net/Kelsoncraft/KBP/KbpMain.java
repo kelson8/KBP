@@ -5,19 +5,21 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import net.Kelsoncraft.KBP.listeners.Events;
+import net.Kelsoncraft.KBP.listeners.LightningRodEvent;
+import net.Kelsoncraft.KBP.listeners.LocalChatEvent;
+import net.Kelsoncraft.KBP.listeners.MenuListener;
 import net.Kelsoncraft.KBP.test.BossBarCommandTest;
 import net.Kelsoncraft.KBP.test.BossBarTest;
 import net.Kelsoncraft.KBP.test.ConfigTest;
+import net.Kelsoncraft.KBP.test.MenuCommandTest;
 import net.Kelsoncraft.KBP.util.*;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -159,6 +161,7 @@ public class KbpMain extends JavaPlugin implements Listener{
 		this.getCommand("test1").setExecutor(new InvTestCommands(this));
 		this.getCommand("ranklist").setExecutor(new InvTestCommands(this));
 		this.getCommand("bossbar").setExecutor(new BossBarCommandTest(this));
+		this.getCommand("menu").setExecutor(new MenuCommandTest(this));
 
 		// Temporary testing
 		this.getCommand("configtest1").setExecutor(new ConfigTest(this));
@@ -172,6 +175,7 @@ public class KbpMain extends JavaPlugin implements Listener{
 		Bukkit.getServer().getPluginManager().registerEvents(new Events(this), this);
 		Bukkit.getServer().getPluginManager().registerEvents(new LightningRodEvent(this), this);
 		Bukkit.getServer().getPluginManager().registerEvents(new LocalChatEvent(this), this);
+		Bukkit.getServer().getPluginManager().registerEvents(new MenuListener(this), this);
 	}
 
 //	@EventHandler

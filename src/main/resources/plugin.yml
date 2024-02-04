@@ -112,6 +112,9 @@ commands:
     permission: kelson.bossbar
     #usage: "/Usage: <command> [on|off]"
 
+  menu:
+    description: Opens a test menu
+
 permissions:
    kelson.*:
      description: Gives all permissions using KBP.
