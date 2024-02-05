@@ -37,6 +37,8 @@ public class Messages{
 
 	private static String ConsolePlayerError = KBP_errormsg + "Console must specify a player!";
 
+	private static String ConsoleCommandError = KBP_errormsg + "Console cannot use this command!";
+
 	private static String TestCommands = "/test1 doesn't do much at all\n";
 	private String KelsonCommandUsage =
 			KBP_Main + "Command Usage: \n"
@@ -48,6 +50,9 @@ public class Messages{
 		return NoPermissionError;
 	}
 
+	public static String ConsoleCommandError() {
+		return ConsoleCommandError;
+	}
 	public static String NoPermissionErrorOth(){
 		return NoPermissionErrorOth;
 	}

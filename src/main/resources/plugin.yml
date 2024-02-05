@@ -4,6 +4,8 @@ main: net.Kelsoncraft.KBP.KbpMain
 version: 1.0.5
 description: This is the custom plugin for the kelsoncraft server!
 author: kelson8
+softdepend:
+  - Vault
 #softdepend: [TagAPI, SQLibrary]
 #load: Startup
 api-version: 1.20
@@ -115,6 +117,15 @@ commands:
   menu:
     description: Opens a test menu
 
+  kbal:
+    description: Shows your balance
+
+  givemoney:
+    description: Give you some money.
+
+  test22:
+    description: Current time in miliseconds to seconds test.
+
 permissions:
    kelson.*:
      description: Gives all permissions using KBP.
@@ -150,8 +161,11 @@ permissions:
        kelson.inv_test: true
        kelson.enderchest.others: true
        kelson.enderchest: true
+       # New test
        kelson.bossbar: true
-       
+       kelson.menu.cooldown: true
+       kelson.givemoney: true
+
    kelson.default.*:
      description: Gives the default permissions using KBP.
      default: true
@@ -159,4 +173,5 @@ permissions:
        kelson.location: true
        kelson.kmotd: true
        kelson.playerinfo: true
+       kelson.kbal: true
      

@@ -54,6 +54,7 @@ buildNumber.properties
 .mvn/timing.properties
 # https://github.com/takari/maven-wrapper#usage-without-binary-jar
 .mvn/wrapper/maven-wrapper.jar
+/pom - Copy.xml
 
 # Remove .idea folder and .iml files
 .idea/*

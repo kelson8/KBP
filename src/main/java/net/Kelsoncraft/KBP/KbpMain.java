@@ -9,18 +9,14 @@ import net.Kelsoncraft.KBP.listeners.Events;
 import net.Kelsoncraft.KBP.listeners.LightningRodEvent;
 import net.Kelsoncraft.KBP.listeners.LocalChatEvent;
 import net.Kelsoncraft.KBP.listeners.MenuListener;
-import net.Kelsoncraft.KBP.test.BossBarCommandTest;
-import net.Kelsoncraft.KBP.test.BossBarTest;
-import net.Kelsoncraft.KBP.test.ConfigTest;
-import net.Kelsoncraft.KBP.test.MenuCommandTest;
-import net.Kelsoncraft.KBP.util.*;
+import net.Kelsoncraft.KBP.test.*;
+import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginDescriptionFile;
+import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import net.Kelsoncraft.KBP.commands.EnderChestCommand;
@@ -48,6 +44,7 @@ import net.Kelsoncraft.KBP.commands.InvTestCommands;
 public class KbpMain extends JavaPlugin implements Listener{
 	public final Logger logger = Logger.getLogger("Minecraft.KBP");
 	public static KbpMain plugin;
+	private static Economy econ;
 
 	public BossBarTest bar;
 	
@@ -88,11 +85,7 @@ public class KbpMain extends JavaPlugin implements Listener{
 			System.out.println("Could not save file!");
 		}
 	}
-
-
 	 //**** End custom config
-
-
 
 	private void dataFolderCreateCheck() {
 		if(!(getDataFolder().exists())){
@@ -103,7 +96,6 @@ public class KbpMain extends JavaPlugin implements Listener{
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		
 		}
 	}
 	
@@ -114,6 +106,12 @@ public class KbpMain extends JavaPlugin implements Listener{
 	
 	@Override
 	public void onEnable() {
+
+		// Add vault API
+		if(!setupEconomy()) {
+			this.logger.severe(pluginName + " v" + pluginVersion + " Vault dependency not found! Some of this plugin won't function properly!");
+			this.logger.info("Please install Vault for the full functionality of this plugin.");
+		}
 
 		// Creates a basic boss bar, onJoinEvent will need commented out at the bottom for this to work.
 
@@ -166,8 +164,11 @@ public class KbpMain extends JavaPlugin implements Listener{
 		// Temporary testing
 		this.getCommand("configtest1").setExecutor(new ConfigTest(this));
 		this.getCommand("configtest2").setExecutor(new ConfigTest(this));
+		// Economy testing
+		// Todo Add command like essentials that gives money, takes money and resets money.
+		this.getCommand("kbal").setExecutor(new VaultTestCommand(this));
+		this.getCommand("givemoney").setExecutor(new VaultTestCommand(this));
 		//this.getCommand("stick").setExecutor(new SpecialStickCommands(this)); //temporarily remove this command, it needs worked on.
-
 	}
 
 	private void RegisterEvents(){
@@ -178,6 +179,22 @@ public class KbpMain extends JavaPlugin implements Listener{
 		Bukkit.getServer().getPluginManager().registerEvents(new MenuListener(this), this);
 	}
 
+	private boolean setupEconomy(){
+		if(getServer().getPluginManager().getPlugin("Vault") == null){
+			return false;
+		}
+		RegisteredServiceProvider<Economy> rsp = getServer().getServicesManager().getRegistration(Economy.class);
+		if (rsp == null) {
+			return false;
+		}
+		econ = rsp.getProvider();
+		return econ != null;
+	}
+
+	public static Economy getEconomy() {
+		return econ;
+	}
+
 //	@EventHandler
 //	public void onJoin(PlayerJoinEvent e){
 //		if(!bar.getBar().getPlayers().contains(e.getPlayer())){
@@ -185,17 +202,9 @@ public class KbpMain extends JavaPlugin implements Listener{
 //		}
 //	}
 
-	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
-
-	        if(cmd.getName().equalsIgnoreCase("ipbans") && sender.hasPermission("kelson.ipbans")){
-	        	sender.sendMessage("ip bans: " + Bukkit.getIPBans());
-
-	        } 
-	        
-	        if (!sender.hasPermission("kelson.ipbans")) {
-	        sender.sendMessage(Messages.NoPermissionError());
-			}
-
-		return false;
-	        }
+	// Removed commands from main class. Try to keep them in the test classes.
+//	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command cmd, @NotNull String commandLabel, String[] args) {
+//
+//		return false;
+//	        }
 }

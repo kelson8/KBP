@@ -16,6 +16,8 @@
   <name>KBP</name>
 
   <properties>
+      <!-- Custom properties can go in here -->
+      <plugin.folder>C:\Users\kelson\Documents\minecraft\paper\1.20.2\custom_plugin\plugins</plugin.folder>
     <java.version>1.8</java.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
@@ -38,9 +40,7 @@
               <goal>shade</goal>
             </goals>
               <configuration>
-<!--                  <shadedClassifierName>-</shadedClassifierName>-->
-<!--                  <outputDirectory>C:\Users\kelson\Documents\minecraft\paper\1.20.2\custom_plugin\plugins</outputDirectory>-->
-                  <outputFile>C:\Users\kelson\Documents\minecraft\paper\1.20.2\custom_plugin\plugins\${project.artifactId}-${project.version}.jar</outputFile>
+                  <outputFile>${plugin.folder}\${project.artifactId}-${project.version}.jar</outputFile>
                   <createDependencyReducedPom>false</createDependencyReducedPom>
               </configuration>
           </execution>
@@ -57,17 +57,35 @@
 
   <repositories>
       <repository>
+          <!-- Spigot -->
           <id>spigotmc-repo</id>
           <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
       </repository>
       <repository>
+          <!-- Not sure what this one is, maybe something for IntelliJ?-->
           <id>sonatype</id>
           <url>https://oss.sonatype.org/content/groups/public/</url>
+      </repository>
+      <!-- EssentialsX -->
+      <repository>
+          <id>essentials-releases</id>
+          <url>https://repo.essentialsx.net/releases/</url>
+      </repository>
+      <!-- Paper repo for EssentialsX -->
+      <repository>
+          <id>paper-repo</id>
+          <url>https://papermc.io/repo/repository/maven-public/</url>
+      </repository>
+      <!-- Vault API -->
+      <repository>
+          <id>jitpack.io</id>
+          <url>https://jitpack.io</url>
       </repository>
   </repositories>
 
   <dependencies>
       <dependency>
+          <!-- Spigot -->
           <groupId>org.spigotmc</groupId>
           <artifactId>spigot-api</artifactId>
           <version>1.20.4-R0.1-SNAPSHOT</version>
@@ -79,5 +97,27 @@
           <version>RELEASE</version>
           <scope>compile</scope>
       </dependency>
+      <!-- EssentialsX -->
+      <dependency>
+          <groupId>net.essentialsx</groupId>
+          <artifactId>EssentialsX</artifactId>
+          <version>2.19.0</version>
+          <scope>provided</scope>
+          <!-- https://www.spigotmc.org/threads/trouble-compiling-against-spigot-1-17-1.529005/ -->
+          <exclusions>
+              <exclusion>
+                  <groupId>org.bstats</groupId>
+                  <artifactId>bstats-bukkit</artifactId>
+              </exclusion>
+          </exclusions>
+      </dependency>
+      <!-- Vault API -->
+      <dependency>
+          <groupId>com.github.MilkBowl</groupId>
+          <artifactId>VaultAPI</artifactId>
+          <version>1.7</version>
+          <scope>provided</scope>
+      </dependency>
+
   </dependencies>
 </project>
