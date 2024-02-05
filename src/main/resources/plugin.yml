@@ -123,8 +123,8 @@ commands:
   givemoney:
     description: Give you some money.
 
-  test22:
-    description: Current time in miliseconds to seconds test.
+  keco:
+    description: Add, remove, and reset your money.
 
 permissions:
    kelson.*:
@@ -165,6 +165,7 @@ permissions:
        kelson.bossbar: true
        kelson.menu.cooldown: true
        kelson.givemoney: true
+       kelson.eco: true
 
    kelson.default.*:
      description: Gives the default permissions using KBP.

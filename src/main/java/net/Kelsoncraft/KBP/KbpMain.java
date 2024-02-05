@@ -168,6 +168,8 @@ public class KbpMain extends JavaPlugin implements Listener{
 		// Todo Add command like essentials that gives money, takes money and resets money.
 		this.getCommand("kbal").setExecutor(new VaultTestCommand(this));
 		this.getCommand("givemoney").setExecutor(new VaultTestCommand(this));
+		this.getCommand("keco").setExecutor(new VaultTestCommand(this));
+		this.getCommand("keco").setTabCompleter( new VaultTestCommand(this));
 		//this.getCommand("stick").setExecutor(new SpecialStickCommands(this)); //temporarily remove this command, it needs worked on.
 	}
 
