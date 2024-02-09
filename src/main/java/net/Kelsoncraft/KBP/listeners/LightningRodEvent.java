@@ -1,6 +1,7 @@
 package net.Kelsoncraft.KBP.listeners;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import org.bukkit.Material;
 import org.bukkit.ChatColor;
@@ -43,22 +44,20 @@ public class LightningRodEvent implements Listener {
 				event.setCancelled(true);
 			}
 
-			ArrayList<String> lore = new ArrayList<String>();
-			// For some reason the lore doesn't want to work, I have it disabled for now
-			lore.add(format("&bPosiden's"));
-			lore.add(format("&bFury"));
+			ArrayList<String> lore = new ArrayList<>();
+			lore.add(format("&4&lPosiden's"));
+			lore.add(format("&4&lFury"));
 
 			if(player.getInventory().getItemInMainHand().getType() == (Material.STICK) &&
-//				player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals(ChatColor.BLUE + "Lightning Rod")
-				player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals(format("&bLightning Rod"))
-//			      && player.getInventory().getItemInMainHand().getItemMeta().getLore().equals(lore)
-				&& player.hasPermission("kelson.lightning_rod")) {
+					// Replaced these with auto suggestions from IntelliJ
+					Objects.requireNonNull(player.getInventory().getItemInMainHand().getItemMeta()).getDisplayName().equals(format("&bLightning Rod"))
+					&& Objects.equals(player.getInventory().getItemInMainHand().getItemMeta().getLore(), lore)
+					&& player.hasPermission("kelson.lightning_rod")) {
 
 				//TODO set message below where it randomly runs when the lightning stick is being used.
 				//Bukkit.broadcastMessage(ChatColor.RED + "DEATH has been struck upon thee. I BLAME: " + player.getName());
-			
-				//cns.sendMessage(player.getName() + " Has struck lightning!");
-				if(plugin.getConfig().getBoolean("lightning_message") == true){
+
+				if(plugin.getConfig().getBoolean("lightning_message")){
 				player.sendMessage("You have struck " + plugin.getConfig().getInt("lightning_strikes") + " lightning bolts!");
 				
 				//Useless line below, just for messing around with.

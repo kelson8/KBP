@@ -81,7 +81,7 @@ public class LightningStickCommand implements CommandExecutor{
     			ItemMeta meta = item.getItemMeta();
 
 				meta.setDisplayName(format("&bLightning Rod"));
-//				meta.setLore(Arrays.asList(format("&bPosiden's"), format("&bFury")));
+				meta.setLore(Arrays.asList(format("&4&lPosiden's"), format("&4&lFury")));
     			item.setItemMeta(meta);
     			playerInv.addItem(item);
     			sender.sendMessage(Messages.KBP_Main + "You have given yourself a lightning rod!");
