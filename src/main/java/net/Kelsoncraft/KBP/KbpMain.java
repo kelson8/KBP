@@ -164,6 +164,7 @@ public class KbpMain extends JavaPlugin implements Listener{
 		// Temporary testing
 		this.getCommand("configtest1").setExecutor(new ConfigTest(this));
 		this.getCommand("configtest2").setExecutor(new ConfigTest(this));
+		this.getCommand("flower").setExecutor(new LoreTest(this));
 		// Economy testing
 		// Todo Add command like essentials that gives money, takes money and resets money.
 		this.getCommand("kbal").setExecutor(new VaultTestCommand(this));
