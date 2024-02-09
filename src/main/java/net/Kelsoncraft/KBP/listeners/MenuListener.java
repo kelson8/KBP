@@ -59,7 +59,7 @@ public class MenuListener implements Listener {
                 // This works well, but when the user has the bypass permission they still get the cooldown.
                 // Todo Fix this to where it doesn't reset the players money, Set this to get the value from the config.
                 if (!this.cooldown.containsKey(player.getUniqueId()) || seconds - cooldown.get(player.getUniqueId()) > 5) {
-                    if (player.hasPermission("kelson.menu.cooldown")) {
+                    if (player.hasPermission("kbp.menu.cooldown")) {
                         EconomyResponse r = econ.depositPlayer(player, 100.5);
                         player.sendMessage(String.format(Messages.KBP_Main() + "You have been given %s! You now have %s", econ.format(r.amount), econ.format(r.balance)));
 

@@ -47,7 +47,7 @@ public class LightningCommand implements CommandExecutor {
     	if (sender instanceof Player) {
         Player player = (Player) sender;
         World world = player.getWorld();
-        if(args.length == 0 && cmd.getName().equalsIgnoreCase("lightning") && sender.hasPermission("kelson.smite")) {
+        if(args.length == 0 && cmd.getName().equalsIgnoreCase("lightning") && sender.hasPermission("kbp.smite")) {
             
         	for (int i=0; i<50; i++) {
         		world.strikeLightning(player.getTargetBlock(null, 600).getLocation());
@@ -60,7 +60,7 @@ public class LightningCommand implements CommandExecutor {
         	//world.createExplosion(player.getTargetBlock(null, 600).getLocation(), 20);
         }
            
-            if(args.length == 1 && sender.hasPermission("kelson.smite.others")){
+            if(args.length == 1 && sender.hasPermission("kbp.smite.others")){
             	Player targetPlayer = Bukkit.getPlayerExact(args[0]);
 				   
             	if(targetPlayer == null){
@@ -74,7 +74,7 @@ public class LightningCommand implements CommandExecutor {
             	}
             }
             //TODO make this command strike lightning to a X Y Z.
-            if(!sender.hasPermission("kelson.smite")){
+            if(!sender.hasPermission("kbp.smite")){
                 sender.sendMessage(Messages.NoPermissionError());
             }
     	}

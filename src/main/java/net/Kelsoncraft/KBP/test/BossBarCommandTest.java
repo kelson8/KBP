@@ -27,7 +27,7 @@ public class BossBarCommandTest implements CommandExecutor {
         if (sender instanceof Player) {
             Player player = (Player) sender;
 
-            if (cmd.getName().equalsIgnoreCase("bossbar") && player.hasPermission("kelson.bossbar")) {
+            if (cmd.getName().equalsIgnoreCase("bossbar") && player.hasPermission("kbp.bossbar")) {
                 // BossBar bar =
                 // Will this possibly work? Not sure if that's how NamespacedKey works.
                 if(args.length == 0) {

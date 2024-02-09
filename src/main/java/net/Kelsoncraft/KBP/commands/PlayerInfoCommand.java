@@ -49,7 +49,7 @@ public class PlayerInfoCommand implements CommandExecutor {
 
         if(sender instanceof Player) {
             Player player = (Player) sender;
-            if (cmd.getName().equalsIgnoreCase("playerinfo") && sender.hasPermission("kelson.playerinfo")) {
+            if (cmd.getName().equalsIgnoreCase("playerinfo") && sender.hasPermission("kbp.playerinfo")) {
                 /*Coming soon, offline players ex: type a playername that is offline such as
                  * /playerinfo offlinePlayer would then work
                  */
@@ -67,7 +67,7 @@ public class PlayerInfoCommand implements CommandExecutor {
                     		+ player.isFlying()
                     
                     		);
-                } else if (args.length == 1 && sender.hasPermission("kelson.playerinfo.others")) {
+                } else if (args.length == 1 && sender.hasPermission("kbp.playerinfo.others")) {
 
                     Player targetPlayer = player.getServer().getPlayer(args[0]);
                     

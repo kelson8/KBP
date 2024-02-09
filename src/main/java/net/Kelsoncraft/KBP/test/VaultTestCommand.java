@@ -30,12 +30,12 @@ public class VaultTestCommand implements CommandExecutor, TabCompleter {
 
         if (sender instanceof Player){
             Player player = (Player) sender;
-            if(cmd.getName().equalsIgnoreCase("kbal") && player.hasPermission("kelson.kbal")){
+            if(cmd.getName().equalsIgnoreCase("kbal") && player.hasPermission("kbp.kbal")){
                 sender.sendMessage(String.format("%sYou have %s", Messages.KBP_Main(), econ.format(econ.getBalance(player))));
             }
 
             if(cmd.getName().equalsIgnoreCase("keco")) {
-                if (sender.hasPermission("kelson.eco")) {
+                if (sender.hasPermission("kbp.eco")) {
                     // Todo Add other player support and console support.
                     if (args.length == 0) {
                         sender.sendMessage(Messages.KBP_errormsg() + "Command usage: /keco [add/remove/reset] [amount]");

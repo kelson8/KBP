@@ -43,7 +43,7 @@ public class SetKMotdCommand implements CommandExecutor{
 	        }
 
 	        if(sender instanceof Player){
-	        	if (cmd.getName().equalsIgnoreCase("setkmotd") && sender.hasPermission("kelson.setkmotd")) {
+	        	if (cmd.getName().equalsIgnoreCase("setkmotd") && sender.hasPermission("kbp.setkmotd")) {
 
 	        		if (args.length == 0) {
 	        			sender.sendMessage(ChatColor.RED + "Please specify a message!");
@@ -61,7 +61,7 @@ public class SetKMotdCommand implements CommandExecutor{
 	        		sender.sendMessage(ChatColor.GREEN + "MOTD set to: " + motd);
 	        	}
 	        }
-	        if (!sender.hasPermission("kelson.setmotd")){
+	        if (!sender.hasPermission("kbp.setmotd")){
 	        	sender.sendMessage(Messages.NoPermissionError());
 	        }
 	     return false;

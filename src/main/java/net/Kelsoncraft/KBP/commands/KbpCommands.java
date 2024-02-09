@@ -42,7 +42,7 @@ public class KbpCommands implements CommandExecutor {
 						
 					}
 					if(sender instanceof Player) {
-						if(sender.hasPermission("kelson.reload")) {
+						if(sender.hasPermission("kbp.reload")) {
 						
 							Player player = (Player) sender;
 							plugin.reloadConfig();

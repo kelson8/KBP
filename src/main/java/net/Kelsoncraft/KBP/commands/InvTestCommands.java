@@ -44,7 +44,7 @@ public class InvTestCommands implements CommandExecutor {
 		//TODO set inv_test command to need a permission to get items out of it, this should have something to do with the InventoryClickEvent.
 		if(sender instanceof Player) {
 			Player player = (Player) sender;
-			if(cmd.getName().equalsIgnoreCase("inv_test") && player.hasPermission("kelson.inv_test")) {
+			if(cmd.getName().equalsIgnoreCase("inv_test") && player.hasPermission("kbp.inv_test")) {
 				player.sendMessage(Messages.KBP_Main + "Here have some diamonds!");
 				player.openInventory(myinv);
 			}

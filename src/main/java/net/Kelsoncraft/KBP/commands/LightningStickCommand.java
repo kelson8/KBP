@@ -74,7 +74,7 @@ public class LightningStickCommand implements CommandExecutor{
     		if(sender instanceof Player) {
     		Player player = (Player) sender;
     		
-    		if(cmd.getName().equalsIgnoreCase("lightningstick") && args.length == 0 && sender.hasPermission("kelson.lightning_rod.self")) {
+    		if(cmd.getName().equalsIgnoreCase("lightningstick") && args.length == 0 && sender.hasPermission("kbp.lightning_rod.self")) {
     			PlayerInventory playerInv = player.getInventory();
     			
     			ItemStack item = new ItemStack(Material.STICK);
@@ -89,7 +89,7 @@ public class LightningStickCommand implements CommandExecutor{
     			return true;
     		}
     			
-    			if (args.length == 1 && sender.hasPermission("kelson.lightning_rod")) {
+    			if (args.length == 1 && sender.hasPermission("kbp.lightning_rod")) {
     				Player targetPlayer = Bukkit.getServer().getPlayer(args[0]);
     				
         			if(targetPlayer == null) {
@@ -118,7 +118,7 @@ public class LightningStickCommand implements CommandExecutor{
         			return true;
         		}
         		
-        		if(!(sender.hasPermission("kelson.lightning_rod"))) {
+        		if(!(sender.hasPermission("kbp.lightning_rod"))) {
         			sender.sendMessage(Messages.NoPermissionError());
         			}
     	}

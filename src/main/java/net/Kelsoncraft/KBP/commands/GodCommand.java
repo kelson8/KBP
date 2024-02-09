@@ -61,7 +61,7 @@ public class GodCommand implements CommandExecutor {
 		}
     	if (sender instanceof Player) {
     		Player player = (Player) sender;
-    		if (cmd.getName().equalsIgnoreCase("god") && sender.hasPermission("kelson.god")) {
+    		if (cmd.getName().equalsIgnoreCase("god") && sender.hasPermission("kbp.god")) {
     			if (args.length == 0) {
     				sender.sendMessage(Messages.KBP_Main + "Error in command usage: /god <on/off>");
     				return true;
@@ -90,7 +90,7 @@ public class GodCommand implements CommandExecutor {
         			//boolean targetPlGodMode = true;
     				//OfflinePlayer offlinePlayer = Bukkit.getServer().getOfflinePlayer(UUID.fromString(args[1]));
    
-    				if(args.length == 2 && sender.hasPermission("kelson.god.others")){
+    				if(args.length == 2 && sender.hasPermission("kbp.god.others")){
     					Player targetPlayer = Bukkit.getServer().getPlayerExact(args[1]);
     					if (targetPlayer == null) {
     						sender.sendMessage(Messages.KBP_Main + args[1] + " is not online!");    					

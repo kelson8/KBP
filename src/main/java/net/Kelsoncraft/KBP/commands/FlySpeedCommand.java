@@ -24,7 +24,7 @@ public class FlySpeedCommand implements CommandExecutor {
     	if(sender instanceof Player) {
     		Player player = (Player) sender;
     		
-    		if(cmd.getName().equalsIgnoreCase("flyspeed") && sender.hasPermission("kelson.flyspeed")) {
+    		if(cmd.getName().equalsIgnoreCase("flyspeed") && sender.hasPermission("kbp.flyspeed")) {
     			if(args.length == 0) {
     				sender.sendMessage(Messages.KBP_errormsg() + "Command usage: /flyspeed <number> [player]"); // Player part not implemented yet
     				return true;

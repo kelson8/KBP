@@ -13,7 +13,7 @@ api-version: 1.20
 commands:
   fly:
     description: This is the fly command usage /fly [player].
-    permission: kelson.fly
+    permission: kbp.fly
     permission-message: You do not have permission to use this command!
 
   location:
@@ -21,37 +21,37 @@ commands:
 
   ipbans:
     description: Shows the ips that are banned in the server.
-    permission: kelson.ipbans
+    permission: kbp.ipbans
     permission-message: You do not have permission to use this command!
 
   kheal:
     description: Heals the player heals another player if a name is specified.
-    permission: kelson.heal
+    permission: kbp.heal
     permission-message: You do not have permission to use this command!
 
   kmotd:
     description: Shows the motd to the players from my plugin
-    permission: kelson.kmotd
+    permission: kbp.kmotd
     permission-message: You do not have permission to use this command!
 
   setkmotd:
     description: Sets the message for /kmotd
-    permisson: kelson.setkmotd
+    permisson: kbp.setkmotd
     permission-message: You do not have permission to use this command!
 
   kelson-reload: 
     description: This reloads the config.yml
-    permission: kelson.reload
+    permission: kbp.reload
     permission-message: You do not have permission to use this command!
    
   test:
    description: Test
-   permission: kelson.test
+   permission: kbp.test
    permission-message: You do not have permission to use that command!
   
   serverinfo:
    description: Shows the server info to the player
-   permission: kelson.serverinfo
+   permission: kbp.serverinfo
    permission-message: You do not have permission to use this command!
 
   playerinfo:
@@ -111,7 +111,7 @@ commands:
 
   bossbar:
     description: Displays a bossbar.
-    permission: kelson.bossbar
+    permission: kbp.bossbar
     #usage: "/Usage: <command> [on|off]"
 
   menu:
@@ -126,53 +126,56 @@ commands:
   keco:
     description: Add, remove, and reset your money.
 
+  flower:
+    description: Gives you a flower with special properties.
+
 permissions:
-   kelson.*:
+   kbp.*:
      description: Gives all permissions using KBP.
      default: op
      children:
-       kelson.fly: true
-       kelson.fly.others: true
-       kelson.enablewhitelist: true
-       kelson.ipbans: true
-       kelson.reload: true
-       kelson.heal: true
-       kelson.nametag: true
-       kelson.kmotd: true
-       kelson.help: true
-       kelson.configtest: true
-       kelson.test: true
-       kelson.serverinfo: true
-       kelson.location.others: true
-       kelson.nohunger: true
-       kelson.smite: true
-       kelson.smite.others: true
-       kelson.destory: true
-       kelson.playerinfo.others: true
-       kelson.god: true
-       kelson.god.others: true
-       kelson.nightvision: true
-       kelson.nightvision.others: true
-       kelson.testcommands: true
-       kelson.lightning_rod: true
-       kelson.lightning_rod.self: true
-       kelson.flyspeed: true
-       kelson.place.bedrock: true
-       kelson.inv_test: true
-       kelson.enderchest.others: true
-       kelson.enderchest: true
+       kbp.fly: true
+       kbp.fly.others: true
+       kbp.enablewhitelist: true
+       kbp.ipbans: true
+       kbp.reload: true
+       kbp.heal: true
+       kbp.nametag: true
+       kbp.kmotd: true
+       kbp.help: true
+       kbp.configtest: true
+       kbp.test: true
+       kbp.serverinfo: true
+       kbp.location.others: true
+       kbp.nohunger: true
+       kbp.smite: true
+       kbp.smite.others: true
+       kbp.destory: true
+       kbp.playerinfo.others: true
+       kbp.god: true
+       kbp.god.others: true
+       kbp.nightvision: true
+       kbp.nightvision.others: true
+       kbp.testcommands: true
+       kbp.lightning_rod: true
+       kbp.lightning_rod.self: true
+       kbp.flyspeed: true
+       kbp.place.bedrock: true
+       kbp.inv_test: true
+       kbp.enderchest.others: true
+       kbp.enderchest: true
        # New test
-       kelson.bossbar: true
-       kelson.menu.cooldown: true
-       kelson.givemoney: true
-       kelson.eco: true
+       kbp.bossbar: true
+       kbp.menu.cooldown: true
+       kbp.givemoney: true
+       kbp.eco: true
 
-   kelson.default.*:
+   kbp.default.*:
      description: Gives the default permissions using KBP.
      default: true
      children:
-       kelson.location: true
-       kelson.kmotd: true
-       kelson.playerinfo: true
-       kelson.kbal: true
+       kbp.location: true
+       kbp.kmotd: true
+       kbp.playerinfo: true
+       kbp.kbal: true
      

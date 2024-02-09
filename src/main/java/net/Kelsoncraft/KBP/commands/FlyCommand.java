@@ -29,7 +29,7 @@ public class FlyCommand implements CommandExecutor {
 		
 		
 		if (sender instanceof Player) {
-			if (cmd.getName().equalsIgnoreCase("fly") && sender.hasPermission("kelson.fly")) {
+			if (cmd.getName().equalsIgnoreCase("fly") && sender.hasPermission("kbp.fly")) {
 				final Player player = (Player) sender;
 				if (args.length == 0) {
 						sender.sendMessage(Messages.KBP_errormsg() + "Invalid command usage: /fly <on/off> [player]");
@@ -77,7 +77,7 @@ public class FlyCommand implements CommandExecutor {
 				}
 					
 				if (args.length == 2) {
-					if (sender.hasPermission("kelson.fly.others")) {
+					if (sender.hasPermission("kbp.fly.others")) {
 						final Player target = Bukkit.getPlayer(args[1]);
 						
 						

@@ -34,7 +34,7 @@ public class LocalChatEvent implements Listener
         String messageColor = ChatColor.translateAlternateColorCodes('&', message).replaceFirst("@", "");
         
         if (message.length() > 1 && message.startsWith("@")) {
-            if (player.hasPermission("kelson.localchat.color")) {
+            if (player.hasPermission("kbp.localchat.color")) {
                 event.setFormat(localChatFormat + messageColor);
                 
             } else {

@@ -6,28 +6,28 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import net.Kelsoncraft.KBP.KbpMain;
-public class KelsonReloadCommand implements CommandExecutor{
+public class KBPReloadCommand implements CommandExecutor{
 	
 	KbpMain plugin;
-			public KelsonReloadCommand(KbpMain passedPlugin){
+			public KBPReloadCommand(KbpMain passedPlugin){
 				this.plugin = passedPlugin;
 			}
 
 		public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args)
 		{
-		if(cmd.getName().equalsIgnoreCase("kelson-reload")){
+		if(cmd.getName().equalsIgnoreCase("kbp-reload")){
 			
 			}
 		if(!(sender instanceof Player)){
 			  plugin.reloadConfig();
-			  plugin.getServer().broadcastMessage(ChatColor.WHITE + "Console" + ChatColor.YELLOW + " has reloaded kelsons plugin's config!");
+			  plugin.getServer().broadcastMessage(ChatColor.WHITE + "Console" + ChatColor.YELLOW + " has reloaded the KBP config!");
 			  return true;
 	         } 
 			Player player = (Player) sender;
 			if(sender instanceof Player){
 
 		    	   plugin.reloadConfig();
-		    	   plugin.getServer().broadcastMessage(ChatColor.WHITE + player.getName() + ChatColor.YELLOW + " has reloaded kelsons plugin's config!");
+		    	   plugin.getServer().broadcastMessage(ChatColor.WHITE + player.getName() + ChatColor.YELLOW + " has reloaded the KBP config!");
           }
 		  return false;
 		}

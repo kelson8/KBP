@@ -30,7 +30,7 @@ public class ItemRenameCommand implements CommandExecutor{
 		if (sender instanceof Player) {
 			
 		Player player = (Player) sender;
-		if(cmd.getName().equalsIgnoreCase("itemrename") && sender.hasPermission("kelson.rename")) {
+		if(cmd.getName().equalsIgnoreCase("itemrename") && sender.hasPermission("kbp.rename")) {
 			//sender.sendMessage(Messages.KBP_Main + "Not implemented yet!");
 			
 			 //Failure, doesn't work at all.

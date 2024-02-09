@@ -52,7 +52,7 @@ public class LightningRodEvent implements Listener {
 					// Replaced these with auto suggestions from IntelliJ
 					Objects.requireNonNull(player.getInventory().getItemInMainHand().getItemMeta()).getDisplayName().equals(format("&bLightning Rod"))
 					&& Objects.equals(player.getInventory().getItemInMainHand().getItemMeta().getLore(), lore)
-					&& player.hasPermission("kelson.lightning_rod")) {
+					&& player.hasPermission("kbp.lightning_rod")) {
 
 				//TODO set message below where it randomly runs when the lightning stick is being used.
 				//Bukkit.broadcastMessage(ChatColor.RED + "DEATH has been struck upon thee. I BLAME: " + player.getName());

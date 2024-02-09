@@ -47,7 +47,7 @@ public class LocationCommand implements CommandExecutor {
 	
   	  if(sender instanceof Player) {
 		  Player player = (Player) sender;
-		  if (cmd.getName().equalsIgnoreCase("location") && player.hasPermission("kelson.location")) {
+		  if (cmd.getName().equalsIgnoreCase("location") && player.hasPermission("kbp.location")) {
 			  if (args.length == 0) {
 				  Location loc = player.getLocation();
 				  sender.sendMessage(ChatColor.GREEN + "The world you are in is " + ChatColor.AQUA + "'" + player.getWorld().getName() + "'" +
@@ -58,7 +58,7 @@ public class LocationCommand implements CommandExecutor {
 						  + ChatColor.GREEN + "\nPitch: " + ChatColor.AQUA + loc.getPitch() + ChatColor.GREEN + " (Head angle)");
 				  return true;
 			  }
-			  if (args.length == 1 && player.hasPermission("kelson.location.others")) {
+			  if (args.length == 1 && player.hasPermission("kbp.location.others")) {
 
 				  Player target = Bukkit.getServer().getPlayer(args[0]);
 				  //if the targetplayer is offline then this says "<playername> is not online!"
