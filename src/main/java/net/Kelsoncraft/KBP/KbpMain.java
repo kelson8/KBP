@@ -2,14 +2,17 @@ package net.Kelsoncraft.KBP;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.onarandombox.MultiverseCore.MultiverseCore;
 import net.Kelsoncraft.KBP.listeners.Events;
 import net.Kelsoncraft.KBP.listeners.LightningRodEvent;
 import net.Kelsoncraft.KBP.listeners.LocalChatEvent;
 import net.Kelsoncraft.KBP.listeners.MenuListener;
 import net.Kelsoncraft.KBP.test.*;
+import net.luckperms.api.LuckPerms;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -42,7 +45,7 @@ import net.Kelsoncraft.KBP.commands.InvTestCommands;
  */
 
 public class KbpMain extends JavaPlugin implements Listener{
-	public final Logger logger = Logger.getLogger("Minecraft.KBP");
+	public final Logger logger = Logger.getLogger("KBP");
 	public static KbpMain plugin;
 	private static Economy econ;
 
@@ -98,6 +101,23 @@ public class KbpMain extends JavaPlugin implements Listener{
 			}
 		}
 	}
+
+	private void logInfo(String message){
+		this.logger.info(message);
+	}
+
+	private void logError(String message){
+		this.logger.severe(message);
+	}
+
+	private void logWarning(String message){
+		this.logger.warning(message);
+	}
+
+	// I would like to get the above working like this
+//	private String logTest(String message){
+//		return logger.warning(message);
+//	}
 	
 	@Override
 	public void onDisable() {
@@ -106,10 +126,36 @@ public class KbpMain extends JavaPlugin implements Listener{
 	
 	@Override
 	public void onEnable() {
+//		MultiverseCore core = (MultiverseCore) Bukkit.getServer().getPluginManager().getPlugin("Multiverse-Core");
+
+		// Add Luckperms
+		if(!setupLuckPerms()) {
+			logWarning(pluginName + " v" + pluginVersion + " Luckperms dependency not found! Some of this plugin won't function properly!");
+			this.logger.info("Please install Luckperms for the full functionality of this plugin.");
+		}
+
+		if(Bukkit.getPluginManager().getPlugin("PlotSquared") != null) {
+			// Run plotsquared specific stuff here
+			this.getCommand("getworld").setExecutor(new PlotSquaredCommands(this));
+		} else {
+			logWarning(pluginName + " v" + pluginVersion + " PlotSquared dependency not found! Some of this plugin won't function properly!");
+//			logInfo("Please install PlotSquared for the full functionality of this plugin.");
+		}
+
+		if(Bukkit.getPluginManager().getPlugin("Multiverse-Core") != null) {
+			// Run Multiverse specific stuff here
+			this.getCommand("getworld").setExecutor(new MultiverseCommands(this));
+			this.getCommand("createworld").setExecutor(new MultiverseCommands(this));
+//			MultiverseCommands
+//			MultiverseCommands.list();
+		} else {
+			logWarning(pluginName + " v" + pluginVersion + " Multiverse Core dependency not found! Some of this plugin won't function properly!");
+//			logInfo("Please install Multiverse Core for the full functionality of this plugin.");
+		}
 
 		// Add vault API
 		if(!setupEconomy()) {
-			this.logger.severe(pluginName + " v" + pluginVersion + " Vault dependency not found! Some of this plugin won't function properly!");
+			logWarning(pluginName + " v" + pluginVersion + " Vault dependency not found! Some of this plugin won't function properly!");
 			this.logger.info("Please install Vault for the full functionality of this plugin.");
 		}
 
@@ -125,7 +171,8 @@ public class KbpMain extends JavaPlugin implements Listener{
 //		}
 		
 		dataFolderCreateCheck();
-		this.logger.info(pluginName + " v" + pluginVersion +  " Has Been Enabled!");
+//		this.logger.info(pluginName + " v" + pluginVersion +  " Has Been Enabled!");
+		logInfo(pluginName + " v" + pluginVersion +  " Has Been Enabled!");
 		RegisterCommands();
 		RegisterEvents();
 
@@ -182,6 +229,14 @@ public class KbpMain extends JavaPlugin implements Listener{
 		Bukkit.getServer().getPluginManager().registerEvents(new MenuListener(this), this);
 	}
 
+//	private boolean setupMultiverse(){
+//		if(getServer().getPluginManager().getPlugin("Multiverse-Core") == null){
+//			return false;
+//		}
+//		MultiverseCore core = (MultiverseCore) Bukkit.getServer().getPluginManager().getPlugin("Multiverse-Core");
+////		return core;
+//	}
+
 	private boolean setupEconomy(){
 		if(getServer().getPluginManager().getPlugin("Vault") == null){
 			return false;
@@ -192,6 +247,15 @@ public class KbpMain extends JavaPlugin implements Listener{
 		}
 		econ = rsp.getProvider();
 		return econ != null;
+	}
+
+	private boolean setupLuckPerms(){
+		RegisteredServiceProvider<LuckPerms> provider = Bukkit.getServicesManager().getRegistration(LuckPerms.class);
+		if(provider != null){
+			LuckPerms api = provider.getProvider();
+			return true;
+		}
+		return false;
 	}
 
 	public static Economy getEconomy() {

@@ -6,6 +6,8 @@ description: This is the custom plugin for the kelsoncraft server!
 author: kelson8
 softdepend:
   - Vault
+  - Multiverse-Core
+  - PlotSquared
 #softdepend: [TagAPI, SQLibrary]
 #load: Startup
 api-version: 1.20
@@ -128,6 +130,12 @@ commands:
 
   flower:
     description: Gives you a flower with special properties.
+
+  getworld:
+    description: Shows your current world.
+
+  createworld:
+    description: Create a new world, not setup yet.
 
 permissions:
    kbp.*:
